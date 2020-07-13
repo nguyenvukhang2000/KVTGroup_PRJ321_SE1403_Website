@@ -201,9 +201,9 @@ public final class shop_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write('\n');
       out.write("\n");
       out.write("<section>\n");
-      out.write("    ");
+      out.write("   ");
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "/AdsController", out, false);
-      out.write("\n");
+      out.write(" \n");
       out.write("    <div class=\"container\">\n");
       out.write("        <div class=\"row\">\n");
       out.write("            <div class=\"col-sm-3\">\n");
@@ -238,13 +238,13 @@ public final class shop_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    </div><!--/price-range-->\n");
       out.write("                    </form>\n");
       out.write("\n");
-      out.write("                    <div class=\"shipping text-center\"><!--shipping-->\n");
+      out.write("                    <div class=\"shipping text-center\">\n");
       out.write("                        ");
       if (_jspx_meth_c_if_0(_jspx_page_context))
         return;
       out.write("\n");
       out.write("                        \n");
-      out.write("                    </div><!--/shipping-->\n");
+      out.write("                    </div>\n");
       out.write("\n");
       out.write("                </div>\n");
       out.write("            </div>");
@@ -380,7 +380,7 @@ public final class shop_jsp extends org.apache.jasper.runtime.HttpJspBase
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  myCate:CartCategory
-    org.yourcart.customtag.CartCategoryTagHandler _jspx_th_myCate_CartCategory_0 = (_jspx_resourceInjector != null) ? _jspx_resourceInjector.createTagHandlerInstance(org.yourcart.customtag.CartCategoryTagHandler.class) : new org.yourcart.customtag.CartCategoryTagHandler();
+    Models.Customtag.CartCategoryTagHandler _jspx_th_myCate_CartCategory_0 = (_jspx_resourceInjector != null) ? _jspx_resourceInjector.createTagHandlerInstance(Models.Customtag.CartCategoryTagHandler.class) : new Models.Customtag.CartCategoryTagHandler();
     _jspx_th_myCate_CartCategory_0.setJspContext(_jspx_page_context);
     _jspx_th_myCate_CartCategory_0.doTag();
     return false;
@@ -400,7 +400,7 @@ public final class shop_jsp extends org.apache.jasper.runtime.HttpJspBase
       do {
         out.write("\n");
         out.write("                            <a href=\"");
-        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ads.url}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ads.aURL}", java.lang.String.class, (PageContext)_jspx_page_context, null));
         out.write("\" target=\"_blank\">\n");
         out.write("                                <img class=\"ads\" src=\"");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${ads.aImage}", java.lang.String.class, (PageContext)_jspx_page_context, null));
@@ -476,7 +476,7 @@ public final class shop_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("                                <img src=\"");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${product.pImage}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("\" alt=\"\" />\n");
-          out.write("                                <h2>$");
+          out.write("                                <h2>");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${product.pPrice}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</h2>\n");
           out.write("                                <p>");
@@ -486,7 +486,7 @@ public final class shop_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("                            </div>\n");
           out.write("                            <div class=\"product-overlay\">\n");
           out.write("                                <div class=\"overlay-content\">\n");
-          out.write("                                    <h2>$");
+          out.write("                                    <h2>");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${product.pPrice}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</h2>\n");
           out.write("                                    <p>");
@@ -500,9 +500,9 @@ public final class shop_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("                        </div>\n");
           out.write("                        <div class=\"choose\">\n");
           out.write("                            <ul class=\"nav nav-pills nav-justified\">\n");
-          out.write("                                <li><a href=\"Product?id=");
+          out.write("<!--                                <li><a href=\"Product?id=");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${product.pId}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("\"><i class=\"fa fa-plus-square\"></i>View Details</a></li>\n");
+          out.write("\"><i class=\"fa fa-plus-square\"></i>View Details</a></li>-->\n");
           out.write("                            </ul>\n");
           out.write("                        </div>\n");
           out.write("                    </div>\n");
