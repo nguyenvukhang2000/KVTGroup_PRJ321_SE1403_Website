@@ -22,10 +22,6 @@ public class CategoryDAO {
     Category bean = new Category();
     Connection conn;
     DBConnection db = new DBConnection();
-
-    public CategoryDAO() {
-        this.conn = db.getConnect();
-    }
     
     public ArrayList<Category> allCategoriess() {
         ArrayList<Category> allCategory = new ArrayList<>();

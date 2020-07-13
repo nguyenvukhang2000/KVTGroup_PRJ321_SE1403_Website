@@ -10,7 +10,7 @@
 
 
 <%-- include slider file --%> 
-<%--<%@include file="slider.jsp" %>--%>
+<%@include file="slider.jsp" %>
 
 
 <%-- include slidebar file --%> 

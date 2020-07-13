@@ -26,13 +26,13 @@
                         <div class="single-products">
                             <div class="productinfo text-center">
                                 <img src="${product.pImage}" alt="" />
-                                <h2>${product.pPrice}</h2>
+                                <h2>$${product.pPrice}</h2>
                                 <p>${product.pName}</p>
                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                             </div>
                             <div class="product-overlay">
                                 <div class="overlay-content">
-                                    <h2>${product.pPrice}</h2>
+                                    <h2>$${product.pPrice}</h2>
                                     <p>${product.pName}</p>
                                     <a href="#" id="${product.pId}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                 </div>
@@ -40,7 +40,7 @@
                         </div>
                         <div class="choose">
                             <ul class="nav nav-pills nav-justified">
-<!--                                <li><a href="Product?id=${product.pId}"><i class="fa fa-plus-square"></i>View Details</a></li>-->
+                                <li><a href="Product?id=${product.pId}"><i class="fa fa-plus-square"></i>View Details</a></li>
                             </ul>
                         </div>
                     </div>

@@ -22,11 +22,6 @@ import java.util.logging.Logger;
 public class AdvertisementDAO {
     Connection conn;
     ResultSet rs;
-
-    public AdvertisementDAO() {
-        DBConnection dBConnection = new DBConnection();
-        this.conn = dBConnection.getConnect();
-    }
     
     public Advertisement getRandomAds() {
         ArrayList<Advertisement> allAds = getAllAdvertisement();
@@ -40,8 +35,8 @@ public class AdvertisementDAO {
     public ArrayList<Advertisement> getAllAdvertisement() {
         try {
             ArrayList<Advertisement> arr = new ArrayList<>();
-            
-            PreparedStatement pst = conn.prepareStatement("select * From ads");
+            PreparedStatement pst = null;
+            pst = conn.prepareStatement("select * From ads");
             rs = pst.executeQuery();
             while(rs.next()) {
                 Advertisement ads = new Advertisement();
