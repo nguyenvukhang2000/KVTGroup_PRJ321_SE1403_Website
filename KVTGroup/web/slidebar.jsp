@@ -4,7 +4,7 @@
     Author     : KhangNVCE140224
 --%>
 <section>
-    <jsp:include page="/AdsController"/>
+   <jsp:include page="/AdsController"/> 
     <div class="container">
         <div class="row">
             <div class="col-sm-3">
@@ -28,14 +28,14 @@
                     </div><!--/price-range-->
                     </form>
 
-                    <div class="shipping text-center"><!--shipping-->
+                    <div class="shipping text-center">
                         <c:if test="${not empty ads}">
-                            <a href="${ads.url}" target="_blank">
+                            <a href="${ads.aURL}" target="_blank">
                                 <img class="ads" src="${ads.aImage}" alt="" />
                             </a>
                         </c:if>
                         
-                    </div><!--/shipping-->
+                    </div>
 
                 </div>
             </div>

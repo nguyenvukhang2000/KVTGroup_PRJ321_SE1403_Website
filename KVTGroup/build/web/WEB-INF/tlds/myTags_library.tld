@@ -5,7 +5,17 @@
   <uri>/WEB-INF/tlds/myTags_library</uri>
   <tag>
     <name>CartCategory</name>
-    <tag-class>org.yourcart.customtag.CartCategoryTagHandler</tag-class>
+    <tag-class>Models.Customtag.CartCategoryTagHandler</tag-class>
     <body-content>empty</body-content>
+  </tag>
+  <tag>
+      <name>SelectCategory</name>
+      <tag-class>Models.Customtag.SelectCategory</tag-class>
+      <body-content>empty</body-content>
+      <attribute>
+          <name>selectID</name>
+          <rtexprvalue>true</rtexprvalue>
+          <type>int</type>
+      </attribute>
   </tag>
 </taglib>
