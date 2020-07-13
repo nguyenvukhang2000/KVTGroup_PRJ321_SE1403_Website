@@ -28,6 +28,10 @@ public class ProductsDAO {
 
     Connection conn;
 
+    public ProductsDAO() {
+        this.conn = db.getConnect();
+    }
+
     public ArrayList<Product> getAllProducts() {
         ArrayList<Product> listProducts = new ArrayList();
         String sql = "SELECT * FROM products ORDER BY pId DESC";

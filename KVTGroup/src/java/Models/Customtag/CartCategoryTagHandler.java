@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.yourcart.customtag;
+package Models.Customtag;
 
 import java.util.ArrayList;
 import javax.servlet.jsp.JspWriter;

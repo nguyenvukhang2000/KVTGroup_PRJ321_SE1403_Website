@@ -5,7 +5,7 @@
   <uri>/WEB-INF/tlds/myTags_library</uri>
   <tag>
     <name>CartCategory</name>
-    <tag-class>org.yourcart.customtag.CartCategoryTagHandler</tag-class>
+    <tag-class>Models.Customtag.CartCategoryTagHandler</tag-class>
     <body-content>empty</body-content>
   </tag>
 </taglib>

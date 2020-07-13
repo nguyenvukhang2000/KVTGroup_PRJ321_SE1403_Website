@@ -22,6 +22,11 @@ import java.util.logging.Logger;
 public class AdvertisementDAO {
     Connection conn;
     ResultSet rs;
+
+    public AdvertisementDAO() {
+        DBConnection dBConnection = new DBConnection();
+        this.conn = dBConnection.getConnect();
+    }
     
     public Advertisement getRandomAds() {
         ArrayList<Advertisement> allAds = getAllAdvertisement();
