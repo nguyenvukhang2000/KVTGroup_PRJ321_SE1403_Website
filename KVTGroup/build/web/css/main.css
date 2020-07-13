@@ -247,7 +247,7 @@ a#scrollUp i{
 
 .mainmenu ul li a:hover, .mainmenu ul li a.active,  .shop-menu ul li a.active{
     background:none;
-    color:#fdb45e;
+    color:#36b757;
 }
 
 .search_box input {
@@ -300,7 +300,7 @@ ul.sub-menu {
 }
 
 .dropdown ul.sub-menu li .active{
-    color: #FDB45E;
+    color: #36b757;
     padding-left: 0;
 }
 
@@ -318,7 +318,7 @@ ul.sub-menu {
 }
 
 .navbar-nav li ul.sub-menu li a:hover{
-    color: #FDB45E;
+    color: #36b757;
 }
 
 .fa-angle-down{
@@ -2462,7 +2462,7 @@ h2.title {
 #contact-page .form-control:focus, 
 #contact-page .form-control:hover {
     box-shadow: inherit;
-    border-color: #FDB45E;
+    border-color: #36b757;
 }
 
 #contact-page .contact-info {
