@@ -65,13 +65,13 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
 
       out.write("\r\n");
       out.write(" \r\n");
-<<<<<<< Updated upstream
+      out.write("Updated upstream");
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "/IndexProductServlet", out, false);
       out.write('\r');
       out.write('\n');
-=======
+
       out.write(" \r\n");
->>>>>>> Stashed changes
+      out.write("Stashed changes");
       out.write(" \r\n");
       out.write("\r\n");
       out.write("\r\n");
