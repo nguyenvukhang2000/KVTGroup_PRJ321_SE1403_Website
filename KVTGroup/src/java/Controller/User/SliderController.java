@@ -5,12 +5,11 @@
  */
 package Controller.User;
 
-import Models.DAO.ProductsDAO;
-import Models.Entities.Product;
+import Models.DAO.SlidersDAO;
+import Models.Entities.Sliders;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,9 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author KhangNVCE140224
  */
-@WebServlet(name = "ShopController", urlPatterns = {"/ShopController"})
-public class ShopController extends HttpServlet {
-    List<Product> allProducts = new ArrayList<Product>();
+@WebServlet(name = "SliderController", urlPatterns = {"/SliderIndex"})
+public class SliderController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,10 +41,10 @@ public class ShopController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ShopController</title>");            
+            out.println("<title>Servlet SliderController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ShopController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet SliderController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -64,37 +62,9 @@ public class ShopController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ProductsDAO pDAO = new ProductsDAO();
-        
-        //-------------- handle paging ------------------
-        int pageid = 1;
-        int totalPerPage = 9;
-        int start;
-        
-        if(request.getParameter("page") != null) {
-            pageid = Integer.parseInt(request.getParameter("page"));
-        }
-        
-        //end & start for paging
-        start = (pageid - 1) * totalPerPage;
-        
-        if(request.getParameter("cate") != null) {
-            int cate = Integer.parseInt(request.getParameter("cate"));
-            allProducts = pDAO.getAllProductByCategoryId(cate, start, totalPerPage);
-        } else {
-            allProducts = pDAO.getAllProducts(start, totalPerPage);
-        }
-        
-        int noOfRecords = pDAO.getNoOfRecords();
-        int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / totalPerPage);
-        
-        request.setAttribute("allProducts", allProducts);
-        request.setAttribute("noOfPages", noOfPages);
-        request.setAttribute("currentPage", pageid);
-        request.setAttribute("query", request.getParameter("cate"));
-        
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/shop.jsp");
-        dispatcher.forward(request, response);
+        ArrayList<Sliders> allSliders = new SlidersDAO().getAllSliders();
+        request.setAttribute("slides", allSliders);
+//        request.getRequestDispatcher("slider.jsp").forward(request, response);
     }
 
     /**
@@ -108,7 +78,7 @@ public class ShopController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        processRequest(request, response);
     }
 
     /**

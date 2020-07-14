@@ -40,7 +40,7 @@
                         </div>
                         <div class="choose">
                             <ul class="nav nav-pills nav-justified">
-<!--                                <li><a href="Product?id=${product.pId}"><i class="fa fa-plus-square"></i>View Details</a></li>-->
+                                <li><a href="ProductController?id=${product.pId}"><i class="fa fa-plus-square"></i>View Details</a></li>
                             </ul>
                         </div>
                     </div>

@@ -61,21 +61,21 @@ public class ProductController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int productID = Integer.parseInt(request.getParameter("pId"));
+        int productID = Integer.parseInt(request.getParameter("id"));
         ProductsDAO pDAO = new ProductsDAO();
-        Product p = pDAO.getProduct(productID);
+        Product product = pDAO.getProduct(productID);
         
         //no product with this id
-        if(p == null) {
+        if(product == null) {
             response.sendRedirect("404.jsp");
         } else {
             //assign it on request
-            request.setAttribute("product", p);
+            request.setAttribute("product", product);
             //get recommended product
-            ArrayList<Product> recommendedItem = pDAO.getRecommendedItem(p.getcId(), productID);
-            request.setAttribute("recommend", recommendedItem);
+            ArrayList<Product> recommendedItem = pDAO.getRecommendedItem(product.getcId(), productID);
+            request.setAttribute("recomed", recommendedItem);
             
-            
+            request.getRequestDispatcher("/product-details.jsp").forward(request, response);
         }
     }
 

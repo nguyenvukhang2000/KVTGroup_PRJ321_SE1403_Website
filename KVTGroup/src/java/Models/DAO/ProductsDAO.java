@@ -105,11 +105,11 @@ public class ProductsDAO {
         return noOfRecords;
     }
 
-    public Product getProduct(int pId) {
+    public Product getProduct(int productId) {
         Product product = new Product(); //to return value of select
         try {
             pst = conn.prepareStatement("select * from products  where pId=?");
-            pst.setInt(1, pId);
+            pst.setInt(1, productId);
             rs = pst.executeQuery();
             if (rs.next()) {
                 product.setpId(rs.getInt("pId"));
@@ -119,10 +119,12 @@ public class ProductsDAO {
                 product.setpPrice(rs.getDouble("pPrice"));
                 product.setpWeight(rs.getInt("pWeight"));
                 product.setpDescription(rs.getString("pDescription"));
-                product.setpQuantity(rs.getInt(rs.getInt("pQuantity")));
+                product.setpQuantity(rs.getInt("pQuantity"));
                 product.setpCreateDate(rs.getDate("pCreateDate"));
                 product.setpStatus(rs.getString("pStatus"));
                 return product;
+//                Product p = new Product(rs.getInt("pId", rs.getInt("cId"), rs.getString("pName"), rs.getString("pImage"), rs.getDouble("pPrice")
+//                        , rs.getInt("pWeight"), rs.getString("pDescription"), productId, pCreateDate, pStatus);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -142,11 +144,11 @@ public class ProductsDAO {
                         rs.getString("pImage"), rs.getDouble("pPrice"), rs.getInt("pWeight"),
                         rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getDate("pCreateDate"), rs.getString("pStatus")));
             }
-            return getItem;
+            
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return null;
+        return getItem;
     }
 
     public ArrayList<Product> getLastProducts() {
