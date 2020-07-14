@@ -40,8 +40,8 @@ public class AdvertisementDAO {
     public ArrayList<Advertisement> getAllAdvertisement() {
         try {
             ArrayList<Advertisement> arr = new ArrayList<>();
-            
-            PreparedStatement pst = conn.prepareStatement("select * From ads");
+            PreparedStatement pst = null;
+            pst = conn.prepareStatement("select * From ads");
             rs = pst.executeQuery();
             while(rs.next()) {
                 Advertisement ads = new Advertisement();

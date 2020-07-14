@@ -181,49 +181,4 @@ public class ProductsDAO {
         }
         return highestprice;
     }
-
-    public ArrayList<Product> getProductByName(String productName) {
-        ArrayList<Product> listProductByName = new ArrayList();
-        try {
-            pst = conn.prepareStatement("SELECT * FROM products WHERE pName LIKE ? ESCAPE '!'");
-            productName = productName.replace("!", "!!")
-                    .replace("%", "!%")
-                    .replace("_", "!_")
-                    .replace("[", "![");
-            pst.setString(1, productName + "%");
-            
-            rs = pst.executeQuery();
-            while(rs.next()) {
-                listProductByName.add(new Product(rs.getInt("pId"), rs.getInt("cId"), rs.getString("pName"),
-                        rs.getString("pImage"), rs.getDouble("pPrice"), rs.getInt("pWeight"),
-                        rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getDate("pCreateDate"), rs.getString("pStatus")));
-            }
-            
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        System.out.println(listProductByName);
-        return listProductByName;
-    }
-    
-    public ArrayList<Product> getAllProductByPrice(double priceStart, double priceEnd) {
-        ArrayList<Product> getAllProductByPrice = new ArrayList();
-        
-        try {
-            pst = conn.prepareStatement("select * from products where  pPrice BETWEEN ? AND ?");
-            pst.setDouble(1, priceStart);
-            pst.setDouble(2, priceEnd);
-            
-            rs = pst.executeQuery();
-            while(rs.next()) {
-                getAllProductByPrice.add(new Product(rs.getInt("pId"), rs.getInt("cId"), rs.getString("pName"),
-                        rs.getString("pImage"), rs.getDouble("pPrice"), rs.getInt("pWeight"),
-                        rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getDate("pCreateDate"), rs.getString("pStatus")));
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        System.out.println(getAllProductByPrice.size());
-        return getAllProductByPrice;
-    }
 }

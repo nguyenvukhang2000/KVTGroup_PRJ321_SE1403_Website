@@ -14,7 +14,7 @@
 
 
 <%-- include slidebar file --%> 
-<%@include file="slidebar.jsp" %>
+<%--<%@include file="slidebar.jsp" %>--%>
 <jsp:include page="/IndexProductServlet"/>
 <div class="col-sm-9 padding-right">
     <div class="features_items"><!--features_items-->
