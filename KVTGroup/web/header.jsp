@@ -73,8 +73,28 @@
                         <div class="col-sm-8">
                             <div class="shop-menu pull-right">
                                 <ul class="nav navbar-nav">
-                                    <%--  lalalaalalalla
---%>
+                                    <div class="shop-menu pull-right">
+                                <ul class="nav navbar-nav">
+                                    <c:if test="${!empty LoginUser && LoginUser.role =='user' }">
+                                        <li><a href="Profile"><i class="fa fa-user"></i> ${LoginUser.userName}</a></li>
+                                        <li><a href="CartHandlerServlet"><i class="fa fa-shopping-cart"></i> Cart (<span id="number"></span> )</a></li>
+                                        <li><a href="#"><i class="fa fa-usd"></i> ${LoginUser.cash}</a></li>
+                                         <li><a href="ScratchCards.jsp"><i class="fa fa-cc-visa"></i> Charge </a></li>
+                                        <li><a href="logout"><i class="fa fa-sign-out"></i> Logout</a></li>
+                                        <script type="text/javascript">var userID = '${LoginUser.userId}';</script>
+                                    </c:if>
+                                        
+                                    <c:if test="${!empty LoginUser && LoginUser.role =='admin' }">
+                                        <li><a href="admin"><i class="fa fa-cog"></i> Admin Panel</a></li>
+                                        <li><a href="admin/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
+                                    </c:if>
+
+                                    <c:if test="${empty LoginUser}">
+                                        <li><a href="login.jsp"><i class="fa fa-sign-in"></i> Signup</a></li>
+                                        <li><a href="login.jsp"><i class="fa fa-lock"></i> Login</a></li>
+                                    </c:if> 
+
+                                </ul>
                                 </ul>
                             </div>
                         </div>
