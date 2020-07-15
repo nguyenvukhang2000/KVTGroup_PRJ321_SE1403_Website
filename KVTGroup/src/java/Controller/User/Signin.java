@@ -40,7 +40,8 @@ public class Signin extends HttpServlet {
         String username = request.getParameter("SigninName");
         String password = request.getParameter("SigninPassword");
         UserDAO us = new UserDAO();
-        User user = us.signIn(username, password);
+        User user = new User();
+        user = us.signIn(username, password);
            if(user == null ){
                //TODO : MAKE forget password
                request.setAttribute("message", "Cant't Login <br/> Wrong username or password .. ");

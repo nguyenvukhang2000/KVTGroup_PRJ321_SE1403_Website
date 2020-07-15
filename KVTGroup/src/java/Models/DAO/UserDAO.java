@@ -15,10 +15,9 @@ import Models.utilize.SHA;
  */
 public class UserDAO{
 
-   private User bean = new User();
-   private Connection con;
-  
-    private boolean b = false;
+   public User bean = new User();
+   public Connection con;
+    public boolean b = false;
   
 
     public UserDAO() {
@@ -28,7 +27,7 @@ public class UserDAO{
     private boolean search(String usrName) {
 
         try {
-            PreparedStatement pst = con.prepareStatement("SELECT * FROM `users` WHERE `uName` = ");
+            PreparedStatement pst = con.prepareStatement("SELECT * FROM `users` WHERE `uName` = ? ");
             pst.setString(1, usrName);
             ResultSet rs = pst.executeQuery();
             if (rs == null) {
@@ -82,7 +81,7 @@ public class UserDAO{
 
     public User signIn(String username, String password) {
 
-        User userSinIn = null;
+        User userSinIn = new User();
         try {
             if (search(username)) {
 //                con = db.getConnect();
@@ -93,17 +92,19 @@ public class UserDAO{
                 ResultSet rs = pst.executeQuery();
                
                 if (rs.next()) {
-                    userSinIn = new User();
-                    userSinIn.setuId(rs.getInt("uId"));
-                    userSinIn.setuName(rs.getString("uName"));
-                    userSinIn.setuEmail(rs.getString("uEmail"));
-                    userSinIn.setuAddress(rs.getString("uAddress"));
-                    userSinIn.setuPassword(rs.getString("uPassword"));
-                    userSinIn.setuJob(rs.getString("uJob"));
-                    userSinIn.setuCreditCard(rs.getString("uCreaditCard"));
-                    userSinIn.setuCash(rs.getInt("uCash"));
-                    userSinIn.setuRole(rs.getString("uRole"));
-                    userSinIn.setuPhoto(rs.getString("uPhoto"));
+//                    userSinIn = new User();
+//                    userSinIn.setuId(rs.getInt("uId"));
+//                    userSinIn.setuName(rs.getString("uName"));
+//                    userSinIn.setuEmail(rs.getString("uEmail"));
+//                    userSinIn.setuAddress(rs.getString("uAddress"));
+//                    userSinIn.setuPassword(rs.getString("uPassword"));
+//                    userSinIn.setuJob(rs.getString("uJob"));
+//                    userSinIn.setuCreditCard(rs.getString("uCreaditCard"));
+//                    userSinIn.setuCash(rs.getInt("uCash"));
+//                    userSinIn.setuRole(rs.getString("uRole"));
+//                    userSinIn.setuPhoto(rs.getString("uPhoto"));
+                    userSinIn = new User(rs.getString("uName"),rs.getString("uEmail") , rs.getInt("uId"),rs.getString("uJob"), rs.getString("uPassword"), rs.getString("uRole"), rs.getString("uPhoto"), rs.getString("uAddress"),rs.getString("uCreaditCard"),rs.getInt("uCash"));
+                    System.out.println("tú tú ");
                     System.out.println(userSinIn);
                 }
                 
@@ -113,7 +114,7 @@ public class UserDAO{
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-
+        System.out.println("tú tú 111");
         return null;
     }
 
