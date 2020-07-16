@@ -228,4 +228,17 @@ public class ProductsDAO {
         System.out.println(getAllProductByPrice.size());
         return getAllProductByPrice;
     }
+    
+    public boolean updateProductQuantity(Product product) throws SQLException {
+        int i = 0;
+        PreparedStatement pst = conn.prepareStatement("update products set pQuantity=? where pId=?");
+        pst.setInt(1, product.getpQuantity());
+        pst.setInt(2, product.getpId());
+        
+        i = pst.executeUpdate();
+        if(i > 0) {
+            return true;
+        }
+        return false;
+    }
 }
