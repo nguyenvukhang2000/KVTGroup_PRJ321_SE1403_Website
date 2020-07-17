@@ -55,7 +55,7 @@ public class Signin extends HttpServlet {
             
                if(user.getuRole().equalsIgnoreCase("admin")){
                    System.out.println("ADMIN");
-                   response.sendRedirect("admin/index.jsp");   //admin
+                   response.sendRedirect("admin/Index.jsp");   //admin
                }
                    
                else {

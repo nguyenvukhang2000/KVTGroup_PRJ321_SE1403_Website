@@ -1,18 +1,18 @@
 <%-- 
     Document   : index
-    Created on : Jul 15, 2020, 8:39:58 PM
+    Created on : Jul 15, 2020, 8:49:29 PM
     Author     : Vinhhqce140143
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@include file="header.jsp" %>
+<%@include file="Header.jsp" %>
 <%-- include slider file --%> 
 
 
 <%-- include slidebar file --%> 
-<%@include file="slidebar.jsp" %>
+<%@include file="Slidebar.jsp" %>
 
-<jsp:include page="AdminIndex"/>
+<jsp:include page="/AdminIndex"/>
 
 
     <div class="col-sm-9 padding-right">
@@ -128,12 +128,12 @@
                             <i class="fa fa-cc-visa fa-5x" aria-hidden="true" ></i>
                             <h2>Scratch Cards</h2>
 
-                            <a href="charge.jsp" class="btn btn-default my_btn"><i class=" fa fa-cc-visa "></i> Scratch Cards</a>
+                            <a href="Charge.jsp" class="btn btn-default my_btn"><i class=" fa fa-cc-visa "></i> Scratch Cards</a>
                         </div>
                         <div class="product-overlay">
                             <div class="overlay-content">
                                 <h2>Here you can add Scratch Cards that will charge your  web site users </h2>
-                                <a href="charge.jsp" class="btn btn-default my_btn"><i class="fa fa-cc-visa" ></i> Scratch Cards</a>
+                                <a href="Charge.jsp" class="btn btn-default my_btn"><i class="fa fa-cc-visa" ></i> Scratch Cards</a>
 
                             </div>
                         </div>
@@ -170,4 +170,4 @@
 
 
 <%-- include footer file --%> 
-<%@include file="footer.jsp" %>
+<%@include file="Footer.jsp" %>
