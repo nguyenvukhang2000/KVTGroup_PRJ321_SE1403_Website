@@ -6,6 +6,7 @@
 package Models.DAO;
 
 import Models.Entities.Product;
+import Models.utilize.FileUpload;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -238,6 +239,33 @@ public class ProductsDAO {
         i = pst.executeUpdate();
         if(i > 0) {
             return true;
+        }
+        return false;
+    }
+    
+    public boolean deleteProduct(int id, String path){
+        try {
+            int i = 0;
+            Product product = getProduct(id);
+            boolean deleteFile = FileUpload.deleteFile(product.getpImage(), path);
+            System.out.println(product.getpImage());
+            if(deleteFile){
+                pst = conn.prepareStatement("DELETE FROM `products` WHERE pId=?");
+                pst.setInt(1, id);
+                i = pst.executeUpdate();
+                
+                db.getConnect().close();
+                if(i > 0){
+                    return true;
+                }
+            }
+        } catch (SQLException e) {
+            try {
+                db.getConnect().close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ProductsDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            e.printStackTrace();
         }
         return false;
     }

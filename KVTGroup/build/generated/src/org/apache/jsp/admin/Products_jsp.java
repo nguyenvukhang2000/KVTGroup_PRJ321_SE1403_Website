@@ -3,6 +3,7 @@ package org.apache.jsp.admin;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import Models.Entities.User;
 
 public final class Products_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -70,6 +71,7 @@ public final class Products_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html lang=\"en\">\n");
       out.write("    <head>\n");
@@ -105,8 +107,8 @@ public final class Products_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        <div class=\"col-sm-6\">\n");
       out.write("                            <div class=\"contactinfo\">\n");
       out.write("                                <ul class=\"nav nav-pills\">\n");
-      out.write("                                    <li><a href=\"#\"><i class=\"fa fa-phone\"></i> +2 0111 47 88 16</a></li>\n");
-      out.write("                                    <li><a href=\"#\"><i class=\"fa fa-envelope\"></i> info@staticcart.com</a></li>\n");
+      out.write("                                    <li><a href=\"#\"><i class=\"fa fa-phone\"></i> +84 35 373 8125</a></li>\n");
+      out.write("                                    <li><a href=\"#\"><i class=\"fa fa-envelope\"></i>KVTGroup@gmail.com</a></li>\n");
       out.write("                                </ul>\n");
       out.write("                            </div>\n");
       out.write("                        </div>\n");
@@ -115,7 +117,7 @@ public final class Products_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                <ul class=\"nav navbar-nav\">\n");
       out.write("                                    <li><a href=\"#\"><i class=\"fa fa-facebook\"></i></a></li>\n");
       out.write("                                    <li><a href=\"#\"><i class=\"fa fa-twitter\"></i></a></li>\n");
-      out.write("                                    <li><a href=\"#\"><i class=\"fa fa-linkedin\"></i></a></li>\n");
+      out.write("                                    <li><a href=\"#\"><i class=\"fa fa-instagram\"></i></a></li>\n");
       out.write("                                    <li><a href=\"#\"><i class=\"fa fa-dribbble\"></i></a></li>\n");
       out.write("                                    <li><a href=\"#\"><i class=\"fa fa-google-plus\"></i></a></li>\n");
       out.write("                                </ul>\n");
@@ -169,9 +171,8 @@ public final class Products_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            </div><!--/header-bottom-->\n");
       out.write("        </header><!--/header-->\n");
       out.write("\n");
-      out.write("\n");
-      out.write("<!DOCTYPE html>\n");
-      out.write("\n");
+      out.write('\n');
+      out.write('\n');
       out.write("\n");
       out.write("\n");
       out.write("<section id=\"cart_items\">\n");
@@ -246,6 +247,7 @@ public final class Products_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <td class=\"description\"></td>\n");
       out.write("                            <td class=\"price\">Price</td>\n");
       out.write("                            <td class=\"quantity\">Quantity</td>\n");
+      out.write("                            <td></td>\n");
       out.write("                        </tr>\n");
       out.write("                    </thead>\n");
       out.write("                    <tbody>\n");
@@ -277,7 +279,7 @@ public final class Products_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                </div>\n");
       out.write("                <div class=\"col-sm-3\">\n");
       out.write("                    <div class=\"address\">\n");
-      out.write("                        <img src=\"images/home/map.png\" alt=\"\" />\n");
+      out.write("                        <img src=\"../images/home/map.png\" alt=\"\" />\n");
       out.write("                        <p>VietNam , CanTho</p>\n");
       out.write("                    </div>\n");
       out.write("                </div>\n");
@@ -313,6 +315,7 @@ public final class Products_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("</body>\n");
       out.write("</html>\n");
+      out.write("\n");
       out.write("\n");
       out.write("    ");
       out.write('\n');
@@ -400,6 +403,11 @@ public final class Products_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("                                        <p>");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${product.pQuantity}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</p>\n");
+          out.write("                                    </td>\n");
+          out.write("                                    <td class=\"cart_delete\">\n");
+          out.write("                                        <a class=\"cart_quantity_delete\" href=\"DeleteProduct?pId=");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${product.pId}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\"><i class=\"fa fa-times\"></i></a>\n");
           out.write("                                    </td>\n");
           out.write("                                </tr>\n");
           out.write("                            ");

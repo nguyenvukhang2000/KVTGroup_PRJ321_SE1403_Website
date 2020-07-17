@@ -20,6 +20,7 @@
                             <td class="description"></td>
                             <td class="price">Price</td>
                             <td class="quantity">Quantity</td>
+                            <td></td>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,6 +38,9 @@
                                     </td>
                                     <td class="cart_quantity">
                                         <p>${product.pQuantity}</p>
+                                    </td>
+                                    <td class="cart_delete">
+                                        <a class="cart_quantity_delete" href="DeleteProduct?pId=${product.pId}"><i class="fa fa-times"></i></a>
                                     </td>
                                 </tr>
                             </c:forEach>
