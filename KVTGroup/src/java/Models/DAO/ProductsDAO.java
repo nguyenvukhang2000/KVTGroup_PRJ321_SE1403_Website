@@ -66,7 +66,7 @@ public class ProductsDAO {
             }
 
             //get number of record in DB
-            rs = conn.prepareStatement("SELECT count(*) FROM product").executeQuery();
+            rs = conn.prepareStatement("SELECT count(*) FROM products").executeQuery();
             if (rs.next()) {
                 this.noOfRecords = rs.getInt(1);
             }
@@ -110,7 +110,7 @@ public class ProductsDAO {
     public Product getProduct(int productId) {
         Product product = new Product(); //to return value of select
         try {
-            pst = conn.prepareStatement("select * from products  where pId=?");
+            pst = conn.prepareStatement("select * from products where pId=?");
             pst.setInt(1, productId);
             rs = pst.executeQuery();
             if (rs.next()) {
@@ -125,8 +125,7 @@ public class ProductsDAO {
                 product.setpCreateDate(rs.getDate("pCreateDate"));
                 product.setpStatus(rs.getString("pStatus"));
                 return product;
-//                Product p = new Product(rs.getInt("pId", rs.getInt("cId"), rs.getString("pName"), rs.getString("pImage"), rs.getDouble("pPrice")
-//                        , rs.getInt("pWeight"), rs.getString("pDescription"), productId, pCreateDate, pStatus);
+
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

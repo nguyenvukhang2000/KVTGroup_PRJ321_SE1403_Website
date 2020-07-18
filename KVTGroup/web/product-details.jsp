@@ -25,7 +25,7 @@
                 <h2>${product.pName}</h2>
                 <p>Product ID: ${product.pId}</p>
                 <span>
-                    <span>US $${product.pPrice}</span>
+                    <span>VND ${product.pPrice}</span>
                     <label>Quantity:</label>
                     <input type="number" id="quan" value="1" min="1" />
                     <button type="button" id="${product.pId}" class="btn btn-fefault cart add-to-my">

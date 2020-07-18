@@ -305,13 +305,7 @@
                        console.log(val[1]);
                     document.getElementById("downValue").value=val[0];
                     document.getElementById("upValue").value=val[1];
-//  
-//  $.get("SearchForProduct?from="+val[0]+"&to="+val[1], function(response) {
-                           // out.print("nesma")
-                       
-                         
-                        //   });
-                       
+
                         
                        
 			return false;
@@ -331,7 +325,7 @@
 			}
                 
                
-                    //console.log("nesma from"+from);
+                    
 			return val;
 		} ,
                 
@@ -351,7 +345,7 @@
             
 				return this.value;
 			}
-                       //console.log("getlue"+value[0])
+                       
 			return this.value[0];
 		},
 
@@ -382,17 +376,7 @@
 		}
                 
 	};
-              /*   var slider = new Slider("#sl2");
-                slider.on("slide", function(slideEvt) {
-                 console.log(slider.getValue() );
-                });
-                */
-               /*
-               var slider = new Slider("#sl2");
-                    slider.on("slide", function(slideEvt) {
-                     console.log(slider.getValue() );
-                    });*/
-                    
+             
               
 	$.fn.slider = function ( option, val ) {
             
@@ -424,8 +408,7 @@
 		return value;
 		}
 	};
-//var min = $('#rbSlider').data('slider').options.value[0];
-//var max = $('#rbSlider').data('slider').options.value[1];
+
 
 	$.fn.slider.Constructor = Slider;
 
