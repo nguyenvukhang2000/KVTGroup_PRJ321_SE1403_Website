@@ -65,7 +65,16 @@ public class AdminProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        int id = Integer.parseInt(request.getParameter("pId"));
+        Product productobject = new ProductsDAO().getProduct(id);
+        if (productobject == null) {
+            request.getSession().setAttribute("message", "Product not found");
+            response.sendRedirect("../Failed.jsp");
+        } else {
+            request.setAttribute("product", productobject);
+            request.setAttribute("type", "Edit");
+            request.getRequestDispatcher("/admin/AddProduct.jsp").forward(request, response);
+        }
     }
 
     /**
@@ -87,6 +96,7 @@ public class AdminProduct extends HttpServlet {
         int quantity = Integer.parseInt(request.getParameter("ProductQuantity"));
         int weight = Integer.parseInt(request.getParameter("ProductWeight"));
         int category = Integer.parseInt(request.getParameter("category"));
+        String status = request.getParameter("pStatus");
         String image = "";
         
 //        --upload img--
@@ -110,7 +120,17 @@ public class AdminProduct extends HttpServlet {
         
 //        update product
         if(request.getParameter("id") != null && !request.getParameter("id").trim().equals("")){
-            
+            PrintWriter out = response.getWriter();
+            int id = Integer.parseInt(request.getParameter("id"));
+            if(new ProductsDAO().editProduct(id, category, name, price, quantity, weight, image, date, discription, status)){
+                out.print("<script>alert('Update successful')</script>");
+                out.print("<script>window.location.href='AdminProductServlet'</script>");
+                return;
+            }else{
+                out.print("<script>alert('Update fail')</script>");
+                out.print("<script>window.location.href='AdminProductServlet'</script>");
+                return;
+            }
         }
 //        upload product        
         else{

@@ -301,4 +301,37 @@ public class ProductsDAO {
         }
         return false;
     }
+    
+    public boolean editProduct(int pId, int cId, String name,double price, int quantity, int weight,String img,  String date, String discription, String status){
+        int i = 0;
+        try {
+            pst = conn.prepareStatement("UPDATE `products` SET `cId`=?,`pName`=?,`pImage`=?,`pPrice`=?,`pWeight`=?,`pDescription`=?,`pQuantity`=?,`pCreateDate`=?,`pStatus`=? WHERE `pId`=?");
+            pst.setInt(1, cId);
+            pst.setString(2, name);
+            pst.setString(3, img);
+            pst.setDouble(4, price);
+            pst.setInt(5, weight);
+            pst.setString(6, discription);
+            pst.setInt(7, quantity);
+            pst.setDate(8, Date.valueOf(date));
+            pst.setString(9, status);
+            pst.setInt(10, pId);
+            
+            i = pst.executeUpdate();
+            
+            db.getConnect().close();
+            
+            if(i > 0){
+                return true;
+            }
+        } catch (Exception e) {
+            try {
+                db.getConnect().close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ProductsDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

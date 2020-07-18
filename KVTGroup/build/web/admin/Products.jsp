@@ -42,6 +42,8 @@
                                     </td>
                                     <td class="cart_delete">
                                         <a class="cart_quantity_delete" href="DeleteProduct?pId=${product.pId}"><i class="fa fa-times"></i></a>
+                                        <a class="cart_quantity_delete" href="AdminProduct?pId=${product.pId}"><i class="fa fa-pencil"></i></a>
+                                        <a class="cart_quantity_delete" href="AddSlider?pId=${product.pId}"><i class="fa fa-star"></i></a>
                                     </td>
                                 </tr>
                             </c:forEach>
