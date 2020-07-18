@@ -73,7 +73,7 @@
                             <div class="shop-menu pull-right">
                                 <ul class="nav navbar-nav">
                                     <li><a href="../"><i class="fa fa-ravelry"></i> Site</a></li>
-                                    <li><a href="logout"><i class="fa fa-lock"></i> Logout</a></li>
+                                    <li><a href="logout1"><i class="fa fa-lock"></i> Logout</a></li>
                                 </ul>
                             </div>
                         </div>
