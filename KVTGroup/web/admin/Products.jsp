@@ -11,6 +11,7 @@
         <div class="col-sm-9 padding-right">
             <h2>
                 Products
+                <a class="btn tbn-default" style="float: right" href="AddProduct.jsp">New Product</a>
             </h2>
             <div class="table-responsive cart_info">
                 <table class="table table-condensed">
