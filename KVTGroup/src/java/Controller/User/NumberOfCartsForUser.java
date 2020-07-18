@@ -59,7 +59,11 @@ public class NumberOfCartsForUser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        CartsDAO cartsDAO = new CartsDAO();
+        int id = Integer.parseInt(request.getParameter("id"));
+        int addCart = cartsDAO.getNumberOfCartsForUser(id);
+        response.getWriter().print(addCart);
     }
 
     /**
@@ -73,10 +77,7 @@ public class NumberOfCartsForUser extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        CartsDAO cartsDAO = new CartsDAO();
-        int id = Integer.parseInt(request.getParameter("id"));
-        int addCart = cartsDAO.getNumberOfCartsForUser(id);
-        response.getWriter().print(addCart);
+        processRequest(request, response);
     }
 
     /**

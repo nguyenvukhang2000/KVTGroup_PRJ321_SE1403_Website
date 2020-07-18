@@ -169,4 +169,43 @@ public class CartsDAO {
         }
         return count;
     }
+    
+    private Cart getCart(int cartId) {
+        try {
+            PreparedStatement pst = conn.prepareStatement("SELECT * from cart where cartId=?");
+            pst.setInt(1, cartId);
+            ResultSet rs = pst.executeQuery();
+            if(rs.next()) {
+                new Cart(rs.getInt("cartId"), rs.getInt("uId"), rs.getInt("pId"), rs.getInt("cartQuantity"));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+    
+    public boolean reduceQuantity(int cartId) {
+        Cart cart = getCart(cartId);
+        if(cart != null) {
+            int quantity = cart.getCartQuantity();
+            if(quantity < 2) {
+                return deleteCart(cartId);
+            } else {
+                try {
+                    PreparedStatement pst = conn.prepareStatement("UPDATE cart SET cartQuantity=? WHERE cartId=? ");
+                    pst.setInt(1, cart.getCartQuantity() - 1);
+                    pst.setInt(2, cartId);
+                    int executeUpdate = pst.executeUpdate();
+                    if(executeUpdate > 0) {
+                        return true;
+                    }
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        return false;
+    }
+    
+    
 }

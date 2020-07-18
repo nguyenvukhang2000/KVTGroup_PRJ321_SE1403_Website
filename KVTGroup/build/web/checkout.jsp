@@ -109,7 +109,7 @@
             </table>
         </div>
         <div class="payment-options">
-            <a class="btn btn-primary" href="Pay">Pay</a>
+            <a class="btn btn-primary" href="PayController">Pay</a>
         </div>
     </div>
 </section> <!--/#cart_items-->
