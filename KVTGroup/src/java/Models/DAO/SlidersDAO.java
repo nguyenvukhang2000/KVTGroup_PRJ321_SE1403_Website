@@ -28,10 +28,11 @@ public class SlidersDAO {
     public ArrayList<Sliders> getAllSliders() {
         ArrayList<Sliders> listSliders = new ArrayList<>();
         try {
-            PreparedStatement pst = conn.prepareStatement("select * From slides");
+            PreparedStatement pst = conn.prepareStatement("SELECT * FROM `slides`");
             rs = pst.executeQuery();
             while(rs.next()) {
-                listSliders.add(new Sliders(rs.getInt("sId"), rs.getString(5), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(6)));
+                Sliders slide = new Sliders(rs.getInt("sId"), rs.getString(6), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(2));
+                listSliders.add(slide);
             }
             return listSliders;
         } catch (SQLException ex) {
