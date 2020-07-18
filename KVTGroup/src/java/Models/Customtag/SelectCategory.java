@@ -10,7 +10,7 @@ import Models.Entities.Category;
 
 /**
  *
- * @author MotYim
+ * @author KhangNVCE140224
  */
 public class SelectCategory extends SimpleTagSupport {
 

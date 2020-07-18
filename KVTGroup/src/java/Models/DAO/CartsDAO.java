@@ -5,6 +5,7 @@
  */
 package Models.DAO;
 
+import Models.Entities.Cart;
 import Models.Entities.CartProduct;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -79,5 +80,93 @@ public class CartsDAO {
             ex.printStackTrace();
         }
         return false;
+    }
+    
+    private int search(int pId, int userId) {
+        int quantity = 0;
+        
+        try {
+            PreparedStatement pst = conn.prepareStatement("SELECT * from cart where (pId=?) and (uId=?)");
+            pst.setInt(1, pId);
+            pst.setInt(2, userId);
+            ResultSet rs = pst.executeQuery();
+            if(rs.next()) {
+                quantity = rs.getInt("cartQuantity");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return quantity;
+    }
+    
+    private boolean editQuantity(int quantity, int uId, int pId) {
+        try {
+            PreparedStatement pst = conn.prepareStatement("update cart set cartQuantity=? where uId=? and pId=? ");
+            pst.setInt(1, quantity);
+            pst.setInt(2, uId);
+            pst.setInt(3, pId);
+            
+            int x = pst.executeUpdate();
+            if(x > 0) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return  false;
+    }
+    
+    public boolean addCart(Cart cart) {
+        try {
+            int search = search(cart.getpId(), cart.getuId());
+            
+            if(search != 0) {
+                return editQuantity(search + cart.getCartQuantity(), cart.getuId(), cart.getpId());
+            }
+            
+            PreparedStatement pst = conn.prepareStatement("INSERT INTO `cart`(`cartId`, `uId`, `pId`, `cartQuantity`) VALUES (?, ?, ?, ?)");
+            pst.setInt(1, cart.getCartId());
+            pst.setInt(2, cart.getuId());
+            pst.setInt(3, cart.getpId());
+            pst.setInt(4, cart.getCartQuantity());
+            int executeUpdate = pst.executeUpdate();
+            if(executeUpdate > 0) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+    
+    public ArrayList<Cart> getUserCart(int userId) {
+        try {
+            ArrayList<Cart> carts = new ArrayList<>();
+            PreparedStatement pst = conn.prepareStatement("select * From cart where uId=?");
+            pst.setInt(1, userId);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()) {
+                Cart cart = new Cart();
+                cart.setCartId(rs.getInt("cartId"));
+                cart.setuId(rs.getInt(2));
+                cart.setpId(rs.getInt(3));
+                cart.setCartQuantity(rs.getInt(4));
+                carts.add(cart);
+            }
+            return carts;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+    
+    public int getNumberOfCartsForUser(int userID) {
+        int count = 0;
+        ArrayList<Cart> userCarts = getUserCart(userID);
+        for(int i = 0; i < userCarts.size(); i++) {
+            count += userCarts.get(i).getCartQuantity();
+            
+        }
+        return count;
     }
 }
