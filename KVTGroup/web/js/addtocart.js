@@ -93,7 +93,7 @@ $(document).ready(function () {
     //increase product to cart 
     function increaseProduct(id){
         $.ajax({
-            url: 'increaseQuantity', //servlet url
+            url: 'IncreaseQuantity', //servlet url
             type: 'GET',
             data: {"id": id},
             success: (data) => {

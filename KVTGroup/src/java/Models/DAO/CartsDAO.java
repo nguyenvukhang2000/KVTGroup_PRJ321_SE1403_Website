@@ -171,17 +171,22 @@ public class CartsDAO {
     }
     
     private Cart getCart(int cartId) {
+        Cart cart = null;
         try {
             PreparedStatement pst = conn.prepareStatement("SELECT * from cart where cartId=?");
             pst.setInt(1, cartId);
             ResultSet rs = pst.executeQuery();
             if(rs.next()) {
-                new Cart(rs.getInt("cartId"), rs.getInt("uId"), rs.getInt("pId"), rs.getInt("cartQuantity"));
+               cart = new Cart();
+               cart.setCartQuantity(rs.getInt("cartQuantity"));
+               cart.setCartId(rs.getInt("cartId"));
+               cart.setpId(rs.getInt("pId"));
+               cart.setuId(rs.getInt("uId"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return null;
+        return cart;
     }
     
     public boolean reduceQuantity(int cartId) {
@@ -207,5 +212,24 @@ public class CartsDAO {
         return false;
     }
     
+    public boolean increaseQuantity(int cartId) {
+        Cart cart = getCart(cartId);
+        if(cart != null) {
+            int quantity = cart.getCartQuantity();
+            
+            try {
+                PreparedStatement pst = conn.prepareStatement("UPDATE cart SET cartQuantity=? WHERE cartId=? ");
+                pst.setInt(1, cart.getCartQuantity() + 1);
+                    pst.setInt(2, cartId);
+                    int executeUpdate = pst.executeUpdate();
+                    if(executeUpdate > 0) {
+                        return true;
+                    }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return false;
+    }
     
 }
