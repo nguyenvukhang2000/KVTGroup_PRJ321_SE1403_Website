@@ -30,8 +30,7 @@ public class UserDAO{
             PreparedStatement pst = con.prepareStatement("SELECT * FROM `users` WHERE `uName` = ? ");
             pst.setString(1, usrName);
             ResultSet rs = pst.executeQuery();
-            String user = rs.getString("uName");
-            if (rs == null || usrName == null) {
+            if (rs == null) {
                 b = false;
             } else {
                 b = true;
@@ -53,7 +52,7 @@ public class UserDAO{
         if (!search(bean.getuName())) {
             try {
              
-                String sql = "INSERT INTO `users` (`uId`, `uName`, `uEmail`, `uAddress`, `uJob`, `uPassword`, `uCreaditCard`, `uCash`, `uRole`, `uPhoto`) VALUES (NULL,?,?,?,?, MD5(?), ?, ?, ?,?)";
+                String sql = "INSERT INTO `users` (`uId`, `uName`, `uEmail`, `uAddress`, `uJob`, `uPassword`, `uCreaditCard`, `uCash`, `uRole`, `uPhoto`) VALUES (NULL,?,?,?,?, MD5(?), ?, ?, ?, 'upload/profile.jpg')";
                 PreparedStatement pst1 = con.prepareStatement(sql);
 
                 pst1.setString(1, bean.getuName());
@@ -66,7 +65,7 @@ public class UserDAO{
                 pst1.setString(8, bean.getuRole());
                 pst1.setString(9, "upload/profile.jpg");
                 pst1.executeUpdate();
-                b =true;
+                b = true;
                 ////////////////////////////////////////
 
                 //con.close();
