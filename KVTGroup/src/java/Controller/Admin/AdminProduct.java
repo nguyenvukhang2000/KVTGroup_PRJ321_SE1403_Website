@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,9 +21,10 @@ import javax.servlet.http.Part;
 
 /**
  *
- * @author MSI
+ * @author vinhhqce140143
  */
 @WebServlet(name = "AdminProduct", urlPatterns = {"/admin/AdminProduct"})
+@MultipartConfig
 public class AdminProduct extends HttpServlet {
 
     /**
@@ -103,22 +105,23 @@ public class AdminProduct extends HttpServlet {
                return;
             }
         }else{
-            
+            image = request.getParameter("pImage");
         }
         
-//        upload product
-        if(request.getParameter("id") != null){
+//        update product
+        if(request.getParameter("id") != null && !request.getParameter("id").trim().equals("")){
             
-        }else{
+        }
+//        upload product        
+        else{
+            PrintWriter out = response.getWriter();
             if(new ProductsDAO().addProduct(category, name, price, quantity, weight, image, date, discription)){
-                request.getSession().setAttribute("AlertMessage", "Product Added Successfully");
-                request.getSession().setAttribute("AlertType", "Success");
-                response.sendRedirect("AdminProductServlet");
+                out.print("<script>alert('Add successful')</script>");
+                out.print("<script>window.location.href='AdminProductServlet'</script>");
                 return;
             }else{
-                request.getSession().setAttribute("AlertMessage", "Can not add product");
-                request.getSession().setAttribute("AlertType", "Danger");
-                response.sendRedirect("AdminProductServlet");
+                out.print("<script>alert('Add fail')</script>");
+                out.print("<script>window.location.href='AdminProductServlet'</script>");
                 return;
             }
         }

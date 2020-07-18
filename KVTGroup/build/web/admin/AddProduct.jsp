@@ -19,11 +19,11 @@
 <c:choose>
     <c:when test="${empty product.pImage}">
         <c:set var="pImage" value="../upload/empty.png"/>
-        <c:set var="pImageScr" value="upload/empty.png"/>
+        <c:set var="pImageSrc" value="upload/empty.png"/>
     </c:when>
     <c:otherwise>
         <c:set var="pImage" value="../${product.pImage}"/>
-        <c:set value="pImageScr" value="${product.pImage}"/>
+        <c:set var="pImageSrc" value="${product.pImage}"/>
     </c:otherwise>
 </c:choose>
 <div class="col-sm-9 padding-right">
@@ -49,11 +49,11 @@
                 <label>Product Description</label>
                 <textarea  placeholder="Product Description" name="ProductDescription" class="input-field">${product.pDescription}</textarea>
                 <label>Category</label>
-                <lib:SelectCategory selectID="${cId}"/>
+                <lib:SelectCategory selectID="${product.cId}"/>
                 <label>Photo</label>
                 <input type="file"  name="image" id="image" accept="image/*"/><br/>
                 <input type="hidden" name="id" value="${product.pId}"/>
-                <input type="hidden" name="photo" value="${pImageScr}"/>
+                <input type="hidden" name="pImage" value="upload/empty.png"/>
                 <button type="submit" class="btn btn-default">${type} Product</button>
             </form> 
             </form>
