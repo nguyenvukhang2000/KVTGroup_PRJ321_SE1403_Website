@@ -4,7 +4,7 @@
     Author     : KhangNVCE140224
 --%>
 <%@ page import="Controller.User.IndexProductServlet" %> 
-<%--<jsp:include page="/IndexProductServlet"/> --%> 
+
 <%-- include header file --%> 
 <%@include file="header.jsp" %>
 

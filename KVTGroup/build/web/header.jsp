@@ -39,7 +39,7 @@
                             <div class="contactinfo">
                                 <ul class="nav nav-pills">
                                     <li><a href="#"><i class="fa fa-phone"></i> +84 35 373 8125</a></li>
-                                    <li><a href="#"><i class="fa fa-envelope"></i> nguyenvukhang01@gmail.com</a></li>
+                                    <li><a href="#"><i class="fa fa-envelope"></i>kvtgroup2020@gmail.com</a></li>
                                 </ul>
                             </div>
                         </div>
