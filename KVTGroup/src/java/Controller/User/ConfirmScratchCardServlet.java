@@ -5,14 +5,15 @@
  */
 package Controller.User;
 
-import Models.DAO.CartsDAO;
-import Models.DAO.PaysDAO;
-import Models.Entities.CartProduct;
+import Models.DAO.ScratchCardDAO;
+import Models.DAO.UserDAO;
 import Models.Entities.User;
-import Models.utilize.MailModel;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,8 +24,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author KhangNVCE140224
  */
-@WebServlet(name = "PayController", urlPatterns = {"/PayController"})
-public class PayController extends HttpServlet {
+@WebServlet(name = "ConfirmScratchCardServlet", urlPatterns = {"/ConfirmScratchCardServlet"})
+public class ConfirmScratchCardServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,10 +44,10 @@ public class PayController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet PayController</title>");            
+            out.println("<title>Servlet ConfirmScratchCardServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet PayController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ConfirmScratchCardServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -64,58 +65,7 @@ public class PayController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        CartsDAO cartsDAO = new CartsDAO();
-        double total  = 0;
-        String message = "";
-        
-        //get user from session
-        User user = (User)request.getSession().getAttribute("LoginUser");
-        
-        //get product of user
-        ArrayList<CartProduct> productCart = cartsDAO.getProductFromCart(user.getuId());
-        
-        
-        //check quantity
-        for (CartProduct cart : productCart) {
-            total = cart.getpPrice() * cart.getCartQuantity();
-            
-            //number of order greater than available
-            if(cart.getCartQuantity() > cart.getpQuantity()) {
-                message += "* you order" + cart.getCartQuantity() + " of product" + cart.getpId()
-                        + " which we have only " + cart.getpQuantity() + " pice <br/>";
-            }
-        }
-        
-        //check money
-        if(total > user.getuCash()) {
-            message += " * Your cash less than total require please charge your cash<br/>";
-        }
-        
-        //an error occure
-        if(!message.trim().equals("")) {
-            request.getSession().setAttribute("message", message);
-            response.sendRedirect("Failed.jsp");
-        }
-        
-        //-------------- Payment proccess ------------------
-        
-        //reduce balance in user
-        user.setuCash(user.getuCash() - total);
-        
-        //call transaction
-        if(new PaysDAO().startPayment(user, productCart)) {
-            //send mail of success
-            message = "Thanks for buying from KVT Shop ^_^ <br/>"
-                    + "your product will delivered in two days ..";
-            
-            new MailModel(user.getuEmail(), "Successfull Payment", message).sendMail();
-            
-            request.getSession().setAttribute("message", message);
-            response.sendRedirect("Success.jsp");
-        } else {
-            request.getSession().setAttribute("message", "Error in proccess please try agine later :( ");
-            response.sendRedirect("Failed.jsp");
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -129,7 +79,40 @@ public class PayController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        User user = (User) request.getSession().getAttribute("LoginUser");
+        int userId = user.getuId();
+        double cash = user.getuCash();
+
+        String cartStr = request.getParameter("CartStr");
+
+        ScratchCardDAO scratchCardDAO = new ScratchCardDAO();
+        boolean exist = scratchCardDAO.checkCardExistForUser(cartStr);
+
+        if (exist) {
+            try {
+                int value = scratchCardDAO.getValueFromNumber(cartStr);
+                scratchCardDAO.setCardUsed(cartStr);
+                cash += value;
+                UserDAO userDAO = new UserDAO();
+                user.setuCash(cash);
+                boolean cashAdded = userDAO.updateUserBalance(user);
+                if (cashAdded) {
+                    request.setAttribute("message", "The Cash added to your balance successfully");
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Success.jsp");
+                    dispatcher.forward(request, response);
+                } else {
+                    request.setAttribute("message", "Error , cash is not added please check your balance and try again ");
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Failed.jsp");
+                    dispatcher.forward(request, response);
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            request.setAttribute("message", "Error , This Card is invalid please try again later ");
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Failed.jsp");
+            dispatcher.forward(request, response);
+        }
     }
 
     /**

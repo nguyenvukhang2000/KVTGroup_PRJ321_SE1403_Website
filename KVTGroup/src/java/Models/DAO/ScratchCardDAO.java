@@ -67,4 +67,46 @@ public class ScratchCardDAO {
         }
         return false;
     }
+    
+    public boolean checkCardExistForUser(String number) {
+        try {
+            PreparedStatement pst = conn.prepareStatement("SELECT chargeCardNumber FROM charge WHERE  chargeCardNumber=? and chargeUsed=0");
+            pst.setString(1, number);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next()) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+    
+    public int getValueFromNumber(String chargeNumberCard) {
+        try {
+            PreparedStatement pst = conn.prepareStatement("SELECT chargeValue FROM charge WHERE  chargeCardNumber= ?");
+            pst.setString(1, chargeNumberCard);
+            ResultSet rs = pst.executeQuery();
+            if(rs.next()) {
+                return rs.getInt("chargeValue");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return 0;
+    }
+    
+    public boolean setCardUsed(String number) {
+        try {
+            PreparedStatement pst = conn.prepareStatement("UPDATE charge set chargeUsed=1 WHERE  chargeCardNumber=?");
+            pst.setString(1, number);
+            int executeUpdate = pst.executeUpdate();
+            if(executeUpdate == 1) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    }
 }
