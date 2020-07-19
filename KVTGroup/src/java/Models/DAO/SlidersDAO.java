@@ -17,11 +17,12 @@ import java.util.ArrayList;
  * @author KhangNVCE140224
  */
 public class SlidersDAO {
+    DBConnection db = new DBConnection();
     private Connection conn;
     private ResultSet rs = null;
 
     public SlidersDAO() {
-        DBConnection db = new DBConnection();
+        
         this.conn = db.getConnect();
     }
     
@@ -39,5 +40,25 @@ public class SlidersDAO {
             ex.printStackTrace();
         }
         return null;
+    }
+    
+    public boolean addSlider(Sliders sliders){
+        try {
+            PreparedStatement pst = conn.prepareStatement("INSERT INTO `slides`(`pId`, `sTitle`, `sSubtitle`, `sDescription`, `sImage`) VALUES (?,?,?,?,?)");
+            pst.setInt(1, sliders.getpId());
+            pst.setString(2, sliders.getsTitle());
+            pst.setString(3, sliders.getsSubtitle());
+            pst.setString(4, sliders.getsDescription());
+            pst.setString(5, sliders.getsImage());
+            
+            int i = pst.executeUpdate();
+            db.conn.close();
+            if(i > 0 ){
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

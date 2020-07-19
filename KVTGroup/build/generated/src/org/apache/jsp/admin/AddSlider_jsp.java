@@ -72,10 +72,10 @@ public final class AddSlider_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("<!DOCTYPE html>\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("<!DOCTYPE html>\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
@@ -178,8 +178,8 @@ public final class AddSlider_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            </div><!--/header-bottom-->\r\n");
       out.write("        </header><!--/header-->\r\n");
       out.write("\r\n");
-      out.write('\n');
-      out.write('\n');
+      out.write("\r\n");
+      out.write("\r\n");
       out.write("\n");
       out.write("\n");
       out.write("<section id=\"cart_items\">\n");
@@ -241,59 +241,60 @@ public final class AddSlider_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("                </div>\n");
       out.write("            </div>\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
       if (_jspx_meth_c_if_0(_jspx_page_context))
         return;
-      out.write('\n');
-      out.write('\n');
+      out.write("\r\n");
+      out.write("\r\n");
       if (_jspx_meth_c_choose_0(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("    <div class=\"col-sm-9 padding-right\">\n");
-      out.write("        <div class=\"product-details\"><!--product-details-->\n");
-      out.write("            <div class=\"col-sm-4\">\n");
-      out.write("                <div class=\"view-product\">\n");
+      out.write("\r\n");
+      out.write("    <div class=\"col-sm-9 padding-right\">\r\n");
+      out.write("        <div class=\"product-details\"><!--product-details-->\r\n");
+      out.write("            <div class=\"col-sm-4\">\r\n");
+      out.write("                <div class=\"view-product\">\r\n");
       out.write("                    <img src=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sImage}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("\"  id=\"imageView\" alt=\"\" />\n");
-      out.write("                </div>\n");
-      out.write("            </div>\n");
-      out.write("            <div class=\"col-sm-8\">\n");
-      out.write("                <div class=\"product-information\"><!--/product-information-->\n");
-      out.write("                    <form action=\"AddSlider\" method=\"post\" enctype=\"multipart/form-data\">\n");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pImage}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\"  id=\"imageView\" alt=\"\" />\r\n");
+      out.write("                </div>\r\n");
+      out.write("            </div>\r\n");
+      out.write("            <div class=\"col-sm-8\">\r\n");
+      out.write("                <div class=\"product-information\"><!--/product-information-->\r\n");
+      out.write("                    <form action=\"AddSlider\" method=\"post\" enctype=\"multipart/form-data\">\r\n");
       out.write("                        <h2>");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${type}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write(" to Slidebar</h2>\n");
-      out.write("\n");
-      out.write("                        <label>Tittle</label>\n");
-      out.write("                        <input type=\"text\" placeholder=\"Tittle\" name=\"tittle\" value=\"\" class=\"input-field\" id=\"ProductQuantity\" required/>\n");
-      out.write("                        <label>Sub tittle</label>\n");
-      out.write("                        <input type=\"text\" placeholder=\"Sub tittle \" name=\"subTittle\" value=\"\" class=\"input-field\" id=\"ProductModel\" />\n");
-      out.write("                        <label>Product Description</label>\n");
+      out.write(" to Slidebar</h2>\r\n");
+      out.write("\r\n");
+      out.write("                        <label>Tittle</label>\r\n");
+      out.write("                        <input type=\"text\" placeholder=\"Tittle\" name=\"tittle\" value=\"\" class=\"input-field\" id=\"ProductQuantity\" required/>\r\n");
+      out.write("                        <label>Sub tittle</label>\r\n");
+      out.write("                        <input type=\"text\" placeholder=\"Sub tittle \" name=\"subTittle\" value=\"\" class=\"input-field\" id=\"ProductModel\" />\r\n");
+      out.write("                        <label>Product Description</label>\r\n");
       out.write("                        <textarea  placeholder=\"Product Description\" name=\"ProductDescription\" class=\"input-field\">");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${product.pDiscription}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("</textarea>\n");
-      out.write("\n");
-      out.write("                        <label>Photo</label>\n");
-      out.write("                        <input type=\"file\"  name=\"image\" id=\"image\" accept=\"image/*\"/><br/>\n");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${product.pDescription}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</textarea>\r\n");
+      out.write("\r\n");
+      out.write("                        <label>Photo</label>\r\n");
+      out.write("                        <input type=\"file\"  name=\"image\" id=\"image\" accept=\"image/*\"/><br/>\r\n");
       out.write("                        <input type=\"hidden\" name=\"id\" value=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${product.pId}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("\"/>\n");
+      out.write("\"/>\r\n");
       out.write("                        <input type=\"hidden\" name=\"pImage\" value=\"");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sImageSrc}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("\"/>\n");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pImageSrc}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\"/>\r\n");
       out.write("                        <button type=\"submit\" class=\"btn btn-default\">");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${type}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write(" Slide</button>\n");
-      out.write("                    </form>\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("                </div><!--/product-information-->\n");
-      out.write("            </div>\n");
-      out.write("        </div><!--/product-details-->\n");
+      out.write(" Slide</button>\r\n");
+      out.write("                    </form>\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("                </div>\r\n");
+      out.write("            </div>\r\n");
+      out.write("        </div>\r\n");
+      out.write("    </div>\r\n");
       out.write("\n");
       out.write("\n");
       out.write("<footer id=\"footer\"><!--Footer-->\n");
@@ -375,10 +376,11 @@ public final class AddSlider_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_if_0 = _jspx_th_c_if_0.doStartTag();
     if (_jspx_eval_c_if_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
+        out.write("\r\n");
         out.write("    ");
         if (_jspx_meth_c_set_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_if_0, _jspx_page_context))
           return true;
+        out.write('\r');
         out.write('\n');
         int evalDoAfterBody = _jspx_th_c_if_0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -423,14 +425,15 @@ public final class AddSlider_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_choose_0 = _jspx_th_c_choose_0.doStartTag();
     if (_jspx_eval_c_choose_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
+        out.write("\r\n");
         out.write("    ");
         if (_jspx_meth_c_when_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_choose_0, _jspx_page_context))
           return true;
-        out.write("\n");
+        out.write("\r\n");
         out.write("    ");
         if (_jspx_meth_c_otherwise_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_choose_0, _jspx_page_context))
           return true;
+        out.write('\r');
         out.write('\n');
         int evalDoAfterBody = _jspx_th_c_choose_0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -453,19 +456,19 @@ public final class AddSlider_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.WhenTag _jspx_th_c_when_0 = (org.apache.taglibs.standard.tag.rt.core.WhenTag) _jspx_tagPool_c_when_test.get(org.apache.taglibs.standard.tag.rt.core.WhenTag.class);
     _jspx_th_c_when_0.setPageContext(_jspx_page_context);
     _jspx_th_c_when_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_choose_0);
-    _jspx_th_c_when_0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${empty product.photo}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
+    _jspx_th_c_when_0.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${empty product.pImage}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
     int _jspx_eval_c_when_0 = _jspx_th_c_when_0.doStartTag();
     if (_jspx_eval_c_when_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
+        out.write("\r\n");
         out.write("        ");
         if (_jspx_meth_c_set_1((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_when_0, _jspx_page_context))
           return true;
-        out.write("\n");
+        out.write("\r\n");
         out.write("        ");
         if (_jspx_meth_c_set_2((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_when_0, _jspx_page_context))
           return true;
-        out.write("\n");
+        out.write("\r\n");
         out.write("    ");
         int evalDoAfterBody = _jspx_th_c_when_0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -488,7 +491,7 @@ public final class AddSlider_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.SetTag _jspx_th_c_set_1 = (org.apache.taglibs.standard.tag.rt.core.SetTag) _jspx_tagPool_c_set_var_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.SetTag.class);
     _jspx_th_c_set_1.setPageContext(_jspx_page_context);
     _jspx_th_c_set_1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_when_0);
-    _jspx_th_c_set_1.setVar("sImage");
+    _jspx_th_c_set_1.setVar("pImage");
     _jspx_th_c_set_1.setValue(new String("../upload/empty.png"));
     int _jspx_eval_c_set_1 = _jspx_th_c_set_1.doStartTag();
     if (_jspx_th_c_set_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -507,7 +510,7 @@ public final class AddSlider_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.SetTag _jspx_th_c_set_2 = (org.apache.taglibs.standard.tag.rt.core.SetTag) _jspx_tagPool_c_set_var_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.SetTag.class);
     _jspx_th_c_set_2.setPageContext(_jspx_page_context);
     _jspx_th_c_set_2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_when_0);
-    _jspx_th_c_set_2.setVar("sImageSrc");
+    _jspx_th_c_set_2.setVar("pImageSrc");
     _jspx_th_c_set_2.setValue(new String("upload/empty.png"));
     int _jspx_eval_c_set_2 = _jspx_th_c_set_2.doStartTag();
     if (_jspx_th_c_set_2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
@@ -529,15 +532,15 @@ public final class AddSlider_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_c_otherwise_0 = _jspx_th_c_otherwise_0.doStartTag();
     if (_jspx_eval_c_otherwise_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
-        out.write("\n");
+        out.write("\r\n");
         out.write("        ");
         if (_jspx_meth_c_set_3((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_otherwise_0, _jspx_page_context))
           return true;
-        out.write("\n");
+        out.write("\r\n");
         out.write("        ");
         if (_jspx_meth_c_set_4((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_otherwise_0, _jspx_page_context))
           return true;
-        out.write("\n");
+        out.write("\r\n");
         out.write("    ");
         int evalDoAfterBody = _jspx_th_c_otherwise_0.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -560,8 +563,8 @@ public final class AddSlider_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.SetTag _jspx_th_c_set_3 = (org.apache.taglibs.standard.tag.rt.core.SetTag) _jspx_tagPool_c_set_var_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.SetTag.class);
     _jspx_th_c_set_3.setPageContext(_jspx_page_context);
     _jspx_th_c_set_3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_otherwise_0);
-    _jspx_th_c_set_3.setVar("sImage");
-    _jspx_th_c_set_3.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("../${product.sImage}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_set_3.setVar("pImage");
+    _jspx_th_c_set_3.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("../${product.pImage}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_c_set_3 = _jspx_th_c_set_3.doStartTag();
     if (_jspx_th_c_set_3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_c_set_var_value_nobody.reuse(_jspx_th_c_set_3);
@@ -579,8 +582,8 @@ public final class AddSlider_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.SetTag _jspx_th_c_set_4 = (org.apache.taglibs.standard.tag.rt.core.SetTag) _jspx_tagPool_c_set_var_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.SetTag.class);
     _jspx_th_c_set_4.setPageContext(_jspx_page_context);
     _jspx_th_c_set_4.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_otherwise_0);
-    _jspx_th_c_set_4.setVar("sImageSrc");
-    _jspx_th_c_set_4.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${product.sImage}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_set_4.setVar("pImageSrc");
+    _jspx_th_c_set_4.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${product.pImage}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_c_set_4 = _jspx_th_c_set_4.doStartTag();
     if (_jspx_th_c_set_4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_c_set_var_value_nobody.reuse(_jspx_th_c_set_4);
