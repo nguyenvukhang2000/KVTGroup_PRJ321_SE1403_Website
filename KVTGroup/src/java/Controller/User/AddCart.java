@@ -64,7 +64,7 @@ public class AddCart extends HttpServlet {
         CartsDAO cartsDAO = new CartsDAO();
         
         int pId = Integer.parseInt(request.getParameter("productID"));
-        int quantity = Integer.parseInt(request.getParameter("qaunty"));
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
         
         User user = (User)request.getSession().getAttribute("LoginUser");
         

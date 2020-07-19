@@ -14,8 +14,8 @@ $(document).ready(function () {
     //add from product details
     $('.add-to-my').click(function () {
         var id = $(this).attr('id');
-        var qaunty = $("#quan").val();
-        addProduct(id, qaunty);
+        var quantity = $("#quan").val();
+        addProduct(id, quantity);
     });
     
     $(".cart_quantity_down").click(function(){
@@ -33,11 +33,11 @@ $(document).ready(function () {
     //------------------ function on page ---------------------
 
     // add product to cart
-    function addProduct(id, qaunty) {
+    function addProduct(id, quantity) {
         $.ajax({
             url: 'addCart', //servlet url
             type: 'GET',
-            data: {"productID": id, "qaunty": qaunty},
+            data: {"productID": id, "quantity": quantity},
             success: (data) => {
                 if (data.redirect) {
                     // data.redirect contains the string URL to redirect to
@@ -49,7 +49,8 @@ $(document).ready(function () {
                 
             },
             error: function (xhr, ajaxOptions, thrownError) {
-                alert("error");
+//                alert("error");
+                window.location.href = "../KVTGroup/login.jsp";
                 if (thrownError.redirect.length) {
                     window.location.replace(thrownError.redirect);
                 } else {
