@@ -5,6 +5,8 @@
  */
 package Controller.Admin;
 
+import Models.DAO.UserDAO;
+import Models.Entities.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -58,7 +60,16 @@ public class AdminProfile extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        int id = Integer.parseInt(request.getParameter("id"));
+        User user = new UserDAO().getUser(id);
+
+        if (user == null) {
+            request.getSession().setAttribute("message", "User not found");
+            response.sendRedirect("../Failed.jsp");
+        } else {
+            request.setAttribute("userInfo", user);
+            request.getRequestDispatcher("/admin/profile.jsp").forward(request, response);
+        }
     }
 
     /**

@@ -21,6 +21,7 @@
                 <tr class="cart_menu">
                     <td class="image">User</td>
                     <td class="description"></td>
+                    <td></td>
                 </tr>
             </thead>
             <tbody>
@@ -34,6 +35,9 @@
                             <td class="cart_description">
                                 <h4>${user.uName}</h4>
                                 <p>${user.uEmail}</p>
+                            </td>
+                            <td class="cart_delete">
+                                <a class="cart_quantity_delete" href="AdminProfile?id=${user.uId}"><i class="fa fa-pencil"></i></a>
                             </td>
                         </tr>
                     </c:forEach>
