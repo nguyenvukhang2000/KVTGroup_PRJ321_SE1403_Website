@@ -53,7 +53,7 @@
                                 </td>
                                 <td class="cart_price">
 
-                                    <p id="P_${cart.cartId}">$${cart.pPrice}</p>
+                                    <p id="P_${cart.cartId}">${cart.pPrice} VND</p>
                                 </td>
                                 <td class="cart_quantity">
                                     <div class="cart_quantity_button">
@@ -68,7 +68,7 @@
                                 </td>
                                 <td class="cart_total">
                                     <p class="cart_total_price"  id="T_${cart.cartId}">
-                                            $${cart.pPrice*cart.cartQuantity}
+                                            ${cart.pPrice*cart.cartQuantity} VND
                                     </p>
 
                                 </td>
@@ -91,7 +91,7 @@
                             <table class="table table-condensed total-result">
                                 <tr>
                                     <td>Cart Sub Total</td>
-                                    <td id="subTotal">$${total}</td>
+                                    <td id="subTotal">${total} VND</td>
                                 </tr>
                                 <tr class="shipping-cost">
                                     <td>Shipping Cost</td>
@@ -99,7 +99,7 @@
                                 </tr>
                                 <tr>
                                     <td>Total</td>
-                                    <td><span id="total">$${total}
+                                    <td><span id="total">${total} VND
                                         </span></td>
                                 </tr>
                             </table>
