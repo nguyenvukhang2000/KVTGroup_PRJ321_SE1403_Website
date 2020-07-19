@@ -108,7 +108,7 @@ public class PayController extends HttpServlet {
                     + "your product will delivered in two days ..";
             
             request.getSession().setAttribute("message", message);
-            response.sendRedirect("Sucess.jsp");
+            response.sendRedirect("Success.jsp");
         } else {
             request.getSession().setAttribute("message", "Error in proccess please try agine later :( ");
             response.sendRedirect("Failed.jsp");
