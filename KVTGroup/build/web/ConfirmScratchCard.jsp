@@ -14,8 +14,8 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-9">
-                <center><h2 class="title text-center">Please Write the code you got on mail here </h2>
-            <p>your cash $${LoginUser.cash}</p>
+                <center><h2 class="title text-center">aa </h2>
+            <p>your cash VND${LoginUser.cash}</p>
                <Input type="Text" class="input-field" name="CardStr" placeholder="write card code" required="true">
                 
                 <BR>

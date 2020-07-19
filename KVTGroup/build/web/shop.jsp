@@ -15,7 +15,7 @@
     <div class="features_items"><!--features_items-->
         <h2 class="title text-center">Features Items</h2>
 
-        <!-- Sara features_items-->
+      
 
         <c:if test="${!empty requestScope.allProducts}">
 
@@ -50,7 +50,7 @@
             </c:forEach>
         </c:if>
 
-        <!-- End Sara features_items-->
+        
 
     </div><!--features_items-->
 
