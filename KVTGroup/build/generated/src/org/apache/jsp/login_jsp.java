@@ -78,10 +78,7 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <link href=\"css/main.css\" rel=\"stylesheet\">\r\n");
       out.write("        <link href=\"css/responsive.css\" rel=\"stylesheet\">\r\n");
       out.write("        <link href=\"css/price-range.css\" rel=\"stylesheet\" />\r\n");
-      out.write("        <!--[if lt IE 9]>\r\n");
-      out.write("        <script src=\"js/html5shiv.js\"></script>\r\n");
-      out.write("        <script src=\"js/respond.min.js\"></script>\r\n");
-      out.write("        <![endif]-->       \r\n");
+      out.write("        \r\n");
       out.write("        <link rel=\"shortcut icon\" href=\"images/ico/favicon.ico\"><!--\r\n");
       out.write("        <link rel=\"apple-touch-icon-precomposed\" sizes=\"144x144\" href=\"images/ico/apple-touch-icon-144-precomposed.png\">\r\n");
       out.write("        <link rel=\"apple-touch-icon-precomposed\" sizes=\"114x114\" href=\"images/ico/apple-touch-icon-114-precomposed.png\">\r\n");

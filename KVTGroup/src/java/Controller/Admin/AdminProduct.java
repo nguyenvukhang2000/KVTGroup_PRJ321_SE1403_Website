@@ -96,7 +96,6 @@ public class AdminProduct extends HttpServlet {
         int quantity = Integer.parseInt(request.getParameter("ProductQuantity"));
         int weight = Integer.parseInt(request.getParameter("ProductWeight"));
         int category = Integer.parseInt(request.getParameter("category"));
-        String status = request.getParameter("pStatus");
         String image = "";
         
 //        --upload img--

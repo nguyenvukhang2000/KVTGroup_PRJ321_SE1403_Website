@@ -50,8 +50,6 @@
                 <textarea  placeholder="Product Description" name="ProductDescription" class="input-field">${product.pDescription}</textarea>
                 <label>Category</label>
                 <lib:SelectCategory selectID="${product.cId}"/>
-                <label>Status</label>
-                <input type="text" placeholder="Product Status" name="ProductStatus" class="input-field" value="${product.pStatus}"/> 
                 <label>Photo</label>
                 <input type="file"  name="image" id="image" accept="image/*"/><br/>
                 <input type="hidden" name="id" value="${product.pId}"/>
