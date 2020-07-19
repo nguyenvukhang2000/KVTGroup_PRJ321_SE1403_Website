@@ -5,8 +5,12 @@
  */
 package Controller.Admin;
 
+import Models.DAO.SlidersDAO;
+import Models.Entities.Sliders;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "SlidersShow", urlPatterns = {"/admin/SlidersShow"})
 public class SlidersShow extends HttpServlet {
 
+    ArrayList<Sliders> listOfSlider = new ArrayList<Sliders>();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -58,7 +63,12 @@ public class SlidersShow extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        SlidersDAO slidersDAO = new SlidersDAO();
+        listOfSlider = slidersDAO.getAllSliders();
+        
+        request.setAttribute("listOfSlider", listOfSlider);
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/offers.jsp");
+        dispatcher.forward(request, response);
     }
 
     /**
