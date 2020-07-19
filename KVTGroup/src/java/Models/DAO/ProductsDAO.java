@@ -43,7 +43,7 @@ public class ProductsDAO {
             while (rs.next()) {
                 listProducts.add(new Product(rs.getInt("pId"), rs.getInt("cId"), rs.getString("pName"),
                         rs.getString("pImage"), rs.getDouble("pPrice"), rs.getInt("pWeight"),
-                        rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getDate("pCreateDate"), rs.getString("pStatus")));
+                        rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getString("pCreateDate")));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -62,7 +62,7 @@ public class ProductsDAO {
             while (rs.next()) {
                 listProducts.add(new Product(rs.getInt("pId"), rs.getInt("cId"), rs.getString("pName"),
                         rs.getString("pImage"), rs.getDouble("pPrice"), rs.getInt("pWeight"),
-                        rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getDate("pCreateDate"), rs.getString("pStatus")));
+                        rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getString("pCreateDate")));
             }
 
             //get number of record in DB
@@ -88,7 +88,7 @@ public class ProductsDAO {
             while (rs.next()) {
                 listProducts.add(new Product(rs.getInt("pId"), rs.getInt("cId"), rs.getString("pName"),
                         rs.getString("pImage"), rs.getDouble("pPrice"), rs.getInt("pWeight"),
-                        rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getDate("pCreateDate"), rs.getString("pStatus")));
+                        rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getString("pCreateDate")));
             }
             pst = conn.prepareStatement("SELECT count(*) FROM products where cId=?");
             pst.setInt(1, categoryId);
@@ -122,8 +122,7 @@ public class ProductsDAO {
                 product.setpWeight(rs.getInt("pWeight"));
                 product.setpDescription(rs.getString("pDescription"));
                 product.setpQuantity(rs.getInt("pQuantity"));
-                product.setpCreateDate(rs.getDate("pCreateDate"));
-                product.setpStatus(rs.getString("pStatus"));
+                product.setpCreateDate(rs.getString("pCreateDate"));
                 return product;
 
             }
@@ -143,7 +142,7 @@ public class ProductsDAO {
             while (rs.next()) {
                 getItem.add(new Product(rs.getInt("pId"), rs.getInt("cId"), rs.getString("pName"),
                         rs.getString("pImage"), rs.getDouble("pPrice"), rs.getInt("pWeight"),
-                        rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getDate("pCreateDate"), rs.getString("pStatus")));
+                        rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getString("pCreateDate")));
             }
             
         } catch (SQLException ex) {
@@ -161,7 +160,7 @@ public class ProductsDAO {
             while (rs.next()) {
                 selectLastProduct.add(new Product(rs.getInt("pId"), rs.getInt("cId"), rs.getString("pName"),
                         rs.getString("pImage"), rs.getDouble("pPrice"), rs.getInt("pWeight"),
-                        rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getDate("pCreateDate"), rs.getString("pStatus")));
+                        rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getString("pCreateDate")));
             }
             return selectLastProduct;
         } catch (SQLException ex) {
@@ -199,7 +198,7 @@ public class ProductsDAO {
             while(rs.next()) {
                 listProductByName.add(new Product(rs.getInt("pId"), rs.getInt("cId"), rs.getString("pName"),
                         rs.getString("pImage"), rs.getDouble("pPrice"), rs.getInt("pWeight"),
-                        rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getDate("pCreateDate"), rs.getString("pStatus")));
+                        rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getString("pCreateDate")));
             }
             
         } catch (SQLException ex) {
@@ -221,7 +220,7 @@ public class ProductsDAO {
             while(rs.next()) {
                 getAllProductByPrice.add(new Product(rs.getInt("pId"), rs.getInt("cId"), rs.getString("pName"),
                         rs.getString("pImage"), rs.getDouble("pPrice"), rs.getInt("pWeight"),
-                        rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getDate("pCreateDate"), rs.getString("pStatus")));
+                        rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getString("pCreateDate")));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -273,7 +272,7 @@ public class ProductsDAO {
     public boolean addProduct(int cId, String name,double price, int quantity, int weight,String img,  String date, String discription){
         int i = 0;
         try {
-            pst = conn.prepareStatement("INSERT INTO `products`(`cId`, `pName`, `pImage`, `pPrice`, `pWeight`, `pDescription`, `pQuantity`, `pCreateDate`, `pStatus`) VALUES (?,?,?,?,?,?,?,?,?)");
+            pst = conn.prepareStatement("INSERT INTO `products`(`cId`, `pName`, `pImage`, `pPrice`, `pWeight`, `pDescription`, `pQuantity`, `pCreateDate`) VALUES (?,?,?,?,?,?,?,?)");
             pst.setInt(1, cId);
             pst.setString(2, name);
             pst.setString(3, img);
@@ -281,8 +280,7 @@ public class ProductsDAO {
             pst.setInt(5, weight);
             pst.setString(6, discription);
             pst.setInt(7, quantity);
-            pst.setDate(8, Date.valueOf(date));
-            pst.setString(9, "Available");
+            pst.setString(8, date);
             
             i = pst.executeUpdate();
             
@@ -302,20 +300,19 @@ public class ProductsDAO {
         return false;
     }
     
-    public boolean editProduct(int pId, int cId, String name,double price, int quantity, int weight,String img,  String date, String discription, String status){
+    public boolean editProduct(int pId, int cId, String name,double price, int quantity, int weight,String img,  String date, String description){
         int i = 0;
         try {
-            pst = conn.prepareStatement("UPDATE `products` SET `cId`=?,`pName`=?,`pImage`=?,`pPrice`=?,`pWeight`=?,`pDescription`=?,`pQuantity`=?,`pCreateDate`=?,`pStatus`=? WHERE `pId`=?");
+            pst = conn.prepareStatement("UPDATE `products` SET `cId`=?,`pName`=?,`pImage`=?,`pPrice`=?,`pWeight`=?,`pDescription`=?,`pQuantity`=?,`pCreateDate`=? WHERE `pId`=?");
             pst.setInt(1, cId);
             pst.setString(2, name);
             pst.setString(3, img);
             pst.setDouble(4, price);
             pst.setInt(5, weight);
-            pst.setString(6, discription);
+            pst.setString(6, description);
             pst.setInt(7, quantity);
-            pst.setDate(8, Date.valueOf(date));
-            pst.setString(9, status);
-            pst.setInt(10, pId);
+            pst.setString(8, date);
+            pst.setInt(9, pId);
             
             i = pst.executeUpdate();
             

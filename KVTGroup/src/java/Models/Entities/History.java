@@ -5,15 +5,13 @@
  */
 package Models.Entities;
 
-import java.sql.Date;
-
 /**
  *
  * @author KhangNVCE140224
  */
 public class History {
     private int hId;
-    private Date hDate;
+    private String hDate;
     private int hQuantity;
     private int pId;
     private int uId;
@@ -21,7 +19,7 @@ public class History {
     public History() {
     }
 
-    public History(int hId, Date hDate, int hQuantity, int pId, int uId) {
+    public History(int hId, String hDate, int hQuantity, int pId, int uId) {
         this.hId = hId;
         this.hDate = hDate;
         this.hQuantity = hQuantity;
@@ -37,11 +35,11 @@ public class History {
         this.hId = hId;
     }
 
-    public Date gethDate() {
+    public String gethDate() {
         return hDate;
     }
 
-    public void sethDate(Date hDate) {
+    public void sethDate(String hDate) {
         this.hDate = hDate;
     }
 
@@ -69,5 +67,6 @@ public class History {
         this.uId = uId;
     }
 
+    
     
 }

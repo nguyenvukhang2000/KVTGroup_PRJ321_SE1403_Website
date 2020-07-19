@@ -26,7 +26,7 @@ public class HistoryDAO {
         PreparedStatement pst = conn.prepareStatement("INSERT INTO `history`(`uId`, `pId`, `hDate`, `hQuantity`) VALUES (?, ?, ?, ?)");
         pst.setInt(1, h.getuId());
         pst.setInt(2, h.getpId());
-        pst.setDate(3, h.gethDate());
+        pst.setString(3, h.gethDate());
         pst.setInt(4, h.gethQuantity());
         
         int executeUpdate = pst.executeUpdate();

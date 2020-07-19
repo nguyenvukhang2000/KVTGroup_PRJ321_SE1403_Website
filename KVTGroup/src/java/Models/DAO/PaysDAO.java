@@ -55,9 +55,7 @@ public class PaysDAO {
                 
                 //save process in history
                 History history = new History();
-                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-                LocalDateTime now = LocalDateTime.now();
-                history.sethDate(Date.valueOf(dtf.format(now)));
+                history.sethDate(LocalDateTime.of(LocalDate.now(), LocalTime.now()) + "");
                 history.setpId(itemSold.getpId());
                 history.setuId(user.getuId());
                 history.sethQuantity(itemSold.getCartQuantity());

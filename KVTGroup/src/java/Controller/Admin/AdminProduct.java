@@ -122,7 +122,7 @@ public class AdminProduct extends HttpServlet {
         if(request.getParameter("id") != null && !request.getParameter("id").trim().equals("")){
             PrintWriter out = response.getWriter();
             int id = Integer.parseInt(request.getParameter("id"));
-            if(new ProductsDAO().editProduct(id, category, name, price, quantity, weight, image, date, discription, status)){
+            if(new ProductsDAO().editProduct(id, category, name, price, quantity, weight, image, date, discription)){
                 out.print("<script>alert('Update successful')</script>");
                 out.print("<script>window.location.href='AdminProductServlet'</script>");
                 return;
