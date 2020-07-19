@@ -120,7 +120,7 @@ static {
       out.write("                            <div class=\"contactinfo\">\r\n");
       out.write("                                <ul class=\"nav nav-pills\">\r\n");
       out.write("                                    <li><a href=\"#\"><i class=\"fa fa-phone\"></i> +84 35 373 8125</a></li>\r\n");
-      out.write("                                    <li><a href=\"#\"><i class=\"fa fa-envelope\"></i> nguyenvukhang01@gmail.com</a></li>\r\n");
+      out.write("                                    <li><a href=\"#\"><i class=\"fa fa-envelope\"></i>kvtgroup2020@gmail.com</a></li>\r\n");
       out.write("                                </ul>\r\n");
       out.write("                            </div>\r\n");
       out.write("                        </div>\r\n");
@@ -308,9 +308,9 @@ static {
       out.write("                <div class=\"col-sm-2\">\r\n");
       out.write("                    <div class=\"companyinfo\">\r\n");
       out.write("                        <h2><span>KVT</span>Group</h2>\r\n");
-      out.write("                        <p>Address: 600, Nguyen Van Cu street, An Binh ward, Ninh Kieu district, Can Tho city\r\n");
-      out.write("                            Phone: +84 35.373.8125\r\n");
-      out.write("                            Email:KTV_Group6@gmail.com</p>\r\n");
+      out.write("                        <p>Address: 600, Nguyen Van Cu street, An Binh ward, Ninh Kieu district, Can Tho city<br>\r\n");
+      out.write("                            Phone: +84 35.373.8125<br>\r\n");
+      out.write("                            Email:kvtgroup2020@gmail.com</p>\r\n");
       out.write("                    </div>\r\n");
       out.write("                </div>\r\n");
       out.write("                <div class=\"col-sm-7\">\r\n");

@@ -23,14 +23,16 @@ import java.util.logging.Logger;
  */
 public class ProductsDAO {
 
-    ResultSet rs;
-    PreparedStatement pst = null;
-    DBConnection db = new DBConnection();
-    private int noOfRecords;
+    public ResultSet rs = null;
+   public PreparedStatement pst = null;
+ public  DBConnection db;
+    public int noOfRecords;
 
     Connection conn;
 
     public ProductsDAO() {
+       db = new DBConnection();
+        
         this.conn = db.getConnect();
     }
 
@@ -115,7 +117,7 @@ public class ProductsDAO {
             rs = pst.executeQuery();
             if (rs.next()) {
                 product.setpId(rs.getInt("pId"));
-                product.setcId(rs.getInt(rs.getInt("cId")));
+                product.setcId(rs.getInt("cId"));
                 product.setpName(rs.getString("pName"));
                 product.setpImage(rs.getString("pImage"));
                 product.setpPrice(rs.getDouble("pPrice"));
@@ -123,6 +125,7 @@ public class ProductsDAO {
                 product.setpDescription(rs.getString("pDescription"));
                 product.setpQuantity(rs.getInt("pQuantity"));
                 product.setpCreateDate(rs.getString("pCreateDate"));
+//                conn.close();
                 return product;
 
             }
@@ -135,18 +138,21 @@ public class ProductsDAO {
     public ArrayList<Product> getRecommendedItem(int categoryId, int productId) {
         ArrayList<Product> getItem = new ArrayList();
         try {
-            pst = conn.prepareStatement("SELECT * from products where pId <> ? and cId= ? ORDER BY pId ASC limit 6");
+            String sql = "SELECT * from products where pId <> ? and cId= ? ORDER BY pId ASC limit 6";
+           pst = conn.prepareStatement(sql);
             pst.setInt(1, productId);
             pst.setInt(2, categoryId);
             rs = pst.executeQuery();
+            
             while (rs.next()) {
                 getItem.add(new Product(rs.getInt("pId"), rs.getInt("cId"), rs.getString("pName"),
                         rs.getString("pImage"), rs.getDouble("pPrice"), rs.getInt("pWeight"),
                         rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getString("pCreateDate")));
+
             }
             
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            ex.getMessage();
         }
         return getItem;
     }

@@ -24,6 +24,10 @@ public class Product {
     public Product() {
     }
 
+    public Product(int pId) {
+        this.pId = pId;
+    }
+
     public Product(int pId, int cId, String pName, String pImage, double pPrice, int pWeight, String pDescription, int pQuantity, String pCreateDate) {
         this.pId = pId;
         this.cId = cId;
