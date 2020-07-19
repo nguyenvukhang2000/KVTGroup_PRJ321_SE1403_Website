@@ -9,8 +9,6 @@ import Models.DAO.CategoryDAO;
 import Models.Entities.Category;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,9 +19,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author vinhhqce140143
  */
-@WebServlet(name = "AdminCategoryServlet", urlPatterns = {"/admin/AdminCategoryServlet"})
-public class AdminCategoryServlet extends HttpServlet {
-    ArrayList<Category> listOfCategory = new ArrayList<Category>();
+@WebServlet(name = "AdminCategory", urlPatterns = {"/admin/AdminCategory"})
+public class AdminCategory extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -41,10 +39,10 @@ public class AdminCategoryServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AdminCategoryServlet</title>");            
+            out.println("<title>Servlet AdminCategory</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AdminCategoryServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AdminCategory at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -62,12 +60,7 @@ public class AdminCategoryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        CategoryDAO categoryDAO = new CategoryDAO();
-        listOfCategory = categoryDAO.allCategoriess();
-        request.setAttribute("listOfCategory", listOfCategory);
-        
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/category.jsp");
-        dispatcher.forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -81,7 +74,18 @@ public class AdminCategoryServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String name = request.getParameter("CategoryName");
+        
+        Category category = new Category();
+        category.setcName(name);
+        PrintWriter out = response.getWriter();
+        if(new CategoryDAO().addCategory(category)){
+            out.print("<script>alert('Add successful')</script>");
+            out.print("<script>window.location.href='AdminCategoryServlet'</script>");
+        }else{
+            out.print("<script>alert('Add fail')</script>");
+            out.print("<script>window.location.href='AdminCategoryServlet'</script>");
+        }
     }
 
     /**
