@@ -9,7 +9,7 @@
 
 <%@include file="Header.jsp" %>
 
-<%@include file="Slider.jsp" %>
+<%@include file="Slidebar.jsp" %>
 
 <c:choose>
     <c:when test="${empty userInfo.uPhoto}">
@@ -25,7 +25,7 @@
     <div class="product-details"><!--product-details-->
         <div class="col-sm-4">
             <div class="view-product">
-                <img src="${photo}"  id="imageView" alt="" />
+                <img src="${uPhoto}"  id="imageView" alt="" />
             </div>
         </div>
 
@@ -36,8 +36,6 @@
                 <form action="AdminProfile" method="post" id="editProfileForm" enctype="multipart/form-data" onsubmit="return validateSignup();">	
                     <h2>${userInfo.uName}</h2>
                     <p>Account Setting</p>
-                    <label>Name</label>
-                    <input type="text" placeholder="Name"  class="input-field"  id="editUserName" value="${userInfo.uName}" disabled required/>
                     <label>E-mail</label>
                     <input type="email" placeholder="E-mail"  class="input-field" name="email" id="editEmail" value="${userInfo.uEmail}" required/>
                     <label>Password</label>
@@ -46,14 +44,17 @@
                     <input type="Password" placeholder="Confirm Password"  class="input-field" id="SignupConfirmPassword" required/>
 
                     <label>Address</label>
-                    <input type="text" placeholder="Address"  class="input-field" name="address" id="editAddress" value="${userInfo.uAddress}" />
+                    <input type="text" placeholder="Address"  class="input-field" name="address" id="editAddress" value="${userInfo.uAddress}" required />
                     <label>Job</label>
-                    <input type="text" placeholder="Job"  class="input-field" name="job" id="editJob" value="${userInfo.uJob}"/>
+                    <input type="text" placeholder="Job"  class="input-field" name="job" id="editJob" value="${userInfo.uJob}" required/>
                     <label>Credit Card</label>
                     <input type="text" placeholder="Credit Card"  class="input-field" name="creditcard" id="SignupCreditCard" value="${userInfo.uCreditCard}" required/>
                     <input type="hidden" name="id" value="${userInfo.uId}" />
                     <input type="hidden" name="photo" value="${uPhotoSrc}"/>
-
+                    <input type="hidden" name="cash" value="${userInfo.uCash}"/>
+                    <input type="hidden" name="role" value="${userInfo.uRole}"/>
+                    <input type="hidden" name="name" value="${userInfo.uName}"/>
+                    
                     <label>Image</label>
                     <input type="file" name="image" id="image" accept="image/*"><br/>
                     <button type="submit" class="btn btn-default" id="editSubmitBtn">Update</button>

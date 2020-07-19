@@ -7,6 +7,7 @@ package Controller.Admin;
 
 import Models.DAO.UserDAO;
 import Models.Entities.User;
+import Models.utilize.FileUpload;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -14,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 /**
  *
@@ -83,7 +85,48 @@ public class AdminProfile extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        User user = new User();
+        String path = request.getServletContext().getRealPath("");
+        user.setuName(request.getParameter("name"));
+        user.setuId(Integer.parseInt(request.getParameter("id")));
+        user.setuEmail(request.getParameter("email"));
+        user.setuPassword(request.getParameter("password"));
+        user.setuAddress(request.getParameter("address"));
+        user.setuJob(request.getParameter("job"));
+        user.setuCreditCard(request.getParameter("creditcard"));
+        user.setuCash(Double.parseDouble(request.getParameter("cash")));
+        user.setuRole(request.getParameter("role"));
+
+//        --upload img--
+        Part filePart = request.getPart("image");
+        if (filePart.getSize() != 0) {      //if photo uploaded
+
+            try {
+                String uploadedpath = FileUpload.uploadImage(filePart, path);
+                user.setuPhoto(uploadedpath);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                request.getSession().setAttribute("AlertMessage", "please choose image only");
+                request.getSession().setAttribute("AlertType", "danger");
+                response.sendRedirect("AdminUserServlet");
+
+                return;
+            }
+
+        } else {                          //no photo uploaded
+            user.setuPhoto(request.getParameter("photo"));
+        }
+
+//        --Update user--
+        PrintWriter out = response.getWriter();
+        if (new UserDAO().updateUser(user, path)) {
+            out.print("<script>alert('Update successful')</script>");
+            out.print("<script>window.location.href='AdminUserServlet'</script>");
+        } else {
+            out.print("<script>alert('Update fail')</script>");
+            out.print("<script>window.location.href='AdminUserServlet'</script>");
+
+        }
     }
 
     /**
