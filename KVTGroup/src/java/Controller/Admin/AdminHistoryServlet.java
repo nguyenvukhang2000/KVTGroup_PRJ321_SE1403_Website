@@ -5,8 +5,12 @@
  */
 package Controller.Admin;
 
+import Models.DAO.HistoryDAO;
+import Models.Entities.History;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "AdminHistoryServlet", urlPatterns = {"/admin/AdminHistoryServlet"})
 public class AdminHistoryServlet extends HttpServlet {
 
+    ArrayList<History> listOfHistorys = new ArrayList<History>();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -58,7 +63,15 @@ public class AdminHistoryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HistoryDAO historyDAO = new HistoryDAO();
+        try {
+            listOfHistorys = historyDAO.getAllHistory();
+            request.setAttribute("listOfHistorys", listOfHistorys);
+            
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/history.jsp");
+            dispatcher.forward(request, response);
+        } catch (Exception e) {
+        }
     }
 
     /**

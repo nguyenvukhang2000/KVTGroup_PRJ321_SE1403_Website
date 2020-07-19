@@ -8,7 +8,11 @@ package Models.DAO;
 import Models.Entities.History;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -35,4 +39,33 @@ public class HistoryDAO {
         }
         return false;
     }
+    
+    public ArrayList<History> getAllHistory(){
+        ArrayList<History> listOfHistorys = new ArrayList<History>();
+        try {
+            PreparedStatement pst = conn.prepareStatement("SELECT * FROM `history`");
+            ResultSet rs = pst.executeQuery();
+            
+            while(rs.next()){
+                History history = new History();
+                history.sethId(rs.getInt(1));
+                history.setuId(rs.getInt(2));
+                history.setpId(rs.getInt(3));
+                history.sethDate(rs.getString(4));
+                history.sethQuantity(rs.getInt(5));
+                listOfHistorys.add(history);
+            }
+            
+            conn.close();
+            return listOfHistorys;
+        } catch (Exception e) {
+            try {
+                conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(HistoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            e.printStackTrace();
+        }
+        return null;
+    } 
 }
