@@ -63,7 +63,7 @@ public class UserDAO{
                 pst1.setString(6, bean.getuCreditCard());
                 pst1.setDouble(7, bean.getuCash());
                 pst1.setString(8, bean.getuRole());
-                pst1.setString(9, "upload/profile.jpg");
+                pst1.setString(9, "upload/user.png");
                 pst1.executeUpdate();
                 b = true;
                 ////////////////////////////////////////
