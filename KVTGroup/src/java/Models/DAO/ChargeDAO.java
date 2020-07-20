@@ -45,4 +45,19 @@ public class ChargeDAO {
         }
         return profit;
     }
+    
+    public int getSumCardNumber(int value){
+        int coutOfCard = 0;
+        try {
+            pst = db.getConnect().prepareStatement("select count(chargeCardNumber) as count from charge where chargeValue=? and chargeUsed=0 and chargeTaken= 0 ");
+            pst.setInt(1, value);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                coutOfCard = Integer.parseInt(rs.getString("count"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return coutOfCard;
+    }
 }
