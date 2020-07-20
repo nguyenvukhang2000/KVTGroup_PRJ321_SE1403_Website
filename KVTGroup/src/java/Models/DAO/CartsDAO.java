@@ -38,7 +38,7 @@ public class CartsDAO {
                 cartProduct.setCartId(rs.getInt("c.cartId"));
                 cartProduct.setCartQuantity(rs.getInt("c.cartQuantity"));
                 cartProduct.setpName(rs.getString("p.pName"));
-                cartProduct.setpPrice(rs.getInt("p.pPrice"));
+                cartProduct.setpPrice(rs.getDouble("p.pPrice"));
                 cartProduct.setpImage(rs.getString("p.pImage"));
                 cartProduct.setpDescription(rs.getString("p.pDescription"));
                 cartProduct.setpId(rs.getInt("p.pId"));

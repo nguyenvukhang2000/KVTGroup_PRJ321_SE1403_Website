@@ -23,11 +23,13 @@ $(document).ready(function () {
         //check if number of product greater than zero 
         if($("#V_"+id).val() > 1 )
             reduceProduct(id);
+            window.location.href = "../KVTGroup/CartHandlerServlet";
     });
     
     $(".cart_quantity_up").click(function(){
         var id = $(this).attr('id').substring(2);
         increaseProduct(id);
+        window.location.href = "../KVTGroup/CartHandlerServlet";
     });
  
     //------------------ function on page ---------------------
