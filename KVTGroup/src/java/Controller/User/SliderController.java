@@ -64,7 +64,7 @@ public class SliderController extends HttpServlet {
             throws ServletException, IOException {
         ArrayList<Sliders> allSliders = new SlidersDAO().getAllSliders();
         request.setAttribute("slides", allSliders);
-//        request.getRequestDispatcher("slider.jsp").forward(request, response);
+
     }
 
     /**
