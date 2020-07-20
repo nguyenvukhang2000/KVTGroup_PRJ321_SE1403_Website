@@ -57,4 +57,35 @@ public class AdvertisementDAO {
         } 
         return  null;
     }
+    
+    public boolean deleteAdvertisment(int id){
+        try {
+            PreparedStatement pst = conn.prepareStatement("delete From ads where aId=?");
+            pst.setInt(1, id);
+            int executeUpdate = pst.executeUpdate();
+            if (executeUpdate > 0) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+    
+    public boolean addAdvertisment(String img, String url){
+        try {
+            PreparedStatement pst = conn.prepareStatement("insert into ads (aImage ,aURL)Values (?,?)");
+
+            pst.setString(1, img);
+            pst.setString(2, url);
+
+            int executeUpdate = pst.executeUpdate();
+            if (executeUpdate > 0) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    }
 }
