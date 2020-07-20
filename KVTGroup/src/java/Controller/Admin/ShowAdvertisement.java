@@ -5,8 +5,12 @@
  */
 package Controller.Admin;
 
+import Models.DAO.AdvertisementDAO;
+import Models.Entities.Advertisement;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,6 +33,10 @@ public class ShowAdvertisement extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+    ArrayList<Advertisement> arr;
+    AdvertisementDAO model;
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -58,7 +66,13 @@ public class ShowAdvertisement extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        model = new AdvertisementDAO();
+        arr = model.getAllAdvertisement();
+        request.setAttribute("allAdsAdmin", arr);
+        String nextJSP = "/admin/ads.jsp";
+
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
+        dispatcher.forward(request, response);
     }
 
     /**
@@ -69,6 +83,7 @@ public class ShowAdvertisement extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
