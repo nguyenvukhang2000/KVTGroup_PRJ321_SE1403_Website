@@ -12,6 +12,7 @@ import Models.Entities.Sliders;
 import Models.utilize.FileUpload;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javafx.scene.control.Slider;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -27,6 +28,11 @@ import javax.servlet.http.Part;
 @WebServlet(name = "AddSlider", urlPatterns = {"/admin/AddSlider"})
 @MultipartConfig
 public class AddSlider extends HttpServlet {
+    static int productIdForSlider;
+    static Product productForSlider;
+    ProductsDAO producDAO;
+    Sliders slider;
+    SlidersDAO sliderDAO;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -65,15 +71,15 @@ public class AddSlider extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int pId = Integer.parseInt(request.getParameter("pId"));
-        Product product = new ProductsDAO().getProduct(pId);
+        productIdForSlider = Integer.parseInt(request.getParameter("pId"));
+        productForSlider = new ProductsDAO().getProduct(productIdForSlider);
         
-        if(product == null){
+        if(productForSlider == null){
             request.getSession().setAttribute("message", "Product not found");
             response.sendRedirect("../Failed.jsp");
         }else{
-            request.setAttribute("product", product);
-            request.getRequestDispatcher("/admin/AddSlider.jsp").forward(request, response);
+            request.setAttribute("product", productForSlider);
+            request.getRequestDispatcher("/admin/addSlider.jsp").forward(request, response);
         }
     }
 
@@ -88,16 +94,18 @@ public class AddSlider extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int pId = Integer.parseInt(request.getParameter("id"));
+        sliderDAO = new SlidersDAO();
+        
         String title = request.getParameter("title");
-        String subtitle = request.getParameter("subTitle");
+        String subtitle = request.getParameter("subTittle");
         String desc = request.getParameter("ProductDescription");
         
-        Sliders slider = new Sliders();
+        
+        slider = new Sliders();
         slider.setsDescription(desc);
         slider.setsTitle(title);
         slider.setsSubtitle(subtitle);
-        slider.setpId(pId);
+        slider.setpId(productIdForSlider);
         
 //        --upload img--
 
@@ -126,7 +134,7 @@ public class AddSlider extends HttpServlet {
             out.print("<script>alert('Add successful')</script>");
             out.print("<script>window.location.href='SlidersShow'</script>");
         }else{
-            out.print("<script>alert('Add fail')</script>");
+            out.print("<script>alert('Update fail')</script>");
             out.print("<script>window.location.href='SlidersShow'</script>");
         }
     }

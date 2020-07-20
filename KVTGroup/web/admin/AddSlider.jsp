@@ -38,10 +38,10 @@
                     <form action="AddSlider" method="post" enctype="multipart/form-data">
                         <h2>${type} to Slidebar</h2>
 
-                        <label>Title</label>
-                        <input type="text" placeholder="Title" name="title" value="" class="input-field" id="ProductQuantity" required/>
-                        <label>Sub title</label>
-                        <input type="text" placeholder="Sub title " name="subTitle" value="" class="input-field" id="ProductModel" />
+                        <label>Tittle</label>
+                        <input type="text" placeholder="Tittle" name="tittle" value="" class="input-field" id="ProductQuantity" required/>
+                        <label>Sub tittle</label>
+                        <input type="text" placeholder="Sub tittle " name="subTittle" value="" class="input-field" id="ProductModel" />
                         <label>Product Description</label>
                         <textarea  placeholder="Product Description" name="ProductDescription" class="input-field">${product.pDescription}</textarea>
 
