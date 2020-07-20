@@ -64,9 +64,9 @@
                             <div class="single-products">
                                 <div class="productinfo text-center">
                                     <a href="ProductController?id=${item.pId}"><img src="${item.pImage}" /></a>
-                                    <h2>$${item.pPrice}</h2>
+                                    <h2>${item.pPrice} VND</h2>
                                     <p>${item.pName}</p>
-                                    <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                    <button type="button" class="btn btn-default add-to-cart" id="${item.pId}"><i class="fa fa-shopping-cart"></i>Add to cart</button>
                                 </div>
                             </div>
                         </div>
