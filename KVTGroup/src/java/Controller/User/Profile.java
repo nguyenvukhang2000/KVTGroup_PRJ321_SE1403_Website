@@ -11,6 +11,7 @@ import Models.utilize.FileUpload;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +22,7 @@ import javax.servlet.http.Part;
  *
  * @author KhangNVCE140224
  */
+@MultipartConfig
 @WebServlet(name = "Profile", urlPatterns = {"/Profile"})
 public class Profile extends HttpServlet {
 

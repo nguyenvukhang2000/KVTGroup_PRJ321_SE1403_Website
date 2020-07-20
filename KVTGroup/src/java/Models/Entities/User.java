@@ -9,7 +9,7 @@ package Models.Entities;
  *
  * @author KhangNVCE140224
  */
-public class User {
+public class User implements Cloneable{
     private String uName;
     private String uEmail;
     private int uId;
