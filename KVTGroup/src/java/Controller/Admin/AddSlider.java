@@ -91,7 +91,7 @@ public class AddSlider extends HttpServlet {
             throws ServletException, IOException {
         SlidersDAO sliderDAO = new SlidersDAO();
         
-        String title = request.getParameter("title");
+        String title = request.getParameter("tittle");
         String subtitle = request.getParameter("subTittle");
         String desc = request.getParameter("ProductDescription");
         int pId = Integer.parseInt(request.getParameter("id"));
