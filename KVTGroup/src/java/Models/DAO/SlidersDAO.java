@@ -21,8 +21,7 @@ public class SlidersDAO {
     private Connection conn;
     private ResultSet rs = null;
 
-    public SlidersDAO() {
-        
+    public SlidersDAO() {  
         this.conn = db.getConnect();
     }
     
@@ -57,6 +56,19 @@ public class SlidersDAO {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        return false;
+    }
+    public boolean deleteSlider(int id) {
+        try {
+            PreparedStatement pst = conn.prepareStatement("DELETE FROM `slides` WHERE sId=?");
+            pst.setInt(1, id);
+            int executeUpdate = pst.executeUpdate();
+            if (executeUpdate > 0) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
         return false;
     }

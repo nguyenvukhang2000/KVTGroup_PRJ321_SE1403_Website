@@ -13,7 +13,6 @@
 
     <h2>
         Slidebar
-        <!--  <a class="btn btn-default" style="float: right;" href="addproduct.jsp">New Slidebar</a> -->
     </h2>
     <div class="table-responsive cart_info">
         <table class="table table-condensed">
@@ -36,12 +35,10 @@
                             </td>
                             <td class="cart_description">
                                 <p>${slider.sTitle}</p>
-
                             </td>
                             <td class="cart_price">
                                 <p>${slider.pId}</p>
                             </td>
-
                             <td class="cart_delete">
                                 <a class="cart_quantity_delete" href="DeleteSlider?id=${slider.sId}"><i class="fa fa-times"></i></a>
                             </td>
