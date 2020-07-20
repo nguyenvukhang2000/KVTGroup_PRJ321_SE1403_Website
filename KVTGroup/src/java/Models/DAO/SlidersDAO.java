@@ -52,7 +52,6 @@ public class SlidersDAO {
             pst.setString(5, sliders.getsImage());
             
             int i = pst.executeUpdate();
-            db.conn.close();
             if(i > 0 ){
                 return true;
             }

@@ -50,7 +50,6 @@ public class CategoryDAO {
             PreparedStatement pst = conn.prepareStatement("INSERT INTO `category`(`cName`) VALUES (?)");
             pst.setString(1, category.getcName());
             int i = pst.executeUpdate();
-            conn.close();
             if(i>0){
                 return true;
             }

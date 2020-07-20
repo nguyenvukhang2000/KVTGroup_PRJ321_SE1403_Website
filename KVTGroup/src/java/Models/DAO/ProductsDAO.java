@@ -258,18 +258,12 @@ public class ProductsDAO {
                 pst = conn.prepareStatement("DELETE FROM `products` WHERE pId=?");
                 pst.setInt(1, id);
                 i = pst.executeUpdate();
-                
-                db.getConnect().close();
+
                 if(i > 0){
                     return true;
                 }
             }
         } catch (SQLException e) {
-            try {
-                db.getConnect().close();
-            } catch (SQLException ex) {
-                Logger.getLogger(ProductsDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
             e.printStackTrace();
         }
         return false;
@@ -289,18 +283,11 @@ public class ProductsDAO {
             pst.setString(8, date);
             
             i = pst.executeUpdate();
-            
-            db.getConnect().close();
-            
+
             if(i>0){
                 return true;
             }
         } catch (Exception e) {
-            try {
-                db.getConnect().close();
-            } catch (SQLException ex) {
-                Logger.getLogger(ProductsDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
             e.printStackTrace();
         }
         return false;
@@ -321,18 +308,11 @@ public class ProductsDAO {
             pst.setInt(9, pId);
             
             i = pst.executeUpdate();
-            
-            db.getConnect().close();
-            
+
             if(i > 0){
                 return true;
             }
         } catch (Exception e) {
-            try {
-                db.getConnect().close();
-            } catch (SQLException ex) {
-                Logger.getLogger(ProductsDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
             e.printStackTrace();
         }
         return false;
