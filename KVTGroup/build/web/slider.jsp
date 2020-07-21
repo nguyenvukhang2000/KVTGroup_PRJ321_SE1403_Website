@@ -4,6 +4,7 @@
     Author     : KhangNVCE140224
 --%>
  <jsp:include page="/SliderIndex"/>
+
 <section id="slider"><!--slider-->
     <div class="container">
         <div class="row">
@@ -31,13 +32,13 @@
 
                             <div class="item ${classActive}">
                                 <div class="col-sm-6 slide-height">
-                                    <h1>${slide.title}</h1>
-                                    <h2>${slide.subTitle}</h2>
+                                    <h1>${slide.sTitle}</h1>
+                                    <h2>${slide.sSubtitle}</h2>
                                     
-                                    <a href="Product?id=${slide.productId}" class="btn btn-default get">Get it now</a>
+                                    <a href="ProductController?id=${slide.pId}" class="btn btn-default get">Get it now</a>
                                 </div>
                                 <div class="col-sm-6">
-                                    <img src="${slide.image}" class="girl img-responsive " alt="" />
+                                    <img src="${slide.sImage}" class="girl img-responsive " alt="" />
 
                                 </div>  
 

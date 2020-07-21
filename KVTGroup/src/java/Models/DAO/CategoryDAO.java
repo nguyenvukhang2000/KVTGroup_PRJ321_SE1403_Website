@@ -44,4 +44,20 @@ public class CategoryDAO {
         }
         return allCategory;
     }
+    
+    public boolean addCategory(Category category){
+        try {
+            PreparedStatement pst = conn.prepareStatement("INSERT INTO `category`(`cName`) VALUES (?)");
+            pst.setString(1, category.getcName());
+            int i = pst.executeUpdate();
+            if(i>0){
+                return true;
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return false;
+    }
 }

@@ -4,13 +4,13 @@
     Author     : KhangNVCE140224
 --%>
 <%@ page import="Controller.User.IndexProductServlet" %> 
-<%--<jsp:include page="/IndexProductServlet"/> --%> 
+
 <%-- include header file --%> 
 <%@include file="header.jsp" %>
 
 
 <%-- include slider file --%> 
-<%--<%@include file="slider.jsp" %>--%>
+<%@include file="slider.jsp" %>
 
 
 <%-- include slidebar file --%> 
@@ -29,13 +29,13 @@
                         <div class="single-products">
                             <div class="productinfo text-center">
                                 <img src=${product.pImage} alt="" />
-                                <h2>${product.pPrice}</h2>
+                                <h2>${product.pPrice} VND</h2>
                                 <p>${product.pName}</p>
                                 <a class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                             </div>
                             <div class="product-overlay">
                                 <div class="overlay-content">
-                                    <h2>${product.pPrice}</h2>
+                                    <h2>${product.pPrice} VND</h2>
                                     <p>${product.pName}</p>
                                     <a  id="${product.pId}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                 </div>

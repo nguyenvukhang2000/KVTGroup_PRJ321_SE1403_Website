@@ -9,7 +9,7 @@ package Models.Entities;
  *
  * @author KhangNVCE140224
  */
-public class User {
+public class User implements Cloneable{
     private String uName;
     private String uEmail;
     private int uId;
@@ -116,5 +116,17 @@ public class User {
     public void setuCash(double uCash) {
         this.uCash = uCash;
     }
+
+    @Override
+    public String toString() {
+        return "name: " + uName + "\n role" +uRole;
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone(); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
     
 }

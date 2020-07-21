@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author KhangNVCE140224
  */
-@WebServlet(name = "shopController", urlPatterns = {"/shopController"})
+@WebServlet(name = "ShopController", urlPatterns = {"/ShopController"})
 public class ShopController extends HttpServlet {
     List<Product> allProducts = new ArrayList<Product>();
 
@@ -43,10 +43,10 @@ public class ShopController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet shopController</title>");            
+            out.println("<title>Servlet ShopController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet shopController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ShopController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

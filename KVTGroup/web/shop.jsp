@@ -15,7 +15,7 @@
     <div class="features_items"><!--features_items-->
         <h2 class="title text-center">Features Items</h2>
 
-        <!-- Sara features_items-->
+      
 
         <c:if test="${!empty requestScope.allProducts}">
 
@@ -26,13 +26,13 @@
                         <div class="single-products">
                             <div class="productinfo text-center">
                                 <img src="${product.pImage}" alt="" />
-                                <h2>${product.pPrice}</h2>
+                                <h2>${product.pPrice} VND</h2>
                                 <p>${product.pName}</p>
                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                             </div>
                             <div class="product-overlay">
                                 <div class="overlay-content">
-                                    <h2>${product.pPrice}</h2>
+                                    <h2>${product.pPrice} VND</h2>
                                     <p>${product.pName}</p>
                                     <a href="#" id="${product.pId}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                 </div>
@@ -40,7 +40,7 @@
                         </div>
                         <div class="choose">
                             <ul class="nav nav-pills nav-justified">
-<!--                                <li><a href="Product?id=${product.pId}"><i class="fa fa-plus-square"></i>View Details</a></li>-->
+                                <li><a href="ProductController?id=${product.pId}"><i class="fa fa-plus-square"></i>View Details</a></li>
                             </ul>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
             </c:forEach>
         </c:if>
 
-        <!-- End Sara features_items-->
+        
 
     </div><!--features_items-->
 
@@ -64,12 +64,12 @@
         <c:if test="${not empty query}">
             <c:set var="stringQuery" value="&cate=${query}"/>
         </c:if>
-        
+
         <%--to display Previous arrow except for the 1st page --%>
         <c:if test="${currentPage != 1}">
-             <li><a href="ShopController?page=${currentPage - 1}${stringQuery}">&laquo;</a></li>
-	</c:if>
-        
+            <li><a href="ShopController?page=${currentPage - 1}${stringQuery}">&laquo;</a></li>
+            </c:if>
+
         <%--to displaying Page numbers--%>
         <c:forEach begin="1" end="${noOfPages}" var="i">
             <c:choose>
@@ -86,7 +86,7 @@
         <%--to display Next arrow --%>
         <c:if test="${currentPage lt noOfPages}">
             <li><a href="ShopController?page=${currentPage + 1}${stringQuery}">&raquo;</a></li>
-	</c:if>
+            </c:if>
     </ul>
 </div>
 </div>

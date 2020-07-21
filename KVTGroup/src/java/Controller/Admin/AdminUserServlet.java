@@ -1,0 +1,36 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Controller.Admin;
+
+import Models.DAO.UserDAO;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import Models.Entities.User;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ *
+ * @author vinhhqce140143
+ */
+@WebServlet(name = "AdminUserServlet", urlPatterns = {"/admin/AdminUserServlet"})
+public class AdminUserServlet extends HttpServlet {
+    ArrayList<User> listOfUser = new ArrayList<User>();
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        UserDAO userDAO = new UserDAO();
+        listOfUser = userDAO.getAllUsers();
+        request.setAttribute("listOfUser", listOfUser);
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/users.jsp");
+        dispatcher.forward(request, response);
+    }
+}

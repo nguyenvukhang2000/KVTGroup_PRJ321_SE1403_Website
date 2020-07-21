@@ -5,8 +5,6 @@
  */
 package Models.Entities;
 
-import java.sql.Date;
-
 
 /**
  *
@@ -21,13 +19,16 @@ public class Product {
     private int pWeight;
     private String pDescription;
     private int pQuantity;
-    private Date pCreateDate;
-    private String pStatus;
+    private String pCreateDate;
 
     public Product() {
     }
 
-    public Product(int pId, int cId, String pName, String pImage, double pPrice, int pWeight, String pDescription, int pQuantity, Date pCreateDate, String pStatus) {
+    public Product(int pId) {
+        this.pId = pId;
+    }
+
+    public Product(int pId, int cId, String pName, String pImage, double pPrice, int pWeight, String pDescription, int pQuantity, String pCreateDate) {
         this.pId = pId;
         this.cId = cId;
         this.pName = pName;
@@ -37,7 +38,6 @@ public class Product {
         this.pDescription = pDescription;
         this.pQuantity = pQuantity;
         this.pCreateDate = pCreateDate;
-        this.pStatus = pStatus;
     }
 
     public int getpId() {
@@ -104,21 +104,15 @@ public class Product {
         this.pQuantity = pQuantity;
     }
 
-    public Date getpCreateDate() {
+    public String getpCreateDate() {
         return pCreateDate;
     }
 
-    public void setpCreateDate(Date pCreateDate) {
+    public void setpCreateDate(String pCreateDate) {
         this.pCreateDate = pCreateDate;
     }
 
-    public String getpStatus() {
-        return pStatus;
-    }
-
-    public void setpStatus(String pStatus) {
-        this.pStatus = pStatus;
-    }
+    
 
     
 }

@@ -14,8 +14,8 @@ $(document).ready(function () {
     //add from product details
     $('.add-to-my').click(function () {
         var id = $(this).attr('id');
-        var qaunty = $("#quan").val();
-        addProduct(id, qaunty);
+        var quantity = $("#quan").val();
+        addProduct(id, quantity);
     });
     
     $(".cart_quantity_down").click(function(){
@@ -23,21 +23,23 @@ $(document).ready(function () {
         //check if number of product greater than zero 
         if($("#V_"+id).val() > 1 )
             reduceProduct(id);
+            window.location.href = "../KVTGroup/CartHandlerServlet";
     });
     
     $(".cart_quantity_up").click(function(){
         var id = $(this).attr('id').substring(2);
         increaseProduct(id);
+        window.location.href = "../KVTGroup/CartHandlerServlet";
     });
  
     //------------------ function on page ---------------------
 
     // add product to cart
-    function addProduct(id, qaunty) {
+    function addProduct(id, quantity) {
         $.ajax({
             url: 'addCart', //servlet url
             type: 'GET',
-            data: {"productID": id, "qaunty": qaunty},
+            data: {"productID": id, "quantity": quantity},
             success: (data) => {
                 if (data.redirect) {
                     // data.redirect contains the string URL to redirect to
@@ -49,7 +51,8 @@ $(document).ready(function () {
                 
             },
             error: function (xhr, ajaxOptions, thrownError) {
-                alert("error");
+//                alert("error");
+                window.location.href = "../KVTGroup/login.jsp";
                 if (thrownError.redirect.length) {
                     window.location.replace(thrownError.redirect);
                 } else {
@@ -93,7 +96,7 @@ $(document).ready(function () {
     //increase product to cart 
     function increaseProduct(id){
         $.ajax({
-            url: 'increaseQuantity', //servlet url
+            url: 'IncreaseQuantity', //servlet url
             type: 'GET',
             data: {"id": id},
             success: (data) => {

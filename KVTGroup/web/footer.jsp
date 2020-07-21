@@ -12,9 +12,9 @@
                 <div class="col-sm-2">
                     <div class="companyinfo">
                         <h2><span>KVT</span>Group</h2>
-                        <p>Address: 600, Nguyen Van Cu street, An Binh ward, Ninh Kieu district, Can Tho city
-                            Phone: +84 35.373.8125
-                            Email:KTV_Group6@gmail.com</p>
+                        <p>Address: 600, Nguyen Van Cu street, An Binh ward, Ninh Kieu district, Can Tho city<br>
+                            Phone: +84 35.373.8125<br>
+                            Email:kvtgroup2020@gmail.com</p>
                     </div>
                 </div>
                 <div class="col-sm-7">

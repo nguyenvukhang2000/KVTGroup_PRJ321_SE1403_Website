@@ -31,7 +31,7 @@ public class CartCategoryTagHandler extends SimpleTagSupport {
             try {
                 out.print("<div class='panel panel-default'>\n" +
                         "                            <div class='panel-heading'>\n" +
-                        "                                <h4 class='panel-title'><a href='Shop?page=1&cate="+category.getcId()+"'>"+category.getcName()+"</a></h4>\n" +
+                        "                                <h4 class='panel-title'><a href='ShopController?page=1&cate="+category.getcId()+"'>"+category.getcName()+"</a></h4>\n" +
                                 "                            </div>\n" +
                                 "                        </div>");
             } catch (IOException ex) {

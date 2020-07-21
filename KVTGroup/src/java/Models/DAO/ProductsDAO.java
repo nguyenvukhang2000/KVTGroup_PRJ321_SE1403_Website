@@ -6,7 +6,9 @@
 package Models.DAO;
 
 import Models.Entities.Product;
+import Models.utilize.FileUpload;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,14 +23,16 @@ import java.util.logging.Logger;
  */
 public class ProductsDAO {
 
-    ResultSet rs;
-    PreparedStatement pst = null;
-    DBConnection db = new DBConnection();
-    private int noOfRecords;
+    public ResultSet rs = null;
+   public PreparedStatement pst = null;
+ public  DBConnection db;
+    public int noOfRecords;
 
     Connection conn;
 
     public ProductsDAO() {
+       db = new DBConnection();
+        
         this.conn = db.getConnect();
     }
 
@@ -41,7 +45,7 @@ public class ProductsDAO {
             while (rs.next()) {
                 listProducts.add(new Product(rs.getInt("pId"), rs.getInt("cId"), rs.getString("pName"),
                         rs.getString("pImage"), rs.getDouble("pPrice"), rs.getInt("pWeight"),
-                        rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getDate("pCreateDate"), rs.getString("pStatus")));
+                        rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getString("pCreateDate")));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -60,11 +64,11 @@ public class ProductsDAO {
             while (rs.next()) {
                 listProducts.add(new Product(rs.getInt("pId"), rs.getInt("cId"), rs.getString("pName"),
                         rs.getString("pImage"), rs.getDouble("pPrice"), rs.getInt("pWeight"),
-                        rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getDate("pCreateDate"), rs.getString("pStatus")));
+                        rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getString("pCreateDate")));
             }
 
             //get number of record in DB
-            rs = conn.prepareStatement("SELECT count(*) FROM product").executeQuery();
+            rs = conn.prepareStatement("SELECT count(*) FROM products").executeQuery();
             if (rs.next()) {
                 this.noOfRecords = rs.getInt(1);
             }
@@ -86,7 +90,7 @@ public class ProductsDAO {
             while (rs.next()) {
                 listProducts.add(new Product(rs.getInt("pId"), rs.getInt("cId"), rs.getString("pName"),
                         rs.getString("pImage"), rs.getDouble("pPrice"), rs.getInt("pWeight"),
-                        rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getDate("pCreateDate"), rs.getString("pStatus")));
+                        rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getString("pCreateDate")));
             }
             pst = conn.prepareStatement("SELECT count(*) FROM products where cId=?");
             pst.setInt(1, categoryId);
@@ -105,24 +109,25 @@ public class ProductsDAO {
         return noOfRecords;
     }
 
-    public Product getProduct(int pId) {
+    public Product getProduct(int productId) {
         Product product = new Product(); //to return value of select
         try {
-            pst = conn.prepareStatement("select * from products  where pId=?");
-            pst.setInt(1, pId);
+            pst = conn.prepareStatement("select * from products where pId=?");
+            pst.setInt(1, productId);
             rs = pst.executeQuery();
             if (rs.next()) {
                 product.setpId(rs.getInt("pId"));
-                product.setcId(rs.getInt(rs.getInt("cId")));
+                product.setcId(rs.getInt("cId"));
                 product.setpName(rs.getString("pName"));
                 product.setpImage(rs.getString("pImage"));
                 product.setpPrice(rs.getDouble("pPrice"));
                 product.setpWeight(rs.getInt("pWeight"));
                 product.setpDescription(rs.getString("pDescription"));
-                product.setpQuantity(rs.getInt(rs.getInt("pQuantity")));
-                product.setpCreateDate(rs.getDate("pCreateDate"));
-                product.setpStatus(rs.getString("pStatus"));
+                product.setpQuantity(rs.getInt("pQuantity"));
+                product.setpCreateDate(rs.getString("pCreateDate"));
+//                conn.close();
                 return product;
+
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -133,20 +138,23 @@ public class ProductsDAO {
     public ArrayList<Product> getRecommendedItem(int categoryId, int productId) {
         ArrayList<Product> getItem = new ArrayList();
         try {
-            pst = conn.prepareStatement("SELECT * from products where pId <> ? and cId= ? ORDER BY pId ASC limit 6");
+            String sql = "SELECT * from products where pId <> ? and cId= ? ORDER BY pId ASC limit 6";
+           pst = conn.prepareStatement(sql);
             pst.setInt(1, productId);
             pst.setInt(2, categoryId);
             rs = pst.executeQuery();
+            
             while (rs.next()) {
                 getItem.add(new Product(rs.getInt("pId"), rs.getInt("cId"), rs.getString("pName"),
                         rs.getString("pImage"), rs.getDouble("pPrice"), rs.getInt("pWeight"),
-                        rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getDate("pCreateDate"), rs.getString("pStatus")));
+                        rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getString("pCreateDate")));
+
             }
-            return getItem;
+            
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            ex.getMessage();
         }
-        return null;
+        return getItem;
     }
 
     public ArrayList<Product> getLastProducts() {
@@ -158,7 +166,7 @@ public class ProductsDAO {
             while (rs.next()) {
                 selectLastProduct.add(new Product(rs.getInt("pId"), rs.getInt("cId"), rs.getString("pName"),
                         rs.getString("pImage"), rs.getDouble("pPrice"), rs.getInt("pWeight"),
-                        rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getDate("pCreateDate"), rs.getString("pStatus")));
+                        rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getString("pCreateDate")));
             }
             return selectLastProduct;
         } catch (SQLException ex) {
@@ -196,7 +204,7 @@ public class ProductsDAO {
             while(rs.next()) {
                 listProductByName.add(new Product(rs.getInt("pId"), rs.getInt("cId"), rs.getString("pName"),
                         rs.getString("pImage"), rs.getDouble("pPrice"), rs.getInt("pWeight"),
-                        rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getDate("pCreateDate"), rs.getString("pStatus")));
+                        rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getString("pCreateDate")));
             }
             
         } catch (SQLException ex) {
@@ -218,12 +226,95 @@ public class ProductsDAO {
             while(rs.next()) {
                 getAllProductByPrice.add(new Product(rs.getInt("pId"), rs.getInt("cId"), rs.getString("pName"),
                         rs.getString("pImage"), rs.getDouble("pPrice"), rs.getInt("pWeight"),
-                        rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getDate("pCreateDate"), rs.getString("pStatus")));
+                        rs.getString("pDescription"), rs.getInt("pQuantity"), rs.getString("pCreateDate")));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
         System.out.println(getAllProductByPrice.size());
         return getAllProductByPrice;
+    }
+    
+    public boolean updateProductQuantity(Product product) throws SQLException {
+        int i = 0;
+        PreparedStatement pst = conn.prepareStatement("update products set pQuantity=? where pId=?");
+        pst.setInt(1, product.getpQuantity());
+        pst.setInt(2, product.getpId());
+        
+        i = pst.executeUpdate();
+        if(i > 0) {
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean deleteProduct(int id, String path){
+        try {
+            int i = 0;
+            Product product = getProduct(id);
+            boolean deleteFile = FileUpload.deleteFile(product.getpImage(), path);
+            System.out.println(product.getpImage());
+            if(deleteFile){
+                pst = conn.prepareStatement("DELETE FROM `products` WHERE pId=?");
+                pst.setInt(1, id);
+                i = pst.executeUpdate();
+
+                if(i > 0){
+                    return true;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    public boolean addProduct(int cId, String name,double price, int quantity, int weight,String img,  String date, String discription){
+        int i = 0;
+        try {
+            pst = conn.prepareStatement("INSERT INTO `products`(`cId`, `pName`, `pImage`, `pPrice`, `pWeight`, `pDescription`, `pQuantity`, `pCreateDate`) VALUES (?,?,?,?,?,?,?,?)");
+            pst.setInt(1, cId);
+            pst.setString(2, name);
+            pst.setString(3, img);
+            pst.setDouble(4, price);
+            pst.setInt(5, weight);
+            pst.setString(6, discription);
+            pst.setInt(7, quantity);
+            pst.setString(8, date);
+            
+            i = pst.executeUpdate();
+
+            if(i>0){
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    public boolean editProduct(int pId, int cId, String name,double price, int quantity, int weight,String img,  String date, String description){
+        int i = 0;
+        try {
+            pst = conn.prepareStatement("UPDATE `products` SET `cId`=?,`pName`=?,`pImage`=?,`pPrice`=?,`pWeight`=?,`pDescription`=?,`pQuantity`=?,`pCreateDate`=? WHERE `pId`=?");
+            pst.setInt(1, cId);
+            pst.setString(2, name);
+            pst.setString(3, img);
+            pst.setDouble(4, price);
+            pst.setInt(5, weight);
+            pst.setString(6, description);
+            pst.setInt(7, quantity);
+            pst.setString(8, date);
+            pst.setInt(9, pId);
+            
+            i = pst.executeUpdate();
+
+            if(i > 0){
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

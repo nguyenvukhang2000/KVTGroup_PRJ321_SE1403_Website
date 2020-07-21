@@ -19,15 +19,12 @@
         <link href="css/main.css" rel="stylesheet">
         <link href="css/responsive.css" rel="stylesheet">
         <link href="css/price-range.css" rel="stylesheet" />
-        <!--[if lt IE 9]>
-        <script src="js/html5shiv.js"></script>
-        <script src="js/respond.min.js"></script>
-        <![endif]-->       
-        <link rel="shortcut icon" href="images/ico/favicon.ico">
+        
+        <link rel="shortcut icon" href="images/ico/favicon.ico"><!--
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">-->
         <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
         <%@taglib prefix="myCate" uri="/WEB-INF/tlds/myTags_library.tld" %>
@@ -42,7 +39,7 @@
                             <div class="contactinfo">
                                 <ul class="nav nav-pills">
                                     <li><a href="#"><i class="fa fa-phone"></i> +84 35 373 8125</a></li>
-                                    <li><a href="#"><i class="fa fa-envelope"></i> nguyenvukhang01@gmail.com</a></li>
+                                    <li><a href="#"><i class="fa fa-envelope"></i>kvtgroup2020@gmail.com</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -73,8 +70,25 @@
                         <div class="col-sm-8">
                             <div class="shop-menu pull-right">
                                 <ul class="nav navbar-nav">
-                                    <%--  lalalaalalalla
---%>
+                                    
+                                    <c:if test="${!empty sessionScope.LoginUser && sessionScope.LoginUser.uRole =='user' }">
+                                        <li><a href="Profile"><i class="fa fa-user"></i> ${sessionScope.LoginUser.uName}</a></li>
+                                        <li><a href="CartHandlerServlet"><i class="fa fa-shopping-cart"></i> Cart (<span id="number"></span> )</a></li>
+                                        <li><a href="#"><i class="fa fa-usd"></i> ${sessionScope.LoginUser.uCash}</a></li>
+                                         <li><a href="ScratchCards.jsp"><i class="fa fa-cc-visa"></i> Charge </a></li>
+                                        <li><a href="logout"><i class="fa fa-sign-out"></i> Logout</a></li>
+                                        <script type="text/javascript">var userID = '${sessionScope.LoginUser.uId}';</script>
+                                    </c:if>
+                                        
+                                        <c:if test="${!empty sessionScope.LoginUser && sessionScope.LoginUser.uRole =='admin' }">
+                                        <li><a href="admin"><i class="fa fa-cog"></i> Admin Panel</a></li>
+                                        <li><a href="admin/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
+                                    </c:if>
+
+                                        <c:if test="${empty sessionScope.LoginUser}">
+                                        <li><a href="login.jsp"><i class="fa fa-sign-in"></i> Signup</a></li>
+                                        <li><a href="login.jsp"><i class="fa fa-lock"></i> Login</a></li>
+                                    </c:if> 
                                 </ul>
                             </div>
                         </div>

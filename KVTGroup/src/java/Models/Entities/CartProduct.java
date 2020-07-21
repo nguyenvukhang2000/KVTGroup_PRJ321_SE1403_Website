@@ -5,8 +5,6 @@
  */
 package Models.Entities;
 
-import java.sql.Date;
-
 
 /**
  *
@@ -23,13 +21,13 @@ public class CartProduct {
     private int pWeight;
     private String pDescription;
     private int pQuantity;
-    private Date pCreateDate;
-    private String pStatus;
+    private String pCreateDate;
+   
 
     public CartProduct() {
     }
 
-    public CartProduct(int cartId, int uId, int cartQuantity, int pId, String pName, String pImage, double pPrice, int pWeight, String pDescription, int pQuantity, Date pCreateDate, String pStatus) {
+    public CartProduct(int cartId, int uId, int cartQuantity, int pId, String pName, String pImage, double pPrice, int pWeight, String pDescription, int pQuantity, String pCreateDate) {
         this.cartId = cartId;
         this.uId = uId;
         this.cartQuantity = cartQuantity;
@@ -41,7 +39,6 @@ public class CartProduct {
         this.pDescription = pDescription;
         this.pQuantity = pQuantity;
         this.pCreateDate = pCreateDate;
-        this.pStatus = pStatus;
     }
 
     public int getCartId() {
@@ -124,20 +121,14 @@ public class CartProduct {
         this.pQuantity = pQuantity;
     }
 
-    public Date getpCreateDate() {
+    public String getpCreateDate() {
         return pCreateDate;
     }
 
-    public void setpCreateDate(Date pCreateDate) {
+    public void setpCreateDate(String pCreateDate) {
         this.pCreateDate = pCreateDate;
     }
 
-    public String getpStatus() {
-        return pStatus;
-    }
-
-    public void setpStatus(String pStatus) {
-        this.pStatus = pStatus;
-    }
-
+   
+    
 }
