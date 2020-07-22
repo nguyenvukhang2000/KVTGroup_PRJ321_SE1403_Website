@@ -18,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -109,8 +110,8 @@ public class PayController extends HttpServlet {
                     + "your product will delivered in two days ..";
             
             new MailModel(user.getuEmail(), "Successfull Payment", message).sendMail();
-            
-            request.getSession().setAttribute("message", message);
+            HttpSession session =  request.getSession();
+            session.setAttribute("message", message);
             response.sendRedirect("Success.jsp");
         } else {
             request.getSession().setAttribute("message", "Error in proccess please try agine later :( ");
