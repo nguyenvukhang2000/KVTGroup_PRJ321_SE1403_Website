@@ -18,13 +18,13 @@
                         <i class="fa fa-cc-visa fa-4x" aria-hidden="true" style="color:lightskyblue"></i>
                         <h2>50000 VND</h2>
                         <p>Charge with 50000 VND</p>
-                        <a href="ScratchCardServlet?charge=50000" class="btn btn-default my_btn"><i class="fa fa-cc-visa"></i> Charge</a>
+                        <a href="ScartchCardServlet?charge=50000" class="btn btn-default my_btn"><i class="fa fa-cc-visa"></i> Charge</a>
                     </div>
                     <div class="product-overlay">
                         <div class="overlay-content">
                             <h2>50000 VND</h2>
                             <p>Charge with 50000 VND</p>
-                            <a href="ScratchCardServlet?charge=50000" class="btn btn-default my_btn"><i class="fa fa-cc-visa"></i> Charge</a>
+                            <a href="ScartchCardServlet?charge=50000" class="btn btn-default my_btn"><i class="fa fa-cc-visa"></i> Charge</a>
                         </div>
                     </div>
                 </div>
@@ -37,13 +37,13 @@
                         <i class="fa fa-cc-visa fa-4x" aria-hidden="true" style="color:lightskyblue"></i>
                         <h2>100000 VND</h2>
                         <p>Charge with 100000 VND</p>
-                        <a href="ScratchCardServlet?charge=100000" class="btn btn-default my_btn"><i class="fa fa-cc-visa"></i> Charge</a>
+                        <a href="ScartchCardServlet?charge=100000" class="btn btn-default my_btn"><i class="fa fa-cc-visa"></i> Charge</a>
                     </div>
                     <div class="product-overlay">
                         <div class="overlay-content">
                             <h2>100000 VND</h2>
                             <p>Charge with 100000 VND</p>
-                            <a href="ScratchCardServlet?charge=100000" class="btn btn-default my_btn"><i class="fa fa-cc-visa"></i> Charge</a>
+                            <a href="ScartchCardServlet?charge=100000" class="btn btn-default my_btn"><i class="fa fa-cc-visa"></i> Charge</a>
                         </div>
                     </div>
                 </div>
@@ -58,13 +58,13 @@
                         <i class="fa fa-cc-visa fa-4x" aria-hidden="true" style="color:lightskyblue"></i>
                         <h2>200000 VND</h2>
                         <p>Charge with 200000 VND</p>
-                        <a href="ScratchCardServlet?charge=200000" class="btn btn-default my_btn"><i class="fa fa-cc-visa"></i> Charge</a>
+                        <a href="ScartchCardServlet?charge=200000" class="btn btn-default my_btn"><i class="fa fa-cc-visa"></i> Charge</a>
                     </div>
                     <div class="product-overlay">
                         <div class="overlay-content">
                             <h2>200000 VND</h2>
                             <p>Charge with 200000 VND</p>
-                            <a href="ScratchCardServlet?charge=200000" class="btn btn-default my_btn"><i class="fa fa-cc-visa"></i> Charge</a>
+                            <a href="ScartchCardServlet?charge=200000" class="btn btn-default my_btn"><i class="fa fa-cc-visa"></i> Charge</a>
                         </div>
                     </div>
                 </div>
@@ -78,13 +78,13 @@
                         <i class="fa fa-cc-visa fa-4x" aria-hidden="true" style="color:lightskyblue"></i>
                         <h2>500000 VND</h2>
                         <p>Charge with 500000 VND</p>
-                        <a href="ScratchCardServlet?charge=500000" class="btn btn-default my_btn"><i class="fa fa-cc-visa"></i> Charge</a>
+                        <a href="ScartchCardServlet?charge=500000" class="btn btn-default my_btn"><i class="fa fa-cc-visa"></i> Charge</a>
                     </div>
                     <div class="product-overlay">
                         <div class="overlay-content">
                             <h2>500000 VND</h2>
                             <p>Charge with 500000 VND</p>
-                            <a href="ScratchCardServlet?charge=500000" class="btn btn-default my_btn"><i class="fa fa-cc-visa"></i> Charge</a>
+                            <a href="ScartchCardServlet?charge=500000" class="btn btn-default my_btn"><i class="fa fa-cc-visa"></i> Charge</a>
                         </div>
                     </div>
                 </div>

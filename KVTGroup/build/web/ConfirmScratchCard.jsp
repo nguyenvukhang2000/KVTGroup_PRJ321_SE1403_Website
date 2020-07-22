@@ -15,8 +15,8 @@
         <div class="row">
             <div class="col-xs-9">
                 <center><h2 class="title text-center">aa </h2>
-            <p>your cash VND${LoginUser.cash}</p>
-               <Input type="Text" class="input-field" name="CardStr" placeholder="write card code" required="true">
+            <p>your cash VND${LoginUser.uCash}</p>
+               <Input type="text" class="input-field" name="CardStr" placeholder="write card code" required="true">
                 
                 <BR>
                 <BR>

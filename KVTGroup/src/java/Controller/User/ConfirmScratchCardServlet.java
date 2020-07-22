@@ -83,7 +83,7 @@ public class ConfirmScratchCardServlet extends HttpServlet {
         int userId = user.getuId();
         double cash = user.getuCash();
 
-        String cartStr = request.getParameter("CartStr");
+        String cartStr = request.getParameter("CardStr");
 
         ScratchCardDAO scratchCardDAO = new ScratchCardDAO();
         boolean exist = scratchCardDAO.checkCardExistForUser(cartStr);
