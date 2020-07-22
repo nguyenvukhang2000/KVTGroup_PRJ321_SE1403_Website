@@ -90,12 +90,16 @@ public class PayController extends HttpServlet {
         //check money
         if(total > user.getuCash()) {
             message += " * Your cash less than total require please charge your cash<br/>";
+             request.getSession().setAttribute("message", message);
+            response.sendRedirect("Failed.jsp");
+            return;
         }
         
         //an error occure
         if(!message.trim().equals("")) {
             request.getSession().setAttribute("message", message);
             response.sendRedirect("Failed.jsp");
+            return;
         }
         
         //-------------- Payment proccess ------------------
