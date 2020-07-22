@@ -12,7 +12,7 @@
 <jsp:include page="ChargeServlet"/>
 <div class="col-sm-9 padding-right">
     <h2>Scratch Card
-        <!--<a class="btn btn-default" style="float: right;" href="AddCards.jsp">New Card</a>-->
+        <a class="btn btn-default" style="float: right;" href="addcards.jsp">New Card</a>
     </h2>
     <div class="table-responsive cart_info">
         <table class="table table-condensed">
@@ -25,7 +25,7 @@
             <tbody>
                 <tr>
                     <td class="cart_product">
-                        <p>50$</p>
+                        <p>50000VND</p>
                     </td>
                     <td class="cart_description">
                         <p>${requestScope.SumCard50}</p>
@@ -33,7 +33,7 @@
                 </tr>
                 <tr>
                     <td class="cart_product">
-                        <p>100$</p>
+                        <p>100000VND</p>
                     </td>
                     <td class="cart_description">
                         <p>${requestScope.SumCard100}</p>
@@ -42,7 +42,7 @@
                 </tr>
                 <tr>
                     <td class="cart_product">
-                        <p>200$</p>
+                        <p>200000VND</p>
                     </td>
                     <td class="cart_description">
                         <p>${requestScope.SumCard200}</p>
@@ -51,7 +51,7 @@
                 </tr>
                 <tr>
                     <td class="cart_product">
-                        <p>500$</p>
+                        <p>500000VND</p>
                     </td>
                     <td class="cart_description">
                         <p>${requestScope.SumCard500}</p>

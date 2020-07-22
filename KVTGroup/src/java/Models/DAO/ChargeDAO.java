@@ -5,6 +5,7 @@
  */
 package Models.DAO;
 
+import Models.Entities.Charge;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -59,5 +60,37 @@ public class ChargeDAO {
             e.printStackTrace();
         }
         return coutOfCard;
+    }
+    
+    public boolean numberOfCardIsFound(String numbercheck) {
+        try {
+            pst = db.getConnect().prepareStatement("select chargeCardNumber from charge where  chargeCardNumber=?  ");
+            pst.setString(1, numbercheck);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+    
+    public boolean addCard(Charge obj) {
+        try {
+            pst = db.getConnect().prepareStatement("INSERT INTO `charge`(`chargeCardNumber`, `chargeValue`, `chargeUsed`, `chargeTaken`) VALUES (?,?,?,?)");
+
+            pst.setString(1, obj.getChargecardNumber());
+            pst.setInt(2, obj.getChargeValue());
+            pst.setInt(3, obj.getChargeUsed());
+            pst.setInt(4, obj.getChargeTaken());
+            if (pst.executeUpdate() > 0) {
+                return true;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return false;
+
     }
 }
