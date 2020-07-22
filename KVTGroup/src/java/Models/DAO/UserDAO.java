@@ -52,7 +52,7 @@ public class UserDAO{
         if (!search(bean.getuName())) {
             try {
              
-                String sql = "INSERT INTO `users` (`uId`, `uName`, `uEmail`, `uAddress`, `uJob`, `uPassword`, `uCreaditCard`, `uCash`, `uRole`, `uPhoto`) VALUES (NULL,?,?,?,?, MD5(?), ?, ?, ?, ?)";
+                String sql = "INSERT INTO `users` (`uId`, `uName`, `uEmail`, `uAddress`, `uJob`, `uPassword`, `uCreditCard`, `uCash`, `uRole`, `uPhoto`) VALUES (NULL,?,?,?,?, MD5(?), ?, ?, ?, ?)";
                 PreparedStatement pst1 = con.prepareStatement(sql);
 
                 pst1.setString(1, bean.getuName());
@@ -103,7 +103,7 @@ public class UserDAO{
 //                    userSinIn.setuCash(rs.getInt("uCash"));
 //                    userSinIn.setuRole(rs.getString("uRole"));
 //                    userSinIn.setuPhoto(rs.getString("uPhoto"));
-                    userSinIn = new User(rs.getString("uName"),rs.getString("uEmail") , rs.getInt("uId"),rs.getString("uJob"), rs.getString("uPassword"), rs.getString("uRole"), rs.getString("uPhoto"), rs.getString("uAddress"),rs.getString("uCreaditCard"),rs.getInt("uCash"));
+                    userSinIn = new User(rs.getString("uName"),rs.getString("uEmail") , rs.getInt("uId"),rs.getString("uJob"), rs.getString("uPassword"), rs.getString("uRole"), rs.getString("uPhoto"), rs.getString("uAddress"),rs.getString("uCreditCard"),rs.getInt("uCash"));
                     System.out.println("tú tú ");
                     System.out.println(userSinIn);
                 }
@@ -132,7 +132,7 @@ public class UserDAO{
                 }
                 System.out.println("-=-=-=-=-= 0 -=-=-=-=-= ");
                 
-                PreparedStatement pst = con.prepareStatement("UPDATE `users` SET `uName`=?,`uEmail`=?,`uAddress`=?,`uJob`=?,`uPassword`=?,`uCreaditCard`=?,`uCash`=?,`uRole`=?,`uPhoto`=? WHERE `uId`= ?");
+                PreparedStatement pst = con.prepareStatement("UPDATE `users` SET `uName`=?,`uEmail`=?,`uAddress`=?,`uJob`=?,`uPassword`=?,`uCreditCard`=?,`uCash`=?,`uRole`=?,`uPhoto`=? WHERE `uId`= ?");
                 pst.setString(1, updateUser.getuName());
                 pst.setString(5, SHA.encrypt(updateUser.getuPassword()));
                 pst.setString(2, updateUser.getuEmail());
@@ -173,7 +173,7 @@ public class UserDAO{
                 user.setuAddress(rs.getString("uAddress"));
                 user.setuPassword(rs.getString("uPassword"));
                 user.setuJob(rs.getString("uJob"));
-                user.setuCreditCard(rs.getString("uCreaditCard"));
+                user.setuCreditCard(rs.getString("uCreditCard"));
                 user.setuCash(rs.getInt("uCash"));
                 user.setuRole(rs.getString("uRole"));
                 user.setuPhoto(rs.getString("uPhoto"));
@@ -204,7 +204,7 @@ public class UserDAO{
                 user.setuAddress(rs.getString("uAddress"));
                 user.setuPassword(rs.getString("uPassword"));
                 user.setuJob(rs.getString("uJob"));
-                user.setuCreditCard(rs.getString("uCreaditCard"));
+                user.setuCreditCard(rs.getString("uCreditCard"));
                 user.setuCash(rs.getInt("uCash"));
                 user.setuRole(rs.getString("uRole"));
                 user.setuPhoto(rs.getString("uPhoto"));
