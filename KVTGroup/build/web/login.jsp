@@ -18,6 +18,10 @@
                         <input type="password" placeholder="password" id="SigninPassword" name="SigninPassword" required/>
                         <button type="submit" class="btn btn-default">Login</button>
                     </form>
+                    <form action="ForgetPass.jsp" id="SigninForm" method="post">       
+                        <button class="btn btn-default">Forget passWord ?</button>
+                    </form>
+
                 </div><!--/login form-->
             </div>
             <div class="col-sm-1">

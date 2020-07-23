@@ -10,28 +10,36 @@
         <error-code>403</error-code>
         <location>/error.html</location>
     </error-page>
-    <error-page>
-        <!-- Missing resource -->
+<!--    <error-page>
+         Missing resource 
         <error-code>404</error-code>
         <location>/404.jsp</location>
     </error-page>
     <error-page>
-        <!-- Uncaught exception -->
+         Uncaught exception 
         <error-code>500</error-code>
         <location>/error.html</location>
     </error-page>
     <error-page>
-        <!-- Unsupported servlet method -->
+         Unsupported servlet method 
         <error-code>503</error-code>
         <location>/error.html</location>
-    </error-page>
+    </error-page>-->
     <servlet>
         <servlet-name>SearchForProduct</servlet-name>
         <servlet-class>Controller.User.SearchForProduct</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ForgotPass</servlet-name>
+        <servlet-class>Controller.User.ForgetPass</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SearchForProduct</servlet-name>
         <url-pattern>/SearchForProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ForgotPass</servlet-name>
+        <url-pattern>/ForgotPass</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

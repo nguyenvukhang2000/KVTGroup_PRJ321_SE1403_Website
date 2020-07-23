@@ -117,6 +117,31 @@ public class UserDAO{
         System.out.println("tú tú 111");
         return null;
     }
+        public User TakeNameForget(String username) {
+
+        User userSinIn = new User();
+        try {
+            if (search(username)) {
+//                con = db.getConnect();
+                String sql = "SELECT * FROM `users` WHERE `uName`=?";
+                PreparedStatement pst = con.prepareStatement(sql);
+                pst.setString(1, username);
+                ResultSet rs = pst.executeQuery();
+                if (rs.next()) {
+                    userSinIn = new User(rs.getString("uName"),rs.getString("uEmail") , rs.getInt("uId"),rs.getString("uJob"), rs.getString("uPassword"), rs.getString("uRole"), rs.getString("uPhoto"), rs.getString("uAddress"),rs.getString("uCreditCard"),rs.getInt("uCash"));
+                    System.out.println("tú tú ");
+                    System.out.println(userSinIn);
+                }
+                
+                System.out.println(userSinIn);
+                return userSinIn;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        System.out.println("tú tú 111");
+        return null;
+    }
 
     public boolean updateUser(User updateUser ,String path) {
 
