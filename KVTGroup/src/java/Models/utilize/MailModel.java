@@ -54,7 +54,7 @@ public class MailModel {
             generateMailMessage = new MimeMessage(getMailSession);
             generateMailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
             generateMailMessage.setSubject("KVT Shop | " + subject);
-            emailBody += "<br><br>Your Chat Team <br> <a href='#'>visit us</a>";
+            emailBody += "<br><br>Your Chat Team <br> <a href='https://www.facebook.com/silver.dry.9'>visit us</a>";
             generateMailMessage.setContent(emailBody, "text/html");
 
 
