@@ -117,6 +117,22 @@ public class UserDAO{
         System.out.println("tú tú 111");
         return null;
     }
+     public Boolean UpdatePass(String username, String password) {
+            try {
+                PreparedStatement pst = con.prepareStatement("UPDATE `users` SET `uPassword`= ? WHERE `uName` = ?");
+                pst.setString(1,SHA.encrypt(password));
+                String passs = SHA.encrypt(password);
+                pst.setString(2,username);
+                return true;
+            }
+         catch (SQLException ex) {
+            ex.printStackTrace();
+         }
+        
+        
+        System.out.println("tú tú 111");
+        return false;
+    }
         public User TakeNameForget(String username) {
 
         User userSinIn = new User();

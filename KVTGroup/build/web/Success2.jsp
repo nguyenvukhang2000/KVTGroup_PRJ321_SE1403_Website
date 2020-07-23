@@ -20,8 +20,8 @@
     </div>
 
     <c:if test="${!empty requestScope.ShowComfirm}">
-        <center><div   id="goToCharge" >
-                <font size="5px">  <a href="ConfirmScratchCard.jsp"><i class="fa fa-arrow-circle-right fa-3x"></i>Go For Charging</a></font>
+        <center><div id="goToCharge" >
+                <font size="5px">  <a href="ConfirmForget.jsp"><i class="fa fa-arrow-circle-right fa-3x"></i>Go To Confirm</a></font>
             </div></center>
         </c:if>
 </section>

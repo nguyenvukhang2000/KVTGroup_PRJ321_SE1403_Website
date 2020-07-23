@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    <error-page>
-        <!-- Missing login -->
+<!--    <error-page>
+         Missing login 
         <error-code>401</error-code>
         <location>/error.html</location>
     </error-page>
     <error-page>
-        <!-- Forbidden directory listing -->
+         Forbidden directory listing 
         <error-code>403</error-code>
         <location>/error.html</location>
     </error-page>
@@ -24,7 +24,7 @@
          Unsupported servlet method 
         <error-code>503</error-code>
         <location>/error.html</location>
-    </error-page>
+    </error-page>-->
     <servlet>
         <servlet-name>SearchForProduct</servlet-name>
         <servlet-class>Controller.User.SearchForProduct</servlet-class>

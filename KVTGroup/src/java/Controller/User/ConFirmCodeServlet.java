@@ -7,25 +7,21 @@ package Controller.User;
 
 import Models.DAO.UserDAO;
 import Models.Entities.User;
-import Models.utilize.MailModel;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Random;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
+import javax.mail.Session;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "ForgetPass", urlPatterns = {"/ForgetPass"})
-public class ForgetPass extends HttpServlet {
+@WebServlet(name = "ConFirmCodeServlet" ,urlPatterns = {"/ConFirmCodeServlet"})
+public class ConFirmCodeServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,10 +40,10 @@ public class ForgetPass extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ForgotPass</title>");            
+            out.println("<title>Servlet ConFirmCodeServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ForgotPass at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ConFirmCodeServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -65,7 +61,7 @@ public class ForgetPass extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+        processRequest(request, response);
     }
 
     /**
@@ -79,32 +75,18 @@ public class ForgetPass extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
+        String CodeGetPass = request.getSession().getAttribute("CodeGetPass").toString();
+        String CodeInput = request.getParameter("ForgetName");
+        if (CodeGetPass.equals(CodeInput)) {
+            response.sendRedirect("AddNewPass.jsp");
+        }else
+        {
+            request.setAttribute("message", "ERROR your code or Not Matched!!!");
+            getServletContext().getRequestDispatcher("/Failed.jsp").forward(request, response);
+        }
         
-        String username = request.getParameter("ForgetName");
-        UserDAO us = new UserDAO();
-        User user = new User();
-        user = us.TakeNameForget(username);
-        String CodeGetPass = getCodeConfirm(6);
-           if(user == null ){
-               //TODO : MAKE forget password
-               request.setAttribute("message", "Cant't Found UserName !!!");
-               getServletContext().getRequestDispatcher("/Failed.jsp").forward(request, response);
-           } else {
-               
-                request.setAttribute("ShowComfirm", true);
-                request.setAttribute("message", "Please Check Email to Comfirm Code!!!");
-                HttpSession session = request.getSession();
-                session.setAttribute("CodeGetPass", CodeGetPass);
-                session.setAttribute("userNameForget",username);
-                String mail = "The code to get the password is:  " + CodeGetPass;
-                 new MailModel(user.getuEmail(), "Your Code", mail).sendMail();
-                    
-                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Success2.jsp");
-                    dispatcher.forward(request, response);                //user
-           }
     }
-    
+
     /**
      * Returns a short description of the servlet.
      *
@@ -114,16 +96,5 @@ public class ForgetPass extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-    private String getCodeConfirm(int numSize) {
-        Random rand = new Random();
-        StringBuffer number = new StringBuffer();
 
-        while (number.length() < numSize) {
-            // Generates a random number between 0x10 and 0x99
-            int myRandomNumber = rand.nextInt(0x99) + 0x10;
-            number.append(Integer.toHexString(myRandomNumber));
-        }
-
-        return number.toString();
-    }
 }
