@@ -37,7 +37,7 @@
                                 <p>${user.uEmail}</p>
                             </td>
                             <td class="cart_delete">
-                                <a class="cart_quantity_delete" href="AdminProfile?id=${user.uId}"><i class="fa fa-pencil"></i></a>
+                                <a class="cart_delete a" href="AdminProfile?id=${user.uId}"><i class="fa fa-pencil"></i></a>
                             </td>
                         </tr>
                     </c:forEach>

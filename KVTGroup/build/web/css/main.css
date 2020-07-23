@@ -683,10 +683,10 @@ ul.sub-menu {
 .left-sidebar h2:before{
     content: " ";
     position: absolute;
-    background: #fff;
+    background: #f0f0e9;
     bottom: -6px;
     width: 130px;
-    height: 30px;
+    height: 20px;
     z-index: -1;
     left: 50%;
     margin-left: -65px;
@@ -713,14 +713,14 @@ h2.title:before{
 }
 
 .category-products .panel-default .panel-heading {
-    background-color: #FFFFFF;
+    background-color: #36b757;
     border: 0 none;
     color: #FFFFFF;
     padding: 5px 20px;
 }
 
 .category-products .panel-default .panel-heading .panel-title a {
-    color: #696763;
+    color: #f7f7f0;
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     text-decoration: none;
@@ -1657,7 +1657,7 @@ h2.title {
 
 .cart_delete a {
     background:#F0F0E9;
-    color: #FFFFFF;
+    color: #36b757;
     padding: 5px 7px;
     font-size: 16px;
     margin: 24px 0px;
@@ -1665,7 +1665,7 @@ h2.title {
 }
 
 .cart_delete a:hover {
-    background:#36b757
+    background:#b1cbe2
 }
 
 

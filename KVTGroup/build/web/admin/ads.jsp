@@ -40,11 +40,7 @@
            </tbody>
         </table>
     </div>
-
 </div>
-</div>
-</div>
-</section> <!--/#cart_items-->
 
 <%-- include footer file --%> 
 <%@include file="Footer.jsp" %>
