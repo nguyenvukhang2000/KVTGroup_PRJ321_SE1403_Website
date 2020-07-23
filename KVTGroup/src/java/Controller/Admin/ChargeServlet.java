@@ -61,15 +61,15 @@ public class ChargeServlet extends HttpServlet {
             throws ServletException, IOException {
         ChargeDAO chargeDAO = new ChargeDAO();
         PrintWriter out = response.getWriter();
-        int SumCard50 = chargeDAO.getSumCardNumber(50);
+        int SumCard50 = chargeDAO.getSumCardNumber(50000);
         request.setAttribute("SumCard50", SumCard50);
-        int SumCard100 = chargeDAO.getSumCardNumber(100);
+        int SumCard100 = chargeDAO.getSumCardNumber(100000);
         request.setAttribute("SumCard100", SumCard100);
 
-        int SumCard200 = chargeDAO.getSumCardNumber(200);
+        int SumCard200 = chargeDAO.getSumCardNumber(200000);
         request.setAttribute("SumCard200", SumCard200);
 
-        int SumCard500 = chargeDAO.getSumCardNumber(500);
+        int SumCard500 = chargeDAO.getSumCardNumber(500000);
         request.setAttribute("SumCard500", SumCard500);
     }
 

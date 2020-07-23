@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ASUS/Documents/GitHub/KVTGroup_PRJ321_SE1403_Website/KVTGroup/web/profile.jsp</file>
-            <file>file:/C:/Users/ASUS/Documents/GitHub/KVTGroup_PRJ321_SE1403_Website/KVTGroup/web/login.jsp</file>
-            <file>file:/C:/Users/ASUS/Documents/GitHub/KVTGroup_PRJ321_SE1403_Website/KVTGroup/src/java/Controller/User/Profile.java</file>
-            <file>file:/C:/Users/ASUS/Documents/GitHub/KVTGroup_PRJ321_SE1403_Website/KVTGroup/src/java/Models/DAO/UserDAO.java</file>
+            <file>file:/C:/Users/MSI/Documents/GitHub/KVTGroup_PRJ321_SE1403_Website/KVTGroup/web/login.jsp</file>
+            <file>file:/C:/Users/MSI/Documents/GitHub/KVTGroup_PRJ321_SE1403_Website/KVTGroup/web/admin/Charge.jsp</file>
+            <file>file:/C:/Users/MSI/Documents/GitHub/KVTGroup_PRJ321_SE1403_Website/KVTGroup/src/java/Controller/Admin/ChargeServlet.java</file>
+            <file>file:/C:/Users/MSI/Documents/GitHub/KVTGroup_PRJ321_SE1403_Website/KVTGroup/src/java/Models/DAO/ChargeDAO.java</file>
         </group>
     </open-files>
 </project-private>

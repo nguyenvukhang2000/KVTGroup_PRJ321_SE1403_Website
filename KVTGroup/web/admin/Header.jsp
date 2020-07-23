@@ -95,7 +95,7 @@
                             </div>
                             <div class="mainmenu pull-left">
                                 <ul class="nav navbar-nav collapse navbar-collapse">
-                                    <li><a href="index.jsp" class="active">Panel</a></li>
+                                    <li><a href="Index.jsp" class="active">Panel</a></li>
                                 </ul>
                             </div>
                         </div>
