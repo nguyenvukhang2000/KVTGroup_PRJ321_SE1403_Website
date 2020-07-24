@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-9">
-                <center><h2 class="title text-center">aa </h2>
+                <center><h2 class="title text-center"> Please enter your code </h2>
             <p>your cash VND${LoginUser.uCash}</p>
                <Input type="text" class="input-field" name="CardStr" placeholder="write card code" required="true">
                 

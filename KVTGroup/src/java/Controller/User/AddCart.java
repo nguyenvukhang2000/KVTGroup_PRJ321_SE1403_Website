@@ -61,20 +61,21 @@ public class AddCart extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        CartsDAO cartsDAO = new CartsDAO();
+        CartsDAO cartsDAO = new CartsDAO(); //creates a new object of cartsDAO
         
-        int pId = Integer.parseInt(request.getParameter("productID"));
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        int pId = Integer.parseInt(request.getParameter("productID")); //get parameter id of product
+        int quantity = Integer.parseInt(request.getParameter("quantity")); //get parameter quantity of product
         
-        User user = (User)request.getSession().getAttribute("LoginUser");
+        User user = (User)request.getSession().getAttribute("LoginUser"); //after user login success then get attribute LoginUser
         
-        Cart cart = new Cart();
-        cart.setpId(pId);
-        cart.setCartQuantity(quantity);
-        cart.setuId(user.getuId());
+        Cart cart = new Cart(); //create a new object Cart
+        cart.setpId(pId); //set id for cart
+        cart.setCartQuantity(quantity); //set quantity for cart
+        cart.setuId(user.getuId()); //set id for user
         
+        //If user add product into cart success
         if(cartsDAO.addCart(cart)) {
-            response.getWriter().print(cartsDAO.getNumberOfCartsForUser(user.getuId()));
+            response.getWriter().print(cartsDAO.getNumberOfCartsForUser(user.getuId())); //and then display all product add by user in cart
         }
     }
 
