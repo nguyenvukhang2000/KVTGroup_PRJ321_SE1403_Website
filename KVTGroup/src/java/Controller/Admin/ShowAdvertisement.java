@@ -74,10 +74,12 @@ public class ShowAdvertisement extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         model = new AdvertisementDAO();
+        //get all ads from database
         arr = model.getAllAdvertisement();
+        //set all ads to attribute
         request.setAttribute("allAdsAdmin", arr);
         String nextJSP = "/admin/ads.jsp";
-
+        //and foword to ads.jsp
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(nextJSP);
         dispatcher.forward(request, response);
     }

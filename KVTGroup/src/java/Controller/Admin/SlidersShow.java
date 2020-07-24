@@ -64,9 +64,11 @@ public class SlidersShow extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         SlidersDAO slidersDAO = new SlidersDAO();
+        //get all slider from database
         listOfSlider = slidersDAO.getAllSliders();
-        
+        //set listOfAttribute of list of slider
         request.setAttribute("listOfSlider", listOfSlider);
+        //foword to offers.jsp
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/offers.jsp");
         dispatcher.forward(request, response);
     }

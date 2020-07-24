@@ -19,7 +19,7 @@ public class SessionHandler implements HttpSessionListener {
     private static int  onlineUsers = 0;
 
     /**
-     *
+     * method to increate onlineuser when session is start and add new online user
      * @param se
      */
     @Override
@@ -28,7 +28,7 @@ public class SessionHandler implements HttpSessionListener {
     }
 
     /**
-     *
+     *method to descreate onlineuser when session is end
      * @param se
      */
     @Override
@@ -37,7 +37,7 @@ public class SessionHandler implements HttpSessionListener {
     }
     
     /**
-     *
+     *method to get online user
      * @return
      */
     public static int getOnlineUsers(){

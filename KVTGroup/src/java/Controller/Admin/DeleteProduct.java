@@ -59,8 +59,11 @@ public class DeleteProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //get id from request jsp
         int id = Integer.parseInt(request.getParameter("pId"));
         String path = request.getServletContext().getRealPath("");
+        //delete product with id and path of image
+        //if delete success will show again in adminproductservlet
         if(new ProductsDAO().deleteProduct(id, path)){
             request.getSession().setAttribute("AlertMessage", "Product Delete Successfully");
             request.getSession().setAttribute("AlertType", "Success");
