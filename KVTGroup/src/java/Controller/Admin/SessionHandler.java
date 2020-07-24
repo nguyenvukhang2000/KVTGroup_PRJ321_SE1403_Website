@@ -17,16 +17,29 @@ import javax.servlet.http.HttpSessionListener;
 public class SessionHandler implements HttpSessionListener {
 
     private static int  onlineUsers = 0;
+
+    /**
+     *
+     * @param se
+     */
     @Override
     public void sessionCreated(HttpSessionEvent se) {
         onlineUsers++;
     }
 
+    /**
+     *
+     * @param se
+     */
     @Override
     public void sessionDestroyed(HttpSessionEvent se) {
        onlineUsers--;
     }
     
+    /**
+     *
+     * @return
+     */
     public static int getOnlineUsers(){
         return onlineUsers;
     }

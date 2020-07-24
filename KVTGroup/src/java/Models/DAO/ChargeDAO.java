@@ -22,7 +22,7 @@ public class ChargeDAO {
     private PreparedStatement pst;
     
     /**
-     *
+     *constructor
      */
     public ChargeDAO(){
         db = new DBConnection();
@@ -32,7 +32,7 @@ public class ChargeDAO {
     
     /**
      *
-     * @return
+     * @return check charge have or not 
      */
     public int getProfit(){
         int profit = 0;
@@ -56,8 +56,8 @@ public class ChargeDAO {
     
     /**
      *
-     * @param value
-     * @return
+     * @param value value charge to buy
+     * @return count of card
      */
     public int getSumCardNumber(int value){
         int coutOfCard = 0;
@@ -95,8 +95,8 @@ public class ChargeDAO {
     
     /**
      *
-     * @param obj
-     * @return
+     * @param obj add new card from addmin
+     * @return  true or false
      */
     public boolean addCard(Charge obj) {
         try {

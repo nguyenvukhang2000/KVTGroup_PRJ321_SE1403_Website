@@ -32,7 +32,7 @@ public class CategoryDAO {
     
     /**
      *
-     * @return
+     * @return List of category
      */
     public ArrayList<Category> allCategoriess() {
         ArrayList<Category> allCategory = new ArrayList<>();
@@ -54,8 +54,8 @@ public class CategoryDAO {
     
     /**
      *
-     * @param category
-     * @return
+     * @param category object category
+     * @return true or false
      */
     public boolean addCategory(Category category){
         try {

@@ -15,11 +15,24 @@ import Models.utilize.SHA;
  */
 public class UserDAO{
 
-   public User bean = new User();
-   public Connection con;
+    /**
+     *
+     */
+    public User bean = new User();
+
+    /**
+     *
+     */
+    public Connection con;
+
+    /**
+     *
+     */
     public boolean b = false;
   
-
+    /**
+     *
+     */
     public UserDAO() {
         DBConnection db = new DBConnection();
         this.con = db.getConnect();  
@@ -44,6 +57,11 @@ public class UserDAO{
         return b;
     }
 
+    /**
+     *
+     * @param bean
+     * @return
+     */
     public boolean signUp(User bean) {
         
         boolean b = false;
@@ -79,6 +97,12 @@ public class UserDAO{
         return b;
     }
 
+    /**
+     *
+     * @param username
+     * @param password
+     * @return
+     */
     public User signIn(String username, String password) {
 
         User userSinIn = new User();
@@ -93,17 +117,6 @@ public class UserDAO{
                 ResultSet rs = pst.executeQuery();
                
                 if (rs.next()) {
-//                    userSinIn = new User();
-//                    userSinIn.setuId(rs.getInt("uId"));
-//                    userSinIn.setuName(rs.getString("uName"));
-//                    userSinIn.setuEmail(rs.getString("uEmail"));
-//                    userSinIn.setuAddress(rs.getString("uAddress"));
-//                    userSinIn.setuPassword(rs.getString("uPassword"));
-//                    userSinIn.setuJob(rs.getString("uJob"));
-//                    userSinIn.setuCreditCard(rs.getString("uCreaditCard"));
-//                    userSinIn.setuCash(rs.getInt("uCash"));
-//                    userSinIn.setuRole(rs.getString("uRole"));
-//                    userSinIn.setuPhoto(rs.getString("uPhoto"));
                     userSinIn = new User(rs.getString("uName"),rs.getString("uEmail") , rs.getInt("uId"),rs.getString("uJob"), rs.getString("uPassword"), rs.getString("uRole"), rs.getString("uPhoto"), rs.getString("uAddress"),rs.getString("uCreditCard"),rs.getInt("uCash"));
                     System.out.println("tú tú ");
                     System.out.println(userSinIn);
@@ -118,7 +131,14 @@ public class UserDAO{
         System.out.println("tú tú 111");
         return null;
     }
-     public Boolean UpdatePass(String username, String password) {
+
+    /**
+     *
+     * @param username
+     * @param password
+     * @return
+     */
+    public Boolean UpdatePass(String username, String password) {
             try {
                 PreparedStatement pst = con.prepareStatement("UPDATE `users` SET `uPassword`= ? WHERE `uName` = ?");
                 pst.setString(1,SHA.encrypt(password));
@@ -134,7 +154,13 @@ public class UserDAO{
         System.out.println("tú tú 111");
         return false;
     }
-        public User TakeNameForget(String username) {
+
+    /**
+     *
+     * @param username
+     * @return
+     */
+    public User TakeNameForget(String username) {
 
         User userSinIn = new User();
         try {
@@ -160,6 +186,12 @@ public class UserDAO{
         return null;
     }
 
+    /**
+     *
+     * @param updateUser
+     * @param path
+     * @return
+     */
     public boolean updateUser(User updateUser ,String path) {
 
         try {
@@ -198,7 +230,10 @@ public class UserDAO{
         return false;
     }
 
-
+    /**
+     *
+     * @return
+     */
     public ArrayList<User> getAllUsers() {
         
         ArrayList<User> allUser = new ArrayList();
@@ -230,6 +265,11 @@ public class UserDAO{
         return null;
     }
     
+    /**
+     *
+     * @param id
+     * @return
+     */
     public User getUser(int id) {
         User user = null ;
         try {
@@ -261,6 +301,12 @@ public class UserDAO{
         
     }
     
+    /**
+     *
+     * @param updateUser
+     * @return
+     * @throws SQLException
+     */
     public boolean updateUserBalance(User updateUser) throws SQLException {
 
        

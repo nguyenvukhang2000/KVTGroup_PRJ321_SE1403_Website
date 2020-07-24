@@ -24,29 +24,29 @@ import java.util.logging.Logger;
 public class ProductsDAO {
 
     /**
-     *
+     *Constructor
      */
     public ResultSet rs = null;
 
     /**
-     *
+     *Constructor
      */
     public PreparedStatement pst = null;
 
     /**
-     *
+     *Constructor
      */
     public  DBConnection db;
 
     /**
-     *
+     *Constructor
      */
     public int noOfRecords;
 
     Connection conn;
 
     /**
-     *
+     *Constructor
      */
     public ProductsDAO() {
        db = new DBConnection();
@@ -56,7 +56,7 @@ public class ProductsDAO {
 
     /**
      *
-     * @return
+     * @return all product in database
      */
     public ArrayList<Product> getAllProducts() {
         ArrayList<Product> listProducts = new ArrayList();
@@ -111,7 +111,7 @@ public class ProductsDAO {
      * @param categoryId
      * @param start
      * @param limit
-     * @return
+     * @return all Product By category
      */
     public List<Product> getAllProductByCategoryId(int categoryId, int start, int limit) {
         ArrayList<Product> listProducts = new ArrayList();
@@ -142,7 +142,7 @@ public class ProductsDAO {
 
     /**
      *
-     * @return
+     * @return 
      */
     public int getNoOfRecords() {
         return noOfRecords;
@@ -150,8 +150,8 @@ public class ProductsDAO {
 
     /**
      *
-     * @param productId
-     * @return
+     * @param productId id Product
+     * @return product by id
      */
     public Product getProduct(int productId) {
         Product product = new Product(); //to return value of select
@@ -231,7 +231,7 @@ public class ProductsDAO {
 
     /**
      *
-     * @return
+     * @return rice of product
      */
     public double getMaxProductByPrice() {
         double highestprice = 0;
@@ -250,8 +250,8 @@ public class ProductsDAO {
 
     /**
      *
-     * @param productName
-     * @return
+     * @param productName name product
+     * @return product by name
      */
     public ArrayList<Product> getProductByName(String productName) {
         ArrayList<Product> listProductByName = new ArrayList();
@@ -281,7 +281,7 @@ public class ProductsDAO {
      *
      * @param priceStart
      * @param priceEnd
-     * @return
+     * @return product by Start price and end price
      */
     public ArrayList<Product> getAllProductByPrice(double priceStart, double priceEnd) {
         ArrayList<Product> getAllProductByPrice = new ArrayList();
@@ -306,8 +306,8 @@ public class ProductsDAO {
     
     /**
      *
-     * @param product
-     * @return
+     * @param product object of Product
+     * @return true or false 
      * @throws SQLException
      */
     public boolean updateProductQuantity(Product product) throws SQLException {

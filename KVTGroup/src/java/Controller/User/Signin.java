@@ -36,12 +36,13 @@ public class Signin extends HttpServlet {
             throws ServletException, IOException {
         
         PrintWriter out = response.getWriter();
-        
+        //get User Name and password when Customer inptut
         String username = request.getParameter("SigninName");
         String password = request.getParameter("SigninPassword");
-        UserDAO us = new UserDAO();
+        UserDAO us = new UserDAO(); // constructor User
         User user = new User();
-        user = us.signIn(username, password);
+        user = us.signIn(username, password); // call funtion to sinup
+            // if null it mean user not have exist and sendirect failed.jsp
            if(user == null ){
                //TODO : MAKE forget password
                request.setAttribute("message", "Cant't Login <br/> Wrong username or password .. ");

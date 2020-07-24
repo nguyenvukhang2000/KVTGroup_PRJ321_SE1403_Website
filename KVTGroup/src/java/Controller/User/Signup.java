@@ -33,6 +33,7 @@ public class Signup extends HttpServlet {
         PrintWriter out = response.getWriter();
         
         //-------------- get request paramater ------------------
+        // when user input infomation
         String username = request.getParameter("SignupName");
         String email = request.getParameter("SignupEmail");
         String password = request.getParameter("SignupPassword");
@@ -41,6 +42,7 @@ public class Signup extends HttpServlet {
         String creditCrd = request.getParameter("SignupCreditCard");
         
         //-------------- create user object ------------------
+        // to set new user 
         User user = new User();
         user.setuName(username);
         user.setuEmail(email);
@@ -50,7 +52,8 @@ public class Signup extends HttpServlet {
         user.setuAddress(address);
         user.setuCreditCard(creditCrd);
         user.setuCash(0); 
-        UserDAO us = new UserDAO();
+        UserDAO us = new UserDAO(); // cuntructor
+        // if have some infomation before senredirect failed.jsp
         if(us.signUp(user)){
             request.setAttribute("message", "You signup successfully");
             getServletContext().getRequestDispatcher("/Success.jsp").forward(request, response);

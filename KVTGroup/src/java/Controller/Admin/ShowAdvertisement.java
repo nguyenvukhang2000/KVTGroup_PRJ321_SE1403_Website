@@ -37,6 +37,13 @@ public class ShowAdvertisement extends HttpServlet {
     ArrayList<Advertisement> arr;
     AdvertisementDAO model;
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");

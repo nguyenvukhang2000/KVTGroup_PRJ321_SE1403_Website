@@ -22,7 +22,7 @@ public class HistoryDAO {
     private Connection conn;
 
     /**
-     *
+     * constructor
      */
     public HistoryDAO() {
         DBConnection db = new DBConnection();
@@ -31,7 +31,7 @@ public class HistoryDAO {
     
     /**
      *
-     * @param h
+     * @param h object History
      * @return
      * @throws SQLException
      */
@@ -51,7 +51,7 @@ public class HistoryDAO {
     
     /**
      *
-     * @return
+     * @return object History in database
      */
     public ArrayList<History> getAllHistory(){
         ArrayList<History> listOfHistorys = new ArrayList<History>();

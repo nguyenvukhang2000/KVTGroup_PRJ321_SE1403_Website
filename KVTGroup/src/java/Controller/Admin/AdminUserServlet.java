@@ -25,6 +25,13 @@ import javax.servlet.http.HttpServletResponse;
 public class AdminUserServlet extends HttpServlet {
     ArrayList<User> listOfUser = new ArrayList<User>();
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         UserDAO userDAO = new UserDAO();

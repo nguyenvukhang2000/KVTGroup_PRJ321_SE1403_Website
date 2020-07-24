@@ -29,7 +29,7 @@ public class PaysDAO {
     private Connection conn;
 
     /**
-     *
+     *conStructor
      */
     public PaysDAO() {
         try {
@@ -45,8 +45,8 @@ public class PaysDAO {
     
     /**
      *
-     * @param user
-     * @param sold
+     * @param user object User
+     * @param sold all Product in cart
      * @return
      */
     public boolean startPayment(User user, ArrayList<CartProduct> sold) {
