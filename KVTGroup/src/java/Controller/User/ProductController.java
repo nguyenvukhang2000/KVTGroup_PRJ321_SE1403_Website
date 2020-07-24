@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * handle display product and recommend products
  * @author KhangNVCE140224
  */
 @WebServlet(name = "ProductController", urlPatterns = {"/ProductController"})
@@ -61,9 +61,9 @@ public class ProductController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int productID = Integer.parseInt(request.getParameter("id"));
-        ProductsDAO pDAO = new ProductsDAO();
-        Product product = pDAO.getProduct(productID);
+        int productID = Integer.parseInt(request.getParameter("id")); //get parameter product id
+        ProductsDAO pDAO = new ProductsDAO(); //creates a new object ProductsDAO
+        Product product = pDAO.getProduct(productID); //get product by id
         
         //no product with this id
         if(product == null) {

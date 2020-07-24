@@ -65,7 +65,7 @@ public class ReduceQuantity extends HttpServlet {
         
         boolean reduceCart = cartsDAO.reduceQuantity(id); //Reduce cart from user cart in DB
         
-        User user = (User)request.getSession().getAttribute("LoginUser"); //get user after login success
+        User user = (User)request.getSession().getAttribute("LoginUser"); //get id from session
         response.getWriter().print(cartsDAO.getNumberOfCartsForUser(user.getuId())); //and then display cart of user after reduce
     }
 

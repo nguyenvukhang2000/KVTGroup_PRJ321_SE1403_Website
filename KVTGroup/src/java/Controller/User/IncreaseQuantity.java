@@ -65,7 +65,7 @@ public class IncreaseQuantity extends HttpServlet {
         
         boolean increaseCart = cartsDAO.increaseQuantity(id); //Increase cart from user cart in DB
         
-        User user = (User)request.getSession().getAttribute("LoginUser"); //get user after login success
+        User user = (User)request.getSession().getAttribute("LoginUser"); //get id from session
         response.getWriter().print(cartsDAO.getNumberOfCartsForUser(user.getuId())); //and then display cart of user after increase
     }
 

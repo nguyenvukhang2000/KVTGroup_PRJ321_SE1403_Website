@@ -77,7 +77,7 @@ public class ConfirmScratchCardServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        User user = (User) request.getSession().getAttribute("LoginUser"); //get user after login success
+        User user = (User) request.getSession().getAttribute("LoginUser"); //get id from session
         int userId = user.getuId(); //get id of user
         double cash = user.getuCash(); //get cash current of user 
 

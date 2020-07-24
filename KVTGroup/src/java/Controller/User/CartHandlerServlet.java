@@ -64,7 +64,7 @@ public class CartHandlerServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ArrayList<CartProduct> carts = new ArrayList<CartProduct>(); //create a arraylist
-        User user = (User)request.getSession().getAttribute("LoginUser"); //get user login success
+        User user = (User)request.getSession().getAttribute("LoginUser"); //get id from session
         int userId = user.getuId(); //get id of user
         CartsDAO cartsDAO = new CartsDAO(); //creates a new object CartsDAO
         carts = cartsDAO.getProductFromCart(userId); //get object in cart db of user to display in checkout page

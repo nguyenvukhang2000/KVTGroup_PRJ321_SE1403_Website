@@ -66,7 +66,7 @@ public class AddCart extends HttpServlet {
         int pId = Integer.parseInt(request.getParameter("productID")); //get parameter id of product
         int quantity = Integer.parseInt(request.getParameter("quantity")); //get parameter quantity of product
         
-        User user = (User)request.getSession().getAttribute("LoginUser"); //after user login success then get attribute LoginUser
+        User user = (User)request.getSession().getAttribute("LoginUser"); //get id from session
         
         Cart cart = new Cart(); //create a new object Cart
         cart.setpId(pId); //set id for cart

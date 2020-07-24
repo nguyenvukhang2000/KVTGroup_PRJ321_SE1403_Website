@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 /**
- *
+ * handle display and edit profile 
  * @author KhangNVCE140224
  */
 @MultipartConfig
@@ -96,10 +96,10 @@ public class Profile extends HttpServlet {
             Part filePart = request.getPart("image");
             if(filePart.getSize() != 0) { //if photo uploaded
                 try {
-                    String uploadedPath = FileUpload.uploadImage(filePart, path);
-                    newUser.setuPhoto(uploadedPath);
+                    String uploadedPath = FileUpload.uploadImage(filePart, path); 
+                    newUser.setuPhoto(uploadedPath); 
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    e.printStackTrace(); 
                     request.setAttribute("message", "please choose image only");
                     request.getRequestDispatcher("/Failed.jsp").forward(request, response);
                     return;
@@ -108,7 +108,7 @@ public class Profile extends HttpServlet {
             }
             if(new UserDAO().updateUser(newUser, path)) {
                 //upload user successfully
-                newUser.setuPassword("");
+                newUser.setuPassword(""); //remove password from object
                 request.getSession().setAttribute("LoginUser", newUser); //update session user
                 
                 //redirect to profile

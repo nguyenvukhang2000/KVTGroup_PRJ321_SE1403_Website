@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- *
+ * To process pay operation
  * @author KhangNVCE140224
  */
 @WebServlet(name = "PayController", urlPatterns = {"/PayController"})
@@ -65,7 +65,7 @@ public class PayController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        CartsDAO cartsDAO = new CartsDAO();
+        CartsDAO cartsDAO = new CartsDAO(); //create a new object of CartsDAO
         double total  = 0;
         String message = "";
         
@@ -117,8 +117,8 @@ public class PayController extends HttpServlet {
             HttpSession session =  request.getSession();
             session.setAttribute("message", message);
             response.sendRedirect("Success.jsp");
-        } else {
-            request.getSession().setAttribute("message", "Error in proccess please try agine later :( ");
+        } else { //if have error in process then show message and move to Failed.jsp
+            request.getSession().setAttribute("message", "Error in proccess please try agine later :( "); 
             response.sendRedirect("Failed.jsp");
         }
     }
