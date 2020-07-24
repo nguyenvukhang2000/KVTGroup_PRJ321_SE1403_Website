@@ -75,8 +75,8 @@
                                     </c:if>
                                         
                                         <c:if test="${!empty sessionScope.LoginUser && sessionScope.LoginUser.uRole =='admin' }">
-                                        <li><a href="admin"><i class="fa fa-cog"></i> Admin Panel</a></li>
-                                        <li><a href="admin/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
+                                        <li><a href="admin/Index.jsp"><i class="fa fa-cog"></i> Admin Panel</a></li>
+                                        <li><a href="admin/logout1"><i class="fa fa-sign-out"></i> Logout</a></li>
                                     </c:if>
 
                                         <c:if test="${empty sessionScope.LoginUser}">

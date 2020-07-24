@@ -64,12 +64,15 @@ public class AdminProfile extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //get id from request
         int id = Integer.parseInt(request.getParameter("id"));
+        //get user by id
         User user = new UserDAO().getUser(id);
-
+        //if can not find user will print fail
         if (user == null) {
             request.getSession().setAttribute("message", "User not found");
             response.sendRedirect("../Failed.jsp");
+            //if find user will set user to attribute and forword to profile
         } else {
             request.setAttribute("userInfo", user);
             request.getRequestDispatcher("/admin/profile.jsp").forward(request, response);
@@ -88,6 +91,7 @@ public class AdminProfile extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         User user = new User();
+        //get all info from profile.jsp
         String path = request.getServletContext().getRealPath("");
         user.setuName(request.getParameter("name"));
         user.setuId(Integer.parseInt(request.getParameter("id")));
@@ -104,9 +108,11 @@ public class AdminProfile extends HttpServlet {
         if (filePart.getSize() != 0) {      //if photo uploaded
 
             try {
+                //get image from profile.jsp
                 String uploadedpath = FileUpload.uploadImage(filePart, path);
                 user.setuPhoto(uploadedpath);
             } catch (Exception ex) {
+                //if can not get image
                 ex.printStackTrace();
                 request.getSession().setAttribute("AlertMessage", "please choose image only");
                 request.getSession().setAttribute("AlertType", "danger");
@@ -116,14 +122,17 @@ public class AdminProfile extends HttpServlet {
             }
 
         } else {                          //no photo uploaded
+            //set user photo with photo default
             user.setuPhoto(request.getParameter("photo"));
         }
 
 //        --Update user--
         PrintWriter out = response.getWriter();
+        //if add user success to db will alert success
         if (new UserDAO().updateUser(user, path)) {
             out.print("<script>alert('Update successful')</script>");
             out.print("<script>window.location.href='AdminUserServlet'</script>");
+            //if can not add will alert fail
         } else {
             out.print("<script>alert('Update fail')</script>");
             out.print("<script>window.location.href='AdminUserServlet'</script>");

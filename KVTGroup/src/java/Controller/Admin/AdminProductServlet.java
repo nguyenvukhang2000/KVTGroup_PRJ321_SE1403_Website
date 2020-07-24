@@ -64,9 +64,11 @@ public class AdminProductServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ProductsDAO productsDAO = new ProductsDAO();
+        //get all product from db
         listOfProducts = productsDAO.getAllProducts();
+        //set attribute to list of product
         request.setAttribute("listOfProducts", listOfProducts);
-        
+        //forword to products.jsp
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/Products.jsp");
         dispatcher.forward(request, response);
     }

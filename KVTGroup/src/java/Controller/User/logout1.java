@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
  * handle logout process
  * @author tú
  */
-@WebServlet(name = "logout1", urlPatterns = {"/admin/logout1"})
+@WebServlet(name = "logout1", urlPatterns = {"/logout1","/admin/logout1"})
 public class logout1 extends HttpServlet {
 
     

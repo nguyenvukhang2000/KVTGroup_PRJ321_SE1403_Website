@@ -65,9 +65,11 @@ public class AdminHistoryServlet extends HttpServlet {
             throws ServletException, IOException {
         HistoryDAO historyDAO = new HistoryDAO();
         try {
+            //get all history
             listOfHistorys = historyDAO.getAllHistory();
+            //set all history to atttribute
             request.setAttribute("listOfHistorys", listOfHistorys);
-            
+            //forword to history.jsp
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/history.jsp");
             dispatcher.forward(request, response);
         } catch (Exception e) {

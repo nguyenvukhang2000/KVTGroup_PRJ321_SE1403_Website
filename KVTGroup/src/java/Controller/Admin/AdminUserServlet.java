@@ -28,8 +28,11 @@ public class AdminUserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         UserDAO userDAO = new UserDAO();
+        //get all user from db
         listOfUser = userDAO.getAllUsers();
+        //set list of user to attribute
         request.setAttribute("listOfUser", listOfUser);
+        //foword to user.jsp
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/users.jsp");
         dispatcher.forward(request, response);
     }

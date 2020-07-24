@@ -74,14 +74,17 @@ public class AdminCategory extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //get name from request
         String name = request.getParameter("CategoryName");
         
         Category category = new Category();
         category.setcName(name);
         PrintWriter out = response.getWriter();
+        //if add successfull alert successful
         if(new CategoryDAO().addCategory(category)){
             out.print("<script>alert('Add successful')</script>");
             out.print("<script>window.location.href='AdminCategoryServlet'</script>");
+            //if ot alert error
         }else{
             out.print("<script>alert('Add fail')</script>");
             out.print("<script>window.location.href='AdminCategoryServlet'</script>");

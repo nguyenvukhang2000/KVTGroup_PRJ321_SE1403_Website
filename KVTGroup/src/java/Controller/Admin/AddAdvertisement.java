@@ -79,14 +79,17 @@ public class AddAdvertisement extends HttpServlet {
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         AdvertisementDAO adsDAO = new AdvertisementDAO();
+        //get url request
         String url = request.getParameter("url");
-
+        //get part of image
         Part filePart = request.getPart("image");
         if (filePart.getSize() != 0) {      //if photo uploaded
             String path = request.getServletContext().getRealPath("");
 
             try {
+                //get image to uploadedpath
                 String uploadedpath = FileUpload.uploadImage(filePart, path);
+                //add to arraylist to add to db
                 adsDAO.addAdvertisment(uploadedpath, url);
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -102,6 +105,7 @@ public class AddAdvertisement extends HttpServlet {
         } else {                          //no photo uploaded
             adsDAO.addAdvertisment(request.getParameter("photo"), url);
         }
+        //print upload successful
         out.print("<script>alert('Add successful')</script>");
         out.print("<script>window.location.href='ShowAdvertisement'</script>");
     }

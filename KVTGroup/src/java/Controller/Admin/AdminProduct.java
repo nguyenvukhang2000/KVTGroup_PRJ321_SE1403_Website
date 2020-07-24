@@ -65,11 +65,15 @@ public class AdminProduct extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //get id by request scope
         int id = Integer.parseInt(request.getParameter("pId"));
+        //get product by id
         Product productobject = new ProductsDAO().getProduct(id);
+        //if can not find product
         if (productobject == null) {
             request.getSession().setAttribute("message", "Product not found");
             response.sendRedirect("../Failed.jsp");
+            //if find product
         } else {
             request.setAttribute("product", productobject);
             request.setAttribute("type", "Edit");

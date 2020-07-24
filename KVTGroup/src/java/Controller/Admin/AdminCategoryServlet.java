@@ -63,9 +63,11 @@ public class AdminCategoryServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         CategoryDAO categoryDAO = new CategoryDAO();
+        //get all category from db
         listOfCategory = categoryDAO.allCategoriess();
+        //set all category to attribute
         request.setAttribute("listOfCategory", listOfCategory);
-        
+        //forword to categry.jsp
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/category.jsp");
         dispatcher.forward(request, response);
     }

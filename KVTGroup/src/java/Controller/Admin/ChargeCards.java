@@ -72,6 +72,7 @@ public class ChargeCards extends HttpServlet {
         // get  data from jsp 
         int numberOfCards = Integer.parseInt(request.getParameter("numberofcard"));
         if (request.getParameter("cards") != null) {
+            //get selectedItem from jsp
             selectedItem = Integer.parseInt(request.getParameter("cards"));
 
         }

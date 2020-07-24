@@ -59,7 +59,9 @@ public class AdminIndex extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //get all user online
         request.setAttribute("onlineUser", SessionHandler.getOnlineUsers());
+        //get current profit
         request.setAttribute("profit", new ChargeDAO().getProfit());
     }
 
