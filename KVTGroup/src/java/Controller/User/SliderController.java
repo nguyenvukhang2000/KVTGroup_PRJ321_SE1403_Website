@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * handle display slider
  * @author KhangNVCE140224
  */
 @WebServlet(name = "SliderController", urlPatterns = {"/SliderIndex"})
@@ -62,7 +62,7 @@ public class SliderController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ArrayList<Sliders> allSliders = new SlidersDAO().getAllSliders();
+        ArrayList<Sliders> allSliders = new SlidersDAO().getAllSliders(); //get all sliders from DB into ArrayList and then display it
         request.setAttribute("slides", allSliders);
 
     }

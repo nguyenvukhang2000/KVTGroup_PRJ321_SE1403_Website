@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * search by name or price 
  * @author KhangNVCE140224
  */
 public class SearchForProduct extends HttpServlet {
@@ -67,7 +67,7 @@ public class SearchForProduct extends HttpServlet {
             
             System.out.println(productName);
             
-            products = pDAO.getProductByName(productName);
+            products = pDAO.getProductByName(productName);  //get product by name when user use search
             System.out.println(products.size());
         } else {
             System.out.println("else");
@@ -76,12 +76,12 @@ public class SearchForProduct extends HttpServlet {
             int max = Integer.parseInt(request.getParameter("up"));
             System.out.println(max);
             
-            products = pDAO.getAllProductByPrice(min, max);
+            products = pDAO.getAllProductByPrice(min, max); //get all product by price from min to max
             System.out.println("sizeof product" + products.size());
         }
         
         request.setAttribute("allProducts", products);
-        
+        //redirect to shop
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/shop.jsp");
         dispatcher.forward(request, response);
     }

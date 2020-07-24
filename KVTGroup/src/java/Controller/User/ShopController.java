@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * handle display product and category 
  * @author KhangNVCE140224
  */
 @WebServlet(name = "ShopController", urlPatterns = {"/ShopController"})
@@ -68,7 +68,7 @@ public class ShopController extends HttpServlet {
         
         //-------------- handle paging ------------------
         int pageid = 1;
-        int totalPerPage = 9;
+        int totalPerPage = 9; //1 page only 9 product
         int start;
         
         if(request.getParameter("page") != null) {
@@ -77,22 +77,23 @@ public class ShopController extends HttpServlet {
         
         //end & start for paging
         start = (pageid - 1) * totalPerPage;
-        
+        //if category
         if(request.getParameter("cate") != null) {
             int cate = Integer.parseInt(request.getParameter("cate"));
-            allProducts = pDAO.getAllProductByCategoryId(cate, start, totalPerPage);
+            allProducts = pDAO.getAllProductByCategoryId(cate, start, totalPerPage); //get all product by id of category with 1 to 9 product
         } else {
-            allProducts = pDAO.getAllProducts(start, totalPerPage);
+            allProducts = pDAO.getAllProducts(start, totalPerPage); //get all product from 1 to 9 product
         }
         
-        int noOfRecords = pDAO.getNoOfRecords();
-        int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / totalPerPage);
+        int noOfRecords = pDAO.getNoOfRecords(); //get no of records
+        int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / totalPerPage); //cal no of pages
         
         request.setAttribute("allProducts", allProducts);
         request.setAttribute("noOfPages", noOfPages);
         request.setAttribute("currentPage", pageid);
         request.setAttribute("query", request.getParameter("cate"));
         
+        //redirect to shop
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/shop.jsp");
         dispatcher.forward(request, response);
     }
