@@ -18,12 +18,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * display latest product in index
  * @author KhangNVCE140224
  */
 @WebServlet(name = "IndexProductServlet", urlPatterns = {"/IndexProductServlet"})
 public class IndexProductServlet extends HttpServlet {
-    List<Product> limitedProducts = new ArrayList<Product>();
+    List<Product> limitedProducts = new ArrayList<Product>(); //creates a list of product
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -63,8 +63,8 @@ public class IndexProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ProductsDAO pDAO = new ProductsDAO();
-        limitedProducts = pDAO.getLastProducts();
+        ProductsDAO pDAO = new ProductsDAO(); //creates new object of ProductsDAO
+        limitedProducts = pDAO.getLastProducts(); //get latest product to display
         
         request.setAttribute("limitedProducts", limitedProducts);
     }

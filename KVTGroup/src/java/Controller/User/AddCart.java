@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * add cart object to user cart DB
  * @author KhangNVCE140224
  */
 @WebServlet("/addCart")

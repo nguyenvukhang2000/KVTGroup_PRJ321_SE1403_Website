@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * get new random ads to display in sliderbar
  * @author KhangNVCE140224
  */
 @WebServlet(name = "AdsController", urlPatterns = {"/AdsController"})
@@ -61,10 +61,10 @@ public class AdsController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute("maxPrice", (int)(new ProductsDAO().getMaxProductByPrice()));
-        Advertisement randomAds = new AdvertisementDAO().getRandomAds();
-        if(randomAds != null) {
-            request.setAttribute("ads", randomAds);
+        request.setAttribute("maxPrice", (int)(new ProductsDAO().getMaxProductByPrice())); //get product have HighestPrice
+        Advertisement randomAds = new AdvertisementDAO().getRandomAds(); //get new random to display ads
+        if(randomAds != null) { //if have random ads
+            request.setAttribute("ads", randomAds); //then set request attribute
         }
     }
 

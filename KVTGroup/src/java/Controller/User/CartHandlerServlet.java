@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * get object in cart db of user to display in checkout page
  * @author KhangNVCE140224
  */
 @WebServlet(name = "CartHandlerServlet", urlPatterns = {"/CartHandlerServlet"})
@@ -63,15 +63,15 @@ public class CartHandlerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ArrayList<CartProduct> carts = new ArrayList<CartProduct>();
-        User user = (User)request.getSession().getAttribute("LoginUser");
-        int userId = user.getuId();
-        CartsDAO cartsDAO = new CartsDAO();
-        carts = cartsDAO.getProductFromCart(userId);
+        ArrayList<CartProduct> carts = new ArrayList<CartProduct>(); //create a arraylist
+        User user = (User)request.getSession().getAttribute("LoginUser"); //get user login success
+        int userId = user.getuId(); //get id of user
+        CartsDAO cartsDAO = new CartsDAO(); //creates a new object CartsDAO
+        carts = cartsDAO.getProductFromCart(userId); //get object in cart db of user to display in checkout page
         
         request.setAttribute("carts", carts);
         
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/checkout.jsp");
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/checkout.jsp"); //move to checkout.jsp
         dispatcher.forward(request, response);
     }
 

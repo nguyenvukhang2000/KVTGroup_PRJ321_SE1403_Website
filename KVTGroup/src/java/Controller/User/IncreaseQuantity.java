@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * Increase cart from user cart in DB
  * @author KhangNVCE140224
  */
 @WebServlet(name = "IncreaseQuantity", urlPatterns = {"/IncreaseQuantity"})
@@ -60,13 +60,13 @@ public class IncreaseQuantity extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        CartsDAO cartsDAO = new CartsDAO();
-        int id = Integer.parseInt(request.getParameter("id"));
+        CartsDAO cartsDAO = new CartsDAO();  //Creates a new object for CartsDAO
+        int id = Integer.parseInt(request.getParameter("id")); //get parameter of id
         
-        boolean increaseCart = cartsDAO.increaseQuantity(id);
+        boolean increaseCart = cartsDAO.increaseQuantity(id); //Increase cart from user cart in DB
         
-        User user = (User)request.getSession().getAttribute("LoginUser");
-        response.getWriter().print(cartsDAO.getNumberOfCartsForUser(user.getuId()));
+        User user = (User)request.getSession().getAttribute("LoginUser"); //get user after login success
+        response.getWriter().print(cartsDAO.getNumberOfCartsForUser(user.getuId())); //and then display cart of user after increase
     }
 
     /**

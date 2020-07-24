@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * delete cart from user cart in DB
  * @author KhangNVCE140224
  */
 @WebServlet(name = "DeleteCart", urlPatterns = {"/DeleteCart"})
@@ -60,10 +60,10 @@ public class DeleteCart extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        CartsDAO cartsDAO = new CartsDAO();
-        int id = Integer.parseInt(request.getParameter("id"));
+        CartsDAO cartsDAO = new CartsDAO(); //Creates a new object for CartsDAO
+        int id = Integer.parseInt(request.getParameter("id")); //get parameter of id 
         
-        boolean addCart = cartsDAO.deleteCart(id);
+        boolean addCart = cartsDAO.deleteCart(id); //delete cart from user cart in DB
         
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/CartHandlerServlet");
         dispatcher.forward(request, response);

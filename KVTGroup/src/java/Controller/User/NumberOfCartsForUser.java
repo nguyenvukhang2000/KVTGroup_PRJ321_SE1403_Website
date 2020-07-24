@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * get number of product in user cart
  * @author KhangNVCE140224
  */
 @WebServlet("/getCartCount")
@@ -60,10 +60,10 @@ public class NumberOfCartsForUser extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        CartsDAO cartsDAO = new CartsDAO();
-        int id = Integer.parseInt(request.getParameter("id"));
-        int addCart = cartsDAO.getNumberOfCartsForUser(id);
-        response.getWriter().print(addCart);
+        CartsDAO cartsDAO = new CartsDAO(); //creates a new object of CartsDAO
+        int id = Integer.parseInt(request.getParameter("id")); //get parameter of id
+        int addCart = cartsDAO.getNumberOfCartsForUser(id);  //get number of product in user cart
+        response.getWriter().print(addCart); //print number of product in user cart
     }
 
     /**
