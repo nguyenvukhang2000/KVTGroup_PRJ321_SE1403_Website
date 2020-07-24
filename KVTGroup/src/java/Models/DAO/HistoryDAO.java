@@ -21,11 +21,20 @@ import java.util.logging.Logger;
 public class HistoryDAO {
     private Connection conn;
 
+    /**
+     *
+     */
     public HistoryDAO() {
         DBConnection db = new DBConnection();
         this.conn = db.getConnect();
     }
     
+    /**
+     *
+     * @param h
+     * @return
+     * @throws SQLException
+     */
     public boolean addUserHistory(History h) throws SQLException {
         PreparedStatement pst = conn.prepareStatement("INSERT INTO `history`(`uId`, `pId`, `hDate`, `hQuantity`) VALUES (?, ?, ?, ?)");
         pst.setInt(1, h.getuId());
@@ -40,6 +49,10 @@ public class HistoryDAO {
         return false;
     }
     
+    /**
+     *
+     * @return
+     */
     public ArrayList<History> getAllHistory(){
         ArrayList<History> listOfHistorys = new ArrayList<History>();
         try {

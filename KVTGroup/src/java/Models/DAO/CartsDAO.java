@@ -20,11 +20,19 @@ import java.util.ArrayList;
 public class CartsDAO {
     private Connection conn;
 
+    /**
+     *
+     */
     public CartsDAO() {
         DBConnection db = new DBConnection();
         this.conn = db.getConnect();
     }
     
+    /**
+     *
+     * @param userId when login to buy Product
+     * @return  all Product when customer select
+     */
     public ArrayList<CartProduct> getProductFromCart(int userId) {
         ArrayList<CartProduct> carts = new ArrayList<CartProduct>();
         
@@ -52,6 +60,11 @@ public class CartsDAO {
         return null;
     }
     
+    /**
+     *
+     * @param cartID When user Payment
+     * @return true or flase
+     */
     public boolean deleteCart(int cartID) {
         try {
             PreparedStatement pst = conn.prepareStatement("delete From cart where cartId=?");
@@ -66,6 +79,11 @@ public class CartsDAO {
         return false;
     }
     
+    /**
+     *
+     * @param userID 
+     * @return true or false
+     */
     public boolean deleteUserCart(int userID) {
         try {
             PreparedStatement pst = conn.prepareStatement("DELETE FROM `cart` WHERE uId=?");
@@ -79,7 +97,12 @@ public class CartsDAO {
         }
         return false;
     }
-    
+    /**
+     * 
+     * @param pId
+     * @param userId
+     * @return  Quantity when search Product
+     */
     private int search(int pId, int userId) {
         int quantity = 0;
         
@@ -96,7 +119,13 @@ public class CartsDAO {
         }
         return quantity;
     }
-    
+    /**
+     * 
+     * @param quantity
+     * @param uId
+     * @param pId
+     * @return  true or false
+     */
     private boolean editQuantity(int quantity, int uId, int pId) {
         try {
             PreparedStatement pst = conn.prepareStatement("update cart set cartQuantity=? where uId=? and pId=? ");
@@ -114,6 +143,11 @@ public class CartsDAO {
         return  false;
     }
     
+    /**
+     *
+     * @param cart
+     * @return
+     */
     public boolean addCart(Cart cart) {
         try {
             int search = search(cart.getpId(), cart.getuId());
@@ -137,6 +171,11 @@ public class CartsDAO {
         return false;
     }
     
+    /**
+     *
+     * @param userId
+     * @return
+     */
     public ArrayList<Cart> getUserCart(int userId) {
         try {
             ArrayList<Cart> carts = new ArrayList<>();
@@ -158,6 +197,11 @@ public class CartsDAO {
         return null;
     }
     
+    /**
+     *
+     * @param userID
+     * @return
+     */
     public int getNumberOfCartsForUser(int userID) {
         int count = 0;
         ArrayList<Cart> userCarts = getUserCart(userID);
@@ -187,6 +231,11 @@ public class CartsDAO {
         return cart;
     }
     
+    /**
+     *
+     * @param cartId
+     * @return
+     */
     public boolean reduceQuantity(int cartId) {
         Cart cart = getCart(cartId);
         if(cart != null) {
@@ -210,6 +259,11 @@ public class CartsDAO {
         return false;
     }
     
+    /**
+     *
+     * @param cartId
+     * @return
+     */
     public boolean increaseQuantity(int cartId) {
         Cart cart = getCart(cartId);
         if(cart != null) {

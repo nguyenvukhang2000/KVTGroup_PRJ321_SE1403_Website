@@ -17,6 +17,9 @@ import java.util.logging.Logger;
  */
 public class DBConnection {
 
+    /**
+     *
+     */
     public Connection conn; //stores connection
 
     /**

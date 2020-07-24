@@ -21,10 +21,17 @@ public class SlidersDAO {
     private Connection conn;
     private ResultSet rs = null;
 
+    /**
+     *
+     */
     public SlidersDAO() {  
         this.conn = db.getConnect();
     }
     
+    /**
+     *
+     * @return
+     */
     public ArrayList<Sliders> getAllSliders() {
         ArrayList<Sliders> listSliders = new ArrayList<>();
         try {
@@ -41,6 +48,11 @@ public class SlidersDAO {
         return null;
     }
     
+    /**
+     *
+     * @param sliders
+     * @return
+     */
     public boolean addSlider(Sliders sliders){
         try {
             PreparedStatement pst = conn.prepareStatement("INSERT INTO `slides`(`pId`, `sTitle`, `sSubtitle`, `sDescription`, `sImage`) VALUES (?,?,?,?,?)");
@@ -59,6 +71,12 @@ public class SlidersDAO {
         }
         return false;
     }
+
+    /**
+     *
+     * @param id
+     * @return
+     */
     public boolean deleteSlider(int id) {
         try {
             PreparedStatement pst = conn.prepareStatement("DELETE FROM `slides` WHERE sId=?");

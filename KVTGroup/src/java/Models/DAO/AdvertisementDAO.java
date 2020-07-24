@@ -21,11 +21,18 @@ public class AdvertisementDAO {
     Connection conn;
     ResultSet rs;
 
+    /**
+     *Constructor
+     */
     public AdvertisementDAO() {
         DBConnection dBConnection = new DBConnection();
         this.conn = dBConnection.getConnect();
     }
     
+    /**
+     *
+     * @return Random Advertisement by Admin add in database
+     */
     public Advertisement getRandomAds() {
         ArrayList<Advertisement> allAds = getAllAdvertisement();
         if(allAds.size() == 0) {
@@ -35,6 +42,10 @@ public class AdvertisementDAO {
         }
     }
     
+    /**
+     *
+     * @return all Advertisement in database
+     */
     public ArrayList<Advertisement> getAllAdvertisement() {
         try {
             ArrayList<Advertisement> arr = new ArrayList<>();
@@ -56,6 +67,11 @@ public class AdvertisementDAO {
         return  null;
     }
     
+    /**
+     *
+     * @param id of Advertisement
+     * @return true or false
+     */
     public boolean deleteAdvertisment(int id){
         try {
             PreparedStatement pst = conn.prepareStatement("delete From ads where aId=?");
@@ -70,6 +86,12 @@ public class AdvertisementDAO {
         return false;
     }
     
+    /**
+     *
+     * @param img image of Advertisement
+     * @param url link Url of Advertisement
+     * @return true or flase
+     */
     public boolean addAdvertisment(String img, String url){
         try {
             PreparedStatement pst = conn.prepareStatement("insert into ads (aImage ,aURL)Values (?,?)");

@@ -21,12 +21,19 @@ public class ChargeDAO {
     private ResultSet rs;
     private PreparedStatement pst;
     
+    /**
+     *
+     */
     public ChargeDAO(){
         db = new DBConnection();
         rs = null;
         pst = null;
     }
     
+    /**
+     *
+     * @return
+     */
     public int getProfit(){
         int profit = 0;
         try {
@@ -47,6 +54,11 @@ public class ChargeDAO {
         return profit;
     }
     
+    /**
+     *
+     * @param value
+     * @return
+     */
     public int getSumCardNumber(int value){
         int coutOfCard = 0;
         try {
@@ -62,6 +74,11 @@ public class ChargeDAO {
         return coutOfCard;
     }
     
+    /**
+     *
+     * @param numbercheck
+     * @return
+     */
     public boolean numberOfCardIsFound(String numbercheck) {
         try {
             pst = db.getConnect().prepareStatement("select chargeCardNumber from charge where  chargeCardNumber=?  ");
@@ -76,6 +93,11 @@ public class ChargeDAO {
         return false;
     }
     
+    /**
+     *
+     * @param obj
+     * @return
+     */
     public boolean addCard(Charge obj) {
         try {
             pst = db.getConnect().prepareStatement("INSERT INTO `charge`(`chargeCardNumber`, `chargeValue`, `chargeUsed`, `chargeTaken`) VALUES (?,?,?,?)");

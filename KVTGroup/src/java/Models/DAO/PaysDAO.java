@@ -28,6 +28,9 @@ import java.util.logging.Logger;
 public class PaysDAO {
     private Connection conn;
 
+    /**
+     *
+     */
     public PaysDAO() {
         try {
             DBConnection db = new DBConnection();
@@ -40,6 +43,12 @@ public class PaysDAO {
         }
     }
     
+    /**
+     *
+     * @param user
+     * @param sold
+     * @return
+     */
     public boolean startPayment(User user, ArrayList<CartProduct> sold) {
         try {
             //update user balance

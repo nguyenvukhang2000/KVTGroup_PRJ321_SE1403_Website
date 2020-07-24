@@ -82,6 +82,7 @@ public class UserDAO{
     public User signIn(String username, String password) {
 
         User userSinIn = new User();
+        userSinIn = null ;
         try {
             if (search(username)) {
 //                con = db.getConnect();

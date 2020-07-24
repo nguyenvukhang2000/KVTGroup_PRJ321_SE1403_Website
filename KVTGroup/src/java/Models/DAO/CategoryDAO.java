@@ -23,10 +23,17 @@ public class CategoryDAO {
     Connection conn;
     DBConnection db = new DBConnection();
 
+    /**
+     *
+     */
     public CategoryDAO() {
         this.conn = db.getConnect();
     }
     
+    /**
+     *
+     * @return
+     */
     public ArrayList<Category> allCategoriess() {
         ArrayList<Category> allCategory = new ArrayList<>();
         
@@ -45,6 +52,11 @@ public class CategoryDAO {
         return allCategory;
     }
     
+    /**
+     *
+     * @param category
+     * @return
+     */
     public boolean addCategory(Category category){
         try {
             PreparedStatement pst = conn.prepareStatement("INSERT INTO `category`(`cName`) VALUES (?)");

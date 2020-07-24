@@ -23,19 +23,41 @@ import java.util.logging.Logger;
  */
 public class ProductsDAO {
 
+    /**
+     *
+     */
     public ResultSet rs = null;
-   public PreparedStatement pst = null;
- public  DBConnection db;
+
+    /**
+     *
+     */
+    public PreparedStatement pst = null;
+
+    /**
+     *
+     */
+    public  DBConnection db;
+
+    /**
+     *
+     */
     public int noOfRecords;
 
     Connection conn;
 
+    /**
+     *
+     */
     public ProductsDAO() {
        db = new DBConnection();
         
         this.conn = db.getConnect();
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Product> getAllProducts() {
         ArrayList<Product> listProducts = new ArrayList();
         String sql = "SELECT * FROM products ORDER BY pId DESC";
@@ -53,6 +75,12 @@ public class ProductsDAO {
         return listProducts;
     }
 
+    /**
+     *
+     * @param start
+     * @param limit
+     * @return
+     */
     public ArrayList<Product> getAllProducts(int start, int limit) {
         ArrayList<Product> listProducts = new ArrayList();
         String sql = "select * from products ORDER BY pId DESC LIMIT ? , ?";
@@ -78,6 +106,13 @@ public class ProductsDAO {
         return listProducts;
     }
 
+    /**
+     *
+     * @param categoryId
+     * @param start
+     * @param limit
+     * @return
+     */
     public List<Product> getAllProductByCategoryId(int categoryId, int start, int limit) {
         ArrayList<Product> listProducts = new ArrayList();
         try {
@@ -105,10 +140,19 @@ public class ProductsDAO {
 
     }
 
+    /**
+     *
+     * @return
+     */
     public int getNoOfRecords() {
         return noOfRecords;
     }
 
+    /**
+     *
+     * @param productId
+     * @return
+     */
     public Product getProduct(int productId) {
         Product product = new Product(); //to return value of select
         try {
@@ -135,6 +179,12 @@ public class ProductsDAO {
         return null;
     }
 
+    /**
+     *
+     * @param categoryId
+     * @param productId
+     * @return
+     */
     public ArrayList<Product> getRecommendedItem(int categoryId, int productId) {
         ArrayList<Product> getItem = new ArrayList();
         try {
@@ -157,6 +207,10 @@ public class ProductsDAO {
         return getItem;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Product> getLastProducts() {
         ArrayList<Product> selectLastProduct = new ArrayList();
 
@@ -175,6 +229,10 @@ public class ProductsDAO {
         return null;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getMaxProductByPrice() {
         double highestprice = 0;
 
@@ -190,6 +248,11 @@ public class ProductsDAO {
         return highestprice;
     }
 
+    /**
+     *
+     * @param productName
+     * @return
+     */
     public ArrayList<Product> getProductByName(String productName) {
         ArrayList<Product> listProductByName = new ArrayList();
         try {
@@ -214,6 +277,12 @@ public class ProductsDAO {
         return listProductByName;
     }
     
+    /**
+     *
+     * @param priceStart
+     * @param priceEnd
+     * @return
+     */
     public ArrayList<Product> getAllProductByPrice(double priceStart, double priceEnd) {
         ArrayList<Product> getAllProductByPrice = new ArrayList();
         
@@ -235,6 +304,12 @@ public class ProductsDAO {
         return getAllProductByPrice;
     }
     
+    /**
+     *
+     * @param product
+     * @return
+     * @throws SQLException
+     */
     public boolean updateProductQuantity(Product product) throws SQLException {
         int i = 0;
         PreparedStatement pst = conn.prepareStatement("update products set pQuantity=? where pId=?");
@@ -248,6 +323,12 @@ public class ProductsDAO {
         return false;
     }
     
+    /**
+     *
+     * @param id
+     * @param path
+     * @return
+     */
     public boolean deleteProduct(int id, String path){
         try {
             int i = 0;
@@ -269,6 +350,18 @@ public class ProductsDAO {
         return false;
     }
     
+    /**
+     *
+     * @param cId
+     * @param name
+     * @param price
+     * @param quantity
+     * @param weight
+     * @param img
+     * @param date
+     * @param discription
+     * @return
+     */
     public boolean addProduct(int cId, String name,double price, int quantity, int weight,String img,  String date, String discription){
         int i = 0;
         try {
@@ -293,6 +386,19 @@ public class ProductsDAO {
         return false;
     }
     
+    /**
+     *
+     * @param pId
+     * @param cId
+     * @param name
+     * @param price
+     * @param quantity
+     * @param weight
+     * @param img
+     * @param date
+     * @param description
+     * @return
+     */
     public boolean editProduct(int pId, int cId, String name,double price, int quantity, int weight,String img,  String date, String description){
         int i = 0;
         try {
