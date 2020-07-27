@@ -80,7 +80,7 @@ public class AdvertisementDAO extends DBConnection{
             PreparedStatement pst = conn.prepareStatement("delete From ads where aId=?");
             pst.setInt(1, id);
             int executeUpdate = pst.executeUpdate();
-               closeConnection();
+               
             if (executeUpdate > 0) {
              
                 return true;
@@ -103,10 +103,11 @@ public class AdvertisementDAO extends DBConnection{
 
             pst.setString(1, img);
             pst.setString(2, url);
-
+            
             int executeUpdate = pst.executeUpdate();
-               closeConnection();
+              
             if (executeUpdate > 0) {
+   
                 return true;
             }
         } catch (SQLException ex) {
