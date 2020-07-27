@@ -144,6 +144,7 @@ public class UserDAO{
                 pst.setString(1,SHA.encrypt(password));
                 String passs = SHA.encrypt(password);
                 pst.setString(2,username);
+                pst.execute();
                 return true;
             }
          catch (SQLException ex) {
