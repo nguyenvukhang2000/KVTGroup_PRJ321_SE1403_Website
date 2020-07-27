@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  *
  * @author KhangNVCE140224
  */
-public class CategoryDAO {
+public class CategoryDAO extends DBConnection{
     Category bean = new Category();
     Connection conn;
     DBConnection db = new DBConnection();
@@ -46,6 +46,7 @@ public class CategoryDAO {
                 category.setcName(rs.getString("cName"));
                 allCategory.add(category);
             }
+               closeConnection();
         } catch (SQLException ex) {
            ex.printStackTrace();
         }
@@ -62,6 +63,7 @@ public class CategoryDAO {
             PreparedStatement pst = conn.prepareStatement("INSERT INTO `category`(`cName`) VALUES (?)");
             pst.setString(1, category.getcName());
             int i = pst.executeUpdate();
+               closeConnection();
             if(i>0){
                 return true;
             }

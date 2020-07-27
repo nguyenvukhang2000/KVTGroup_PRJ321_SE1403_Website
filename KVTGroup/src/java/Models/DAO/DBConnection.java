@@ -41,4 +41,15 @@ public class DBConnection {
     public Connection getConnect() {
         return conn;
     }
+   public boolean closeConnection() {
+        try {
+
+            conn.close();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        return false;
+    }
 }

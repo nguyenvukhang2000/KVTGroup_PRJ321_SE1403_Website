@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  *
  * @author vinhhqce140143
  */
-public class ChargeDAO {
+public class ChargeDAO extends DBConnection{
     private DBConnection db;
     private ResultSet rs;
     private PreparedStatement pst;
@@ -64,7 +64,8 @@ public class ChargeDAO {
         try {
             pst = db.getConnect().prepareStatement("select count(chargeCardNumber) as count from charge where chargeValue=? and chargeUsed=0 and chargeTaken=0 ");
             pst.setInt(1, value);
-            rs = pst.executeQuery();            
+            rs = pst.executeQuery();    
+               closeConnection();
             while (rs.next()) {
                 coutOfCard = Integer.parseInt(rs.getString("count"));
             }
@@ -84,6 +85,7 @@ public class ChargeDAO {
             pst = db.getConnect().prepareStatement("select chargeCardNumber from charge where  chargeCardNumber=?  ");
             pst.setString(1, numbercheck);
             rs = pst.executeQuery();
+               closeConnection();
             if (rs.next()) {
                 return true;
             }
@@ -106,6 +108,7 @@ public class ChargeDAO {
             pst.setInt(2, obj.getChargeValue());
             pst.setInt(3, obj.getChargeUsed());
             pst.setInt(4, obj.getChargeTaken());
+               closeConnection();
             if (pst.executeUpdate() > 0) {
                 return true;
             }

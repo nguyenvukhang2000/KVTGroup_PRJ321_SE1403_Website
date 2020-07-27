@@ -25,7 +25,7 @@ import java.util.logging.Logger;
  *
  * @author KhangNVCE140224
  */
-public class PaysDAO {
+public class PaysDAO extends DBConnection{
     private Connection conn;
 
     /**
@@ -79,6 +79,7 @@ public class PaysDAO {
             conn.commit();
             
             //return default value of database
+               closeConnection();
             return true;
         } catch (SQLException ex) {
             try {

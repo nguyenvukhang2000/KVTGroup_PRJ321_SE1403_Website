@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  *
  * @author KhangNVCE140224
  */
-public class HistoryDAO {
+public class HistoryDAO extends DBConnection{
     private Connection conn;
 
     /**
@@ -43,6 +43,7 @@ public class HistoryDAO {
         pst.setInt(4, h.gethQuantity());
         
         int executeUpdate = pst.executeUpdate();
+           closeConnection();
         if(executeUpdate > 0) {
             return true;
         }

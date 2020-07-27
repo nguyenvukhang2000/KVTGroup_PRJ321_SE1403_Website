@@ -16,7 +16,7 @@ import java.util.ArrayList;
  *
  * @author KhangNVCE140224
  */
-public class SlidersDAO {
+public class SlidersDAO extends DBConnection{
     DBConnection db = new DBConnection();
     private Connection conn;
     private ResultSet rs = null;
@@ -41,6 +41,7 @@ public class SlidersDAO {
                 Sliders slide = new Sliders(rs.getInt("sId"), rs.getString(6), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(2));
                 listSliders.add(slide);
             }
+               closeConnection();
             return listSliders;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -64,8 +65,10 @@ public class SlidersDAO {
             
             int i = pst.executeUpdate();
             if(i > 0 ){
+                closeConnection();
                 return true;
             }
+               
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -83,8 +86,10 @@ public class SlidersDAO {
             pst.setInt(1, id);
             int executeUpdate = pst.executeUpdate();
             if (executeUpdate > 0) {
+                closeConnection();
                 return true;
             }
+               
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

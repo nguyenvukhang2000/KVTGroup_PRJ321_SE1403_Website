@@ -17,7 +17,7 @@ import java.util.ArrayList;
  *
  * @author KhangNVCE140224
  */
-public class CartsDAO {
+public class CartsDAO extends DBConnection{
     private Connection conn;
 
     /**
@@ -53,6 +53,7 @@ public class CartsDAO {
                 cartProduct.setpQuantity(rs.getInt("p.pQuantity"));
                 carts.add(cartProduct);
             }
+               closeConnection();
             return carts;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -70,7 +71,9 @@ public class CartsDAO {
             PreparedStatement pst = conn.prepareStatement("delete From cart where cartId=?");
             pst.setInt(1, cartID);
             int executeUpdate = pst.executeUpdate();
+               closeConnection();
             if(executeUpdate > 0) {
+                
                 return true;
             }
         } catch (SQLException ex) {
@@ -89,6 +92,7 @@ public class CartsDAO {
             PreparedStatement pst = conn.prepareStatement("DELETE FROM `cart` WHERE uId=?");
             pst.setInt(1, userID);
             int executeUpdate = pst.executeUpdate();
+               closeConnection();
             if(executeUpdate > 0) {
                 return true;
             }
@@ -111,6 +115,7 @@ public class CartsDAO {
             pst.setInt(1, pId);
             pst.setInt(2, userId);
             ResultSet rs = pst.executeQuery();
+               closeConnection();
             if(rs.next()) {
                 quantity = rs.getInt("cartQuantity");
             }
@@ -134,6 +139,7 @@ public class CartsDAO {
             pst.setInt(3, pId);
             
             int x = pst.executeUpdate();
+               closeConnection();
             if(x > 0) {
                 return true;
             }
@@ -162,6 +168,7 @@ public class CartsDAO {
             pst.setInt(3, cart.getpId());
             pst.setInt(4, cart.getCartQuantity());
             int executeUpdate = pst.executeUpdate();
+               closeConnection();
             if(executeUpdate > 0) {
                 return true;
             }
@@ -190,6 +197,7 @@ public class CartsDAO {
                 cart.setCartQuantity(rs.getInt(4));
                 carts.add(cart);
             }
+               closeConnection();
             return carts;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -218,6 +226,7 @@ public class CartsDAO {
             PreparedStatement pst = conn.prepareStatement("SELECT * from cart where cartId=?");
             pst.setInt(1, cartId);
             ResultSet rs = pst.executeQuery();
+               closeConnection();
             if(rs.next()) {
                cart = new Cart();
                cart.setCartQuantity(rs.getInt("cartQuantity"));
@@ -248,6 +257,7 @@ public class CartsDAO {
                     pst.setInt(1, cart.getCartQuantity() - 1);
                     pst.setInt(2, cartId);
                     int executeUpdate = pst.executeUpdate();
+                       closeConnection();
                     if(executeUpdate > 0) {
                         return true;
                     }
@@ -274,6 +284,7 @@ public class CartsDAO {
                 pst.setInt(1, cart.getCartQuantity() + 1);
                     pst.setInt(2, cartId);
                     int executeUpdate = pst.executeUpdate();
+                       closeConnection();
                     if(executeUpdate > 0) {
                         return true;
                     }

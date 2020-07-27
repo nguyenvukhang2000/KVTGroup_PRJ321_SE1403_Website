@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  *
  * @author KhangNVCE140224
  */
-public class ScratchCardDAO {
+public class ScratchCardDAO extends DBConnection{
     private Connection conn;
 
     /**
@@ -42,6 +42,7 @@ public class ScratchCardDAO {
             if(rs.next()) {
                 countOfCart = Integer.parseInt(rs.getString("count"));
             }
+               closeConnection();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -59,8 +60,10 @@ public class ScratchCardDAO {
             pst.setInt(1, value);
             ResultSet rs = pst.executeQuery();
             if(rs.next()) {
+                closeConnection();
                 return  rs.getString("chargeCardNumber");
             }
+               
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -78,8 +81,10 @@ public class ScratchCardDAO {
             pst.setString(1, number);
             int executeUpdate = pst.executeUpdate();
             if(executeUpdate == 1) {
+                closeConnection();
                 return true;
             }
+               
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -97,8 +102,10 @@ public class ScratchCardDAO {
             pst.setString(1, number);
             ResultSet rs = pst.executeQuery();
             while(rs.next()) {
+                 closeConnection();
                 return true;
             }
+              
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -116,8 +123,10 @@ public class ScratchCardDAO {
             pst.setString(1, chargeNumberCard);
             ResultSet rs = pst.executeQuery();
             if(rs.next()) {
+                closeConnection();
                 return rs.getInt("chargeValue");
             }
+               
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -135,8 +144,10 @@ public class ScratchCardDAO {
             pst.setString(1, number);
             int executeUpdate = pst.executeUpdate();
             if(executeUpdate == 1) {
+                closeConnection();
                 return true;
             }
+               
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

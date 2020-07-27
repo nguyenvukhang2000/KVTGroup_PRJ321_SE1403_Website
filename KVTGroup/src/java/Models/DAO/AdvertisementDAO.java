@@ -17,7 +17,7 @@ import java.util.Random;
  *
  * @author KhangNVCE140224
  */
-public class AdvertisementDAO {
+public class AdvertisementDAO extends DBConnection{
     Connection conn;
     ResultSet rs;
 
@@ -59,11 +59,14 @@ public class AdvertisementDAO {
                 ads.setaURL(rs.getString(3));
                 arr.add(ads);
             }
+            closeConnection();
             return arr;
         } catch (SQLException ex) {
+               closeConnection();
             ex.printStackTrace();
             
         } 
+           closeConnection();
         return  null;
     }
     
@@ -77,7 +80,9 @@ public class AdvertisementDAO {
             PreparedStatement pst = conn.prepareStatement("delete From ads where aId=?");
             pst.setInt(1, id);
             int executeUpdate = pst.executeUpdate();
+               closeConnection();
             if (executeUpdate > 0) {
+             
                 return true;
             }
         } catch (SQLException ex) {
@@ -100,6 +105,7 @@ public class AdvertisementDAO {
             pst.setString(2, url);
 
             int executeUpdate = pst.executeUpdate();
+               closeConnection();
             if (executeUpdate > 0) {
                 return true;
             }

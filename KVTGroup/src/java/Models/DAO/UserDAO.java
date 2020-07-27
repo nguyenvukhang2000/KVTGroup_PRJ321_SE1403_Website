@@ -13,7 +13,7 @@ import Models.utilize.SHA;
  *
  * @author tú
  */
-public class UserDAO{
+public class UserDAO extends DBConnection{
 
     /**
      *
@@ -48,7 +48,7 @@ public class UserDAO{
             } else {
                 b = false;
             }
-           
+              closeConnection();
         } catch (SQLException ex) {
            
             ex.printStackTrace();
@@ -87,6 +87,7 @@ public class UserDAO{
                 ////////////////////////////////////////
 
                 //con.close();
+                   closeConnection();
             } catch (SQLException e) {
                 e.printStackTrace();
                 return b ;
@@ -125,6 +126,7 @@ public class UserDAO{
                 System.out.println(userSinIn);
                 return userSinIn;
             }
+               closeConnection();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -145,7 +147,9 @@ public class UserDAO{
                 String passs = SHA.encrypt(password);
                 pst.setString(2,username);
                 pst.execute();
+                   closeConnection();
                 return true;
+                
             }
          catch (SQLException ex) {
             ex.printStackTrace();
@@ -178,8 +182,10 @@ public class UserDAO{
                 }
                 
                 System.out.println(userSinIn);
+                   closeConnection();
                 return userSinIn;
             }
+            
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -221,7 +227,7 @@ public class UserDAO{
                 System.out.println("--=-=-=-=-=-=-=-=-=-==-1");
                 pst.executeUpdate();
                 System.out.println("--=-=-=-=-=-=-=-=-=-==-2");
-                
+                   closeConnection();
                 return true;
             }
         } catch (SQLException ex) {
@@ -257,7 +263,7 @@ public class UserDAO{
                 user.setuPhoto(rs.getString("uPhoto"));
                 allUser.add(user);
             }
-        
+               closeConnection();
             return allUser;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -292,7 +298,7 @@ public class UserDAO{
                 user.setuRole(rs.getString("uRole"));
                 user.setuPhoto(rs.getString("uPhoto"));
             }
-       
+               closeConnection();
         } catch (SQLException ex) {
           
             ex.printStackTrace();
@@ -317,7 +323,7 @@ public class UserDAO{
                 pst.setDouble(1, updateUser.getuCash());
                 pst.setInt(2, updateUser.getuId());       
                 pst.executeUpdate();
-                
+                   closeConnection();
                 return true;
             }
        
